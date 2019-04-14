@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-user-list',
@@ -9,9 +10,9 @@ import { Observable } from 'rxjs';
 })
 export class UserListComponent implements OnInit {
   userList$: Observable<any>;
-  constructor(private http: HttpClient) {}
+  constructor(private userService: UserService) {}
 
   ngOnInit() {
-    this.userList$ = this.http.get<any>('https://jsonplaceholder.typicode.com/users');
+    this.userList$ = this.userService.fetchUserList();
   }
 }
