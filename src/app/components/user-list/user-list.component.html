@@ -1,12 +1,12 @@
-<div class="user-table">
+<div class="user-table" *ngIf="(userList$ | async) as userList">
   <div class="table-header">
     <div class="item-name">名前</div>
     <div class="item-email">E-mail</div>
     <div class="item-website">Website</div>
   </div>
-  <div class="table-content">
-    <div class="item-name">名前</div>
-    <div class="item-email">E-mail</div>
-    <div class="item-website">Website</div>
+  <div class="table-content" *ngFor="let user of userList">
+    <div class="item-name">{{user.name}}</div>
+    <div class="item-email">{{user.email}}</div>
+    <div class="item-website">{{user.website}}</div>
   </div>
 </div>
