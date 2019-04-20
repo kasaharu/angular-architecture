@@ -3,9 +3,6 @@ import { initialState, State } from './state';
 
 export function userReducer(state: State = initialState, action: Actions.ActionsUnion) {
   switch (action.type) {
-    case Actions.saveRequest.type: {
-      return state;
-    }
     case Actions.saveSuccess.type: {
       return {
         ...state,
