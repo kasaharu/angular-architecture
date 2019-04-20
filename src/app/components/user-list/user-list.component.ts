@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Store, select } from '@ngrx/store';
-import { Observable } from 'rxjs';
 
-import { UserService } from '../../services/user.service';
-import { UserStoreActions, UserStoreState } from '../../store/root/user-store';
+import { UserUsecase } from '../../usecases/user.usecase';
+import { UserQuery } from '../../queries/user.query';
 
 @Component({
   selector: 'app-user-list',
@@ -11,11 +9,11 @@ import { UserStoreActions, UserStoreState } from '../../store/root/user-store';
   styleUrls: ['./user-list.component.scss'],
 })
 export class UserListComponent implements OnInit {
-  userList$: Observable<any>;
-  constructor(private store$: Store<{}>, private userService: UserService) {}
+  userList$ = this.userQuery.userList$;
+
+  constructor(private userUsecase: UserUsecase, private userQuery: UserQuery) {}
 
   ngOnInit() {
-    this.store$.dispatch(UserStoreActions.saveRequest());
-    this.userList$ = this.store$.pipe(select(UserStoreState.selectUser));
+    this.userUsecase.initialize();
   }
 }
