@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
+import { User } from '../core/models';
 import { UserStoreState } from '../store/root/user-store';
 
 @Injectable({
@@ -9,5 +11,5 @@ import { UserStoreState } from '../store/root/user-store';
 export class UserQuery {
   constructor(private store$: Store<{}>) {}
 
-  userList$ = this.store$.pipe(select(UserStoreState.selectUser));
+  userList$: Observable<User[]> = this.store$.pipe(select(UserStoreState.selectUser));
 }

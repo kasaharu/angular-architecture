@@ -1,13 +1,8 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-
-interface User {
-  name: string;
-  email: string;
-  website: string;
-}
+import { User } from '../../../core/models';
 
 export interface State {
-  user: User | null;
+  user: User[] | null;
 }
 
 export const initialState: State = {

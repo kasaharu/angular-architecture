@@ -1,5 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+
+import { User } from '../core/models';
 
 @Injectable({
   providedIn: 'root',
@@ -7,7 +10,7 @@ import { Injectable } from '@angular/core';
 export class UserRepository {
   constructor(private http: HttpClient) {}
 
-  fetchUserList() {
-    return this.http.get<any>('https://jsonplaceholder.typicode.com/users');
+  fetchUserList(): Observable<User[]> {
+    return this.http.get<User[]>('https://jsonplaceholder.typicode.com/users');
   }
 }
