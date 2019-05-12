@@ -2,15 +2,15 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { User } from '../../../core/models';
 
 export interface State {
-  user: User[] | null;
+  userList: User[] | null;
 }
 
 export const initialState: State = {
-  user: null,
+  userList: null,
 };
 
 export const selectUserFeature = createFeatureSelector<State>('user');
-export const selectUser = createSelector(
+export const selectUserList = createSelector(
   selectUserFeature,
-  (state) => state.user,
+  (state) => state.userList,
 );

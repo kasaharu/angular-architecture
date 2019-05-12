@@ -6,7 +6,7 @@ export function userReducer(state: State = initialState, action: Actions.Actions
     case Actions.saveSuccess.type: {
       return {
         ...state,
-        user: action.payload,
+        userList: action.payload,
       };
     }
     default: {
