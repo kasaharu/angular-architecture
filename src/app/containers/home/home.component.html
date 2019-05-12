@@ -1,1 +1,3 @@
-<app-user-list [userList]="userList$ | async"></app-user-list>
+<ng-container *ngIf="userList$ | async as userList">
+  <app-user-list [userList]="userList"></app-user-list>
+</ng-container>
