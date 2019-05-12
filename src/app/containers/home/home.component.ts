@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+
+import { User } from '../../core/models';
+import { UserQuery } from '../../queries/user.query';
+import { UserUsecase } from '../../usecases/user.usecase';
 
 @Component({
   selector: 'app-home',
@@ -6,7 +11,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  constructor() {}
+  constructor(private userQuery: UserQuery, private userUsecase: UserUsecase) {}
+  userList$: Observable<User[]> = this.userQuery.userList$;
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.userUsecase.initialize();
+  }
 }
