@@ -1,3 +1,4 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { BehaviorSubject } from 'rxjs';
 
@@ -22,6 +23,7 @@ describe('HomeComponent', () => {
     TestBed.configureTestingModule({
       declarations: [HomeComponent],
       providers: [{ provide: UserQuery, useClass: MockUserQuery }, { provide: UserUsecase, useClass: MockUserUsecase }],
+      schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
   }));
 
