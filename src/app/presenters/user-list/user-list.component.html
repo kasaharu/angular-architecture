@@ -5,7 +5,7 @@
     <div class="item-website">Website</div>
   </div>
   <div class="table-content" *ngFor="let user of userList">
-    <div class="item-name">{{ user.name }}</div>
+    <a routerLink="/detail/{{ user.id }}" class="item-name">{{ user.name }}</a>
     <div class="item-email">{{ user.email }}</div>
     <div class="item-website">{{ user.website }}</div>
   </div>
