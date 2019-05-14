@@ -8,9 +8,10 @@ import { AppComponent } from './app.component';
 import { UserListComponent } from './presenters/user-list/user-list.component';
 import { RootStoreModule } from './store/root-store.module';
 import { HomeComponent } from './containers/home/home.component';
+import { DetailComponent } from './containers/detail/detail.component';
 
 @NgModule({
-  declarations: [AppComponent, UserListComponent, HomeComponent],
+  declarations: [AppComponent, UserListComponent, HomeComponent, DetailComponent],
   imports: [BrowserModule, AppRoutingModule, StoreDevtoolsModule.instrument({ maxAge: 25 }), HttpClientModule, RootStoreModule],
   providers: [],
   bootstrap: [AppComponent],
