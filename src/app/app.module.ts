@@ -5,7 +5,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UserListComponent } from './components/user-list/user-list.component';
+import { UserListComponent } from './presenters/user-list/user-list.component';
 import { RootStoreModule } from './store/root-store.module';
 import { HomeComponent } from './containers/home/home.component';
 
