@@ -13,4 +13,8 @@ export class UserRepository {
   fetchUserList(): Observable<User[]> {
     return this.http.get<User[]>('https://jsonplaceholder.typicode.com/users');
   }
+
+  fetchUser(userId: number): Observable<User> {
+    return this.http.get<User>(`https://jsonplaceholder.typicode.com/users/${userId}`);
+  }
 }
