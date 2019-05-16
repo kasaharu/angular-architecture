@@ -9,6 +9,12 @@ export function userReducer(state: State = initialState, action: Actions.Actions
         userList: action.payload,
       };
     }
+    case Actions.saveSelectedUser.type: {
+      return {
+        ...state,
+        selectedUser: action.payload,
+      };
+    }
     default: {
       return state;
     }
