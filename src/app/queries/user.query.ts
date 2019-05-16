@@ -12,4 +12,5 @@ export class UserQuery {
   constructor(private store$: Store<{}>) {}
 
   userList$: Observable<User[]> = this.store$.pipe(select(UserStoreState.selectUserList));
+  selectedUser$: Observable<User> = this.store$.pipe(select(UserStoreState.selectSelectedUser));
 }
