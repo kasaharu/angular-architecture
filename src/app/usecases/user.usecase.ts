@@ -12,6 +12,6 @@ export class UserUsecase {
 
   async initialize() {
     const result = await this.userRepository.fetchUserList().toPromise();
-    this.store$.dispatch(UserStoreActions.saveSuccess(result));
+    this.store$.dispatch(UserStoreActions.saveUserList(result));
   }
 }
