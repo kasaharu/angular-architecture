@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+import { DetailUsecase } from '../../usecases/detail.usecase';
 
 @Component({
   selector: 'app-detail',
@@ -6,7 +9,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./detail.component.scss'],
 })
 export class DetailComponent implements OnInit {
-  constructor() {}
+  constructor(private route: ActivatedRoute, private usecase: DetailUsecase) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.route.paramMap.subscribe((params) => {
+      const id = +params.get('id');
+      this.usecase.initialize(id);
+    });
+  }
 }
