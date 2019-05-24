@@ -11,7 +11,7 @@ export class DetailUsecase {
   constructor(private store$: Store<{}>, private userRepository: UserRepository) {}
 
   async initialize(userId: number) {
-    const result = await this.userRepository.fetchUser(userId).toPromise();
-    this.store$.dispatch(UserStoreActions.saveSelectedUser(result));
+    const user = await this.userRepository.fetchUser(userId).toPromise();
+    this.store$.dispatch(UserStoreActions.saveSelectedUser(user));
   }
 }
