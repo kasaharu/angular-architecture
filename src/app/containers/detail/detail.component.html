@@ -1,12 +1,16 @@
 <ng-container *ngIf="user$ | async as user">
-  <h2>{{ user.name }} のページ</h2>
-</ng-container>
-<div class="detail">
-  <div class="user-info"></div>
-  <div class="todo-list">
-    <div class="todo-header">Todo 一覧</div>
-    <ng-container *ngFor="let todo of todoList$ | async">
-      <div class="todo-item">{{ todo.title }}</div>
-    </ng-container>
+  <h2>{{ user.username }} のページ</h2>
+  <div class="detail">
+    <div class="user-info">
+      <div class="full-name">{{ user.name }}</div>
+      <div class="email">{{ user.email }}</div>
+      <div class="website">{{ user.website }}</div>
+    </div>
+    <div class="todo-list">
+      <div class="todo-header">Todo 一覧</div>
+      <ng-container *ngFor="let todo of todoList$ | async">
+        <div class="todo-item">{{ todo.title }}</div>
+      </ng-container>
+    </div>
   </div>
-</div>
+</ng-container>
