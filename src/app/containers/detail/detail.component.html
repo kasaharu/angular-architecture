@@ -1,4 +1,4 @@
 <ng-container *ngIf="user$ | async as user">
   <h2>{{ user.name }} のページ</h2>
-  <app-todo-list [todoList]="todoList$ | async"></app-todo-list>
+  <router-outlet></router-outlet>
 </ng-container>
