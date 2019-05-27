@@ -10,9 +10,10 @@ import { RootStoreModule } from './store/root-store.module';
 import { HomeComponent } from './containers/home/home.component';
 import { DetailComponent } from './containers/detail/detail.component';
 import { TodoListComponent } from './presenters/todo-list/todo-list.component';
+import { PostListComponent } from './presenters/post-list/post-list.component';
 
 @NgModule({
-  declarations: [AppComponent, UserListComponent, HomeComponent, DetailComponent, TodoListComponent],
+  declarations: [AppComponent, UserListComponent, HomeComponent, DetailComponent, TodoListComponent, PostListComponent],
   imports: [BrowserModule, AppRoutingModule, StoreDevtoolsModule.instrument({ maxAge: 25 }), HttpClientModule, RootStoreModule],
   providers: [],
   bootstrap: [AppComponent],
