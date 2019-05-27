@@ -1,3 +1,4 @@
-<p>
-  todo-list works!
-</p>
+<div class="todo-header">Todo 一覧</div>
+<ng-container *ngFor="let todo of todoList">
+  <div class="todo-item">{{ todo.title }}</div>
+</ng-container>

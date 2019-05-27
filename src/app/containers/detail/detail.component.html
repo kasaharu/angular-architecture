@@ -7,10 +7,7 @@
       <div class="website">{{ user.website }}</div>
     </div>
     <div class="todo-list">
-      <div class="todo-header">Todo 一覧</div>
-      <ng-container *ngFor="let todo of todoList$ | async">
-        <div class="todo-item">{{ todo.title }}</div>
-      </ng-container>
+      <app-todo-list [todoList]="todoList$ | async"></app-todo-list>
     </div>
   </div>
 </ng-container>
