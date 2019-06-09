@@ -50,7 +50,7 @@ jobs:
       - checkout
       - run: echo "Start test"
       - *restore_node_modules
-      - run: yarn test
+      - run: yarn test --watch false
       - store_artifacts:
           path: coverage
 
