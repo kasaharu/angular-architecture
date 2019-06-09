@@ -7,10 +7,12 @@ executors:
 
 references:
   npm_cache_key: &npm_cache_key
-    dependency-npm-{{ checksum "client/yarn.lock" }}-v1
+    dependency-npm-{{ checksum "yarn.lock" }}-v1
   save_node_modules: &save_node_modules
     save_cache:
       key: *npm_cache_key
+      paths:
+        - node_modules
   restore_node_modules: &restore_node_modules
     restore_cache:
       keys:
@@ -68,15 +70,12 @@ workflows:
       - lint:
           requires:
             - install-packages
-      - format-check:
-          requires:
-            - install-packages
       - build:
           requires:
-            - build-lib
+            - lint
       - test:
           requires:
-            - build
+            - lint
       - e2e:
           requires:
-            - build
+            - lint
