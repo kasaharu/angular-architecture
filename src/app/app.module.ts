@@ -17,7 +17,19 @@ import { PostComponent } from './containers/post/post.component';
 import { AlbumComponent } from './containers/album/album.component';
 
 @NgModule({
-  declarations: [AppComponent, UserListComponent, HomeComponent, DetailComponent, TodoListComponent, PostListComponent, AlbumListComponent, TodoComponent, PostComponent, AlbumComponent],
+  declarations: [
+    AppComponent,
+    UserListComponent,
+    HomeComponent,
+    DetailComponent,
+    TodoListComponent,
+    PostListComponent,
+    AlbumListComponent,
+    TodoComponent,
+    PostComponent,
+    AlbumComponent,
+  ],
+
   imports: [BrowserModule, AppRoutingModule, StoreDevtoolsModule.instrument({ maxAge: 25 }), HttpClientModule, RootStoreModule],
   providers: [],
   bootstrap: [AppComponent],
