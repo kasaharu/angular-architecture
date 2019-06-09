@@ -1,0 +1,82 @@
+version: 2.1
+
+executors:
+  ci-executor:
+    docker:
+      - image: circleci/node:10.16.0-stretch-browsers
+
+references:
+  npm_cache_key: &npm_cache_key
+    dependency-npm-{{ checksum "client/yarn.lock" }}-v1
+  save_node_modules: &save_node_modules
+    save_cache:
+      key: *npm_cache_key
+  restore_node_modules: &restore_node_modules
+    restore_cache:
+      keys:
+        - *npm_cache_key
+
+jobs:
+  install-packages:
+    executor: ci-executor
+    steps:
+      - checkout
+      - run: echo "Start installing the packages"
+      - *restore_node_modules
+      - run: yarn install
+      - *save_node_modules
+
+  lint:
+    executor: ci-executor
+    steps:
+      - checkout
+      - run: echo "Start lint"
+      - *restore_node_modules
+      - run: yarn lint
+
+  build:
+    executor: ci-executor
+    steps:
+      - checkout
+      - run: echo "Start build"
+      - *restore_node_modules
+      - run: yarn build
+
+  test:
+    executor: ci-executor
+    steps:
+      - checkout
+      - run: echo "Start test"
+      - *restore_node_modules
+      - run: yarn test
+      - store_artifacts:
+          path: coverage
+
+  e2e:
+    executor: ci-executor
+    steps:
+      - checkout
+      - run: echo "Start e2e"
+      - *restore_node_modules
+      - run: yarn e2e
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - install-packages
+      - lint:
+          requires:
+            - install-packages
+      - format-check:
+          requires:
+            - install-packages
+      - build:
+          requires:
+            - build-lib
+      - test:
+          requires:
+            - build
+      - e2e:
+          requires:
+            - build
