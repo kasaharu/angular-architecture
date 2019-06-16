@@ -1,4 +1,9 @@
 <ng-container *ngIf="user$ | async as user">
   <h2>{{ user.name }} のページ</h2>
+  <div class="tabs">
+    <a class="tab-item" routerLink="/users/{{ user.id }}/todos" routerLinkActive="active">Todo</a>
+    <a class="tab-item" routerLink="/users/{{ user.id }}/posts" routerLinkActive="active">Post</a>
+    <a class="tab-item" routerLink="/users/{{ user.id }}/albums" routerLinkActive="active">Album</a>
+  </div>
   <router-outlet></router-outlet>
 </ng-container>

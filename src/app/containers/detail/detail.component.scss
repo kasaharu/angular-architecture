@@ -1,0 +1,14 @@
+.tabs {
+  display: flex;
+  border-bottom: solid 1px #ccc;
+  text-align: center;
+}
+
+.tab-item {
+  width: 120px;
+  text-decoration: none;
+
+  &.active {
+    border-bottom: solid 2px #0031ff;
+  }
+}
