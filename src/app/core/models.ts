@@ -35,3 +35,9 @@ export interface Post {
   title: string;
   body: string;
 }
+
+export interface Album {
+  id: number;
+  userId: number;
+  title: string;
+}
