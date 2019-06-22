@@ -4,9 +4,10 @@ import { StoreModule } from '@ngrx/store';
 
 import { userReducer } from './root/user-store/reducers';
 import { todoReducer } from './root/todo-store/reducers';
+import { postReducer } from './root/post-store/reducers';
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, StoreModule.forRoot({ user: userReducer, todo: todoReducer })],
+  imports: [CommonModule, StoreModule.forRoot({ user: userReducer, todo: todoReducer, post: postReducer })],
 })
 export class RootStoreModule {}
