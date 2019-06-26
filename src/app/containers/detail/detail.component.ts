@@ -18,8 +18,11 @@ export class DetailComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe((params) => {
-      const id = +params.get('id');
-      this.usecase.initialize(id);
+      const id = params.get('id');
+      if (!id) {
+        return;
+      }
+      this.usecase.initialize(+id);
     });
   }
 }
