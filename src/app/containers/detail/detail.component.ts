@@ -14,7 +14,7 @@ import { DetailUsecase } from '../../usecases/detail.usecase';
 export class DetailComponent implements OnInit {
   constructor(private route: ActivatedRoute, private userQuery: UserQuery, private usecase: DetailUsecase) {}
 
-  user$: Observable<User> = this.userQuery.selectedUser$;
+  user$: Observable<User | null> = this.userQuery.selectedUser$;
 
   ngOnInit() {
     this.route.paramMap.subscribe((params) => {

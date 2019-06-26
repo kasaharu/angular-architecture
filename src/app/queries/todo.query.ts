@@ -11,5 +11,5 @@ import { TodoStoreState } from '../store/root/todo-store';
 export class TodoQuery {
   constructor(private store$: Store<{}>) {}
 
-  todoList$: Observable<Todo[]> = this.store$.pipe(select(TodoStoreState.selectTodoList));
+  todoList$: Observable<Todo[] | null> = this.store$.pipe(select(TodoStoreState.selectTodoList));
 }

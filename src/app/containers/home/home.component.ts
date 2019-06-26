@@ -12,7 +12,7 @@ import { UserUsecase } from '../../usecases/user.usecase';
 })
 export class HomeComponent implements OnInit {
   constructor(private userQuery: UserQuery, private userUsecase: UserUsecase) {}
-  userList$: Observable<User[]> = this.userQuery.userList$;
+  userList$: Observable<User[] | null> = this.userQuery.userList$;
 
   ngOnInit() {
     this.userUsecase.initialize();
