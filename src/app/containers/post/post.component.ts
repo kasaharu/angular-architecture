@@ -11,7 +11,7 @@ import { PostQuery } from '../../queries/post.query';
 export class PostComponent implements OnInit {
   constructor(private query: PostQuery) {}
 
-  postList$: Observable<Post[]> = this.query.postList$;
+  postList$: Observable<Post[] | null> = this.query.postList$;
 
   ngOnInit() {}
 }

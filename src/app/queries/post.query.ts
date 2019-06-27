@@ -5,10 +5,10 @@ import { Post } from '../core/models';
 import { PostStoreState } from '../store/root/post-store';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PostQuery {
-  constructor(private store$: Store<{}>) { }
+  constructor(private store$: Store<{}>) {}
 
-  postList$: Observable<Post[]> = this.store$.pipe(select(PostStoreState.selectTodoList));
+  postList$: Observable<Post[] | null> = this.store$.pipe(select(PostStoreState.selectTodoList));
 }

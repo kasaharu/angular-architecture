@@ -11,6 +11,6 @@ import { UserStoreState } from '../store/root/user-store';
 export class UserQuery {
   constructor(private store$: Store<{}>) {}
 
-  userList$: Observable<User[]> = this.store$.pipe(select(UserStoreState.selectUserList));
-  selectedUser$: Observable<User> = this.store$.pipe(select(UserStoreState.selectSelectedUser));
+  userList$: Observable<User[] | null> = this.store$.pipe(select(UserStoreState.selectUserList));
+  selectedUser$: Observable<User | null> = this.store$.pipe(select(UserStoreState.selectSelectedUser));
 }

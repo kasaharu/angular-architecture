@@ -11,7 +11,7 @@ import { TodoQuery } from '../../queries/todo.query';
 export class TodoComponent implements OnInit {
   constructor(private todoQuery: TodoQuery) {}
 
-  todoList$: Observable<Todo[]> = this.todoQuery.todoList$;
+  todoList$: Observable<Todo[] | null> = this.todoQuery.todoList$;
 
   ngOnInit() {}
 }
