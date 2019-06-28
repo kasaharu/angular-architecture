@@ -1,27 +1,13 @@
 # AngularArchitecture [![CircleCI](https://circleci.com/gh/kasaharu/angular-architecture.svg?style=svg)](https://circleci.com/gh/kasaharu/angular-architecture)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.7.
+# 開発環境構築
+- 必要な Node.js のバージョンは [.node-version](.node-version) を参照
+- [Yarn](https://yarnpkg.com/ja/docs/install) をインストール
 
-## Development server
+## アプリケーションの起動
+- 下記手順で起動する
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```
+$ yarn
+$ yarn start
+```
