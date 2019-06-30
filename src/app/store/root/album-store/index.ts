@@ -1,4 +1,5 @@
 import * as AlbumStoreActions from './actions';
+import * as AlbumStoreSelector from './selectors';
 import * as AlbumStoreState from './state';
 
-export { AlbumStoreActions, AlbumStoreState };
+export { AlbumStoreActions, AlbumStoreSelector, AlbumStoreState };
