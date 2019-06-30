@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-
 import { Todo } from '../core/models';
-import { TodoStoreState } from '../store/root/todo-store';
+import { TodoStoreSelector } from '../store/root/todo-store';
 
 @Injectable({
   providedIn: 'root',
@@ -11,5 +10,5 @@ import { TodoStoreState } from '../store/root/todo-store';
 export class TodoQuery {
   constructor(private store$: Store<{}>) {}
 
-  todoList$: Observable<Todo[] | null> = this.store$.pipe(select(TodoStoreState.selectTodoList));
+  todoList$: Observable<Todo[] | null> = this.store$.pipe(select(TodoStoreSelector.selectTodoList));
 }

@@ -1,5 +1,4 @@
-import { createFeatureSelector, createSelector } from '@ngrx/store';
-
+import { createFeatureSelector } from '@ngrx/store';
 import { Todo } from '../../../core/models';
 
 export interface State {
@@ -11,8 +10,3 @@ export const initialState: State = {
 };
 
 export const selectTodoFeature = createFeatureSelector<State>('todo');
-
-export const selectTodoList = createSelector(
-  selectTodoFeature,
-  (state) => state.todoList,
-);
