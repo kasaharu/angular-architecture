@@ -1,5 +1,26 @@
 {
-  "extends": [
-    "config:base"
+  "extends": ["config:base"],
+  "timezone": "Asia/Tokyo",
+  "assignees": ["kasaharu"],
+  "reviewers": ["kasaharu"],
+  "schedule": ["every weekend"],
+  "labels": ["renovate"],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["before 3am on the first day of the month"]
+  },
+  "packageRules": [
+    {
+      "packagePatterns": ["*"],
+      "enabled": false
+    },
+    {
+      "packagePatterns": [],
+      "enabled": true
+    },
+    {
+      "packagePatterns": ["circleci/node"],
+      "enabled": true
+    }
   ]
 }
