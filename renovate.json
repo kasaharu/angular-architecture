@@ -15,7 +15,7 @@
       "enabled": false
     },
     {
-      "packagePatterns": [],
+      "packagePatterns": ["prettier"],
       "enabled": true
     },
     {
