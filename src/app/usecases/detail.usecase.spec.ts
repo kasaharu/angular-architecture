@@ -31,10 +31,10 @@ class MockAlbumRepository {
 }
 
 describe('DetailUsecase', () => {
-  let userRepository: MockUserRepository;
-  let todoRepository: MockTodoRepository;
-  let postRepository: MockPostRepository;
-  let albumRepository: MockAlbumRepository;
+  let userRepository: UserRepository;
+  let todoRepository: TodoRepository;
+  let postRepository: PostRepository;
+  let albumRepository: AlbumRepository;
   let usecase: DetailUsecase;
   let store$: MockStore<{}>;
 

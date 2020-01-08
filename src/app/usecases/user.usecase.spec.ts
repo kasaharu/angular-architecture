@@ -13,7 +13,7 @@ class MockUserRepository {
 }
 
 describe('UserUsecase', () => {
-  let repository: MockUserRepository;
+  let repository: UserRepository;
   let usecase: UserUsecase;
   let store$: MockStore<{}>;
 
