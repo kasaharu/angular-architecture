@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import { UserRepository } from '../repositories/user.repository';
+import { UserRepository } from '../infrastructures/repositories/user.repository';
 import { UserStoreActions } from '../store/root/user-store';
 
 @Injectable({

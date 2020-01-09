@@ -1,16 +1,16 @@
 import { HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { Todo } from '../core/models';
-import { TodoRepository } from './todo.repository';
+import { Post } from '../../core/models';
+import { PostRepository } from './post.repository';
 
-describe('TodoRepository', () => {
-  let repository: TodoRepository;
+describe('PostRepository', () => {
+  let repository: PostRepository;
   let httpTestingController: HttpTestingController;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
 
-    repository = TestBed.get(TodoRepository);
+    repository = TestBed.get(PostRepository);
     httpTestingController = TestBed.get(HttpTestingController);
   });
 
@@ -18,12 +18,12 @@ describe('TodoRepository', () => {
     expect(repository).toBeTruthy();
   });
 
-  it('call fetchTodoListBy() method', () => {
-    const payload: Todo[] = [];
+  it('call fetchPostListBy() method', () => {
+    const payload: Post[] = [];
     const userId = 1;
-    repository.fetchTodoListBy(userId).subscribe((result) => expect(result).toEqual(payload));
+    repository.fetchPostListBy(userId).subscribe((result) => expect(result).toEqual(payload));
 
-    const req = httpTestingController.expectOne(`https://jsonplaceholder.typicode.com/todos?userId=${userId}`);
+    const req = httpTestingController.expectOne(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`);
     expect(req.request.method).toEqual('GET');
     req.flush(payload);
     httpTestingController.verify();
