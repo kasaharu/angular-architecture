@@ -5,5 +5,6 @@ import { UserListComponent } from './views/user-list/user-list.component';
 @NgModule({
   declarations: [UserListComponent],
   imports: [CommonModule],
+  exports: [UserListComponent],
 })
 export class UserListModule {}
