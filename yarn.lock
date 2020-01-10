@@ -103,12 +103,44 @@
     rxjs "6.4.0"
     source-map "0.7.3"
 
+"@angular-devkit/core@8.3.22", "@angular-devkit/core@^8.3.12":
+  version "8.3.22"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-8.3.22.tgz#085cc1cf356cec00d0a1cea83ef1f21277f5ff55"
+  integrity sha512-lOEYcvK3MktjR9YZT/cUjiQE5dZxl8rZ/vgWgwDiL7RtzfXTt8lPapoJe7YKS53gLbUYiBNPCtTyTAqnslWgGA==
+  dependencies:
+    ajv "6.10.2"
+    fast-json-stable-stringify "2.0.0"
+    magic-string "0.25.3"
+    rxjs "6.4.0"
+    source-map "0.7.3"
+
+"@angular-devkit/schematics-cli@^0.803.12":
+  version "0.803.22"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics-cli/-/schematics-cli-0.803.22.tgz#ccf92942be294263169b92521fb7fe316dae31a0"
+  integrity sha512-eaPoPetiycMyUx5di62q9PY6Z9X2nwJ4radXVYpHTJmbUPLLzAPs/X+DeyXLir9jY26eC8FWUwWu438aUTTkuQ==
+  dependencies:
+    "@angular-devkit/core" "8.3.22"
+    "@angular-devkit/schematics" "8.3.22"
+    "@schematics/schematics" "0.803.22"
+    inquirer "6.5.1"
+    minimist "1.2.0"
+    rxjs "6.4.0"
+    symbol-observable "1.2.0"
+
 "@angular-devkit/schematics@8.3.21":
   version "8.3.21"
   resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-8.3.21.tgz#80d515f480180be18a4130ea691f90153bcab3ea"
   integrity sha512-+wH0362CRr/SijVX4w2baY2ANZ4scQ1k2xO8lT+NMeZQkw3IJQPOfwk1IaqiAs2xuBJZcSDH1Gn80+Jh4Dit7w==
   dependencies:
     "@angular-devkit/core" "8.3.21"
+    rxjs "6.4.0"
+
+"@angular-devkit/schematics@8.3.22", "@angular-devkit/schematics@^8.3.12":
+  version "8.3.22"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-8.3.22.tgz#41461768cc6cf54708d55311e59b9defa7bff484"
+  integrity sha512-ETLdV1ftT+ZuuiHl6FjFQ4XLQznWMcxWognX+qgByn+DQOXsYRRvZK1L5eG/SG8CKJ8NL5oteTDloDnghARHFw==
+  dependencies:
+    "@angular-devkit/core" "8.3.22"
     rxjs "6.4.0"
 
 "@angular/animations@~8.2.14":
@@ -862,6 +894,19 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@kasaharu/ng-schematics@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@kasaharu/ng-schematics/-/ng-schematics-0.2.3.tgz#ab90b448159ae4bf571b56ec41f44583c25e78c7"
+  integrity sha512-ComihIauVraL97zUQKwiqqc2MbnzXQ5qzQKnkzQdiszphRaGPc9vMkRs2ZGLnJ7VHE9pKaqY0rS3qeCtE5RjVA==
+  dependencies:
+    "@angular-devkit/core" "^8.3.12"
+    "@angular-devkit/schematics" "^8.3.12"
+    "@angular-devkit/schematics-cli" "^0.803.12"
+    "@types/jasmine" "^3.3.9"
+    "@types/node" "^8.0.31"
+    jasmine "^3.3.1"
+    typescript "~3.5.3"
+
 "@ngrx/effects@8.6.0":
   version "8.6.0"
   resolved "https://registry.yarnpkg.com/@ngrx/effects/-/effects-8.6.0.tgz#a0d7339597a5128c5cf896ddcf93f73406a45860"
@@ -896,6 +941,14 @@
     "@angular-devkit/core" "8.3.21"
     "@angular-devkit/schematics" "8.3.21"
 
+"@schematics/schematics@0.803.22":
+  version "0.803.22"
+  resolved "https://registry.yarnpkg.com/@schematics/schematics/-/schematics-0.803.22.tgz#11ebb07651b3cfee78ac20bb65369c27a6cb16da"
+  integrity sha512-PL6vwlH0Zgyd6H0MWcHM2Imx0yFLtyGURrHwxwPXvf8zPl2udnVUV+Z91lFN4OTZ+iMeSZKlWe/Z59B+875IVw==
+  dependencies:
+    "@angular-devkit/core" "8.3.22"
+    "@angular-devkit/schematics" "8.3.22"
+
 "@schematics/update@0.803.21":
   version "0.803.21"
   resolved "https://registry.yarnpkg.com/@schematics/update/-/update-0.803.21.tgz#572c955bb132348bca03a128491ae264b0068a0a"
@@ -924,7 +977,7 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
-"@types/jasmine@*":
+"@types/jasmine@*", "@types/jasmine@^3.3.9":
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-3.5.0.tgz#2ad2006c8a937d20df20a8fee86071d0f730ef99"
   integrity sha512-kGCRI9oiCxFS6soGKlyzhMzDydfcPix9PpTkr7h11huxOxhWwP37Tg7DYBaQ18eQTNreZEuLkhpbGSqVNZPnnw==
@@ -950,6 +1003,11 @@
   version "13.1.4"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-13.1.4.tgz#4cfd90175a200ee9b02bd6b1cd19bc349741607e"
   integrity sha512-Lue/mlp2egZJoHXZr4LndxDAd7i/7SQYhV0EjWfb/a4/OZ6tuVwMCVPiwkU5nsEipxEf7hmkSU7Em5VQ8P5NGA==
+
+"@types/node@^8.0.31":
+  version "8.10.59"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.10.59.tgz#9e34261f30183f9777017a13d185dfac6b899e04"
+  integrity sha512-8RkBivJrDCyPpBXhVZcjh7cQxVBSmRk9QM7hOketZzp6Tg79c0N8kkpAIito9bnJ3HCVCHVYz+KHTEbfQNfeVQ==
 
 "@types/node@~8.9.4":
   version "8.9.5"
@@ -4316,7 +4374,7 @@ istanbul-reports@^2.2.4:
   dependencies:
     handlebars "^4.1.2"
 
-jasmine-core@^3.3:
+jasmine-core@^3.3, jasmine-core@~3.5.0:
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/jasmine-core/-/jasmine-core-3.5.0.tgz#132c23e645af96d85c8bca13c8758b18429fc1e4"
   integrity sha512-nCeAiw37MIMA9w9IXso7bRaLl+c/ef3wnxsoSAlYrzS+Ot0zTG6nU8G/cIfGkqpkjX2wNaIW9RFG0TwIFnG6bA==
@@ -4346,6 +4404,14 @@ jasmine@2.8.0:
     exit "^0.1.2"
     glob "^7.0.6"
     jasmine-core "~2.8.0"
+
+jasmine@^3.3.1:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/jasmine/-/jasmine-3.5.0.tgz#7101eabfd043a1fc82ac24e0ab6ec56081357f9e"
+  integrity sha512-DYypSryORqzsGoMazemIHUfMkXM7I7easFaxAvNM3Mr6Xz3Fy36TupTrAOxZWN8MVKEU5xECv22J4tUQf3uBzQ==
+  dependencies:
+    glob "^7.1.4"
+    jasmine-core "~3.5.0"
 
 jasminewd2@^2.1.0:
   version "2.2.0"
@@ -4915,7 +4981,7 @@ minimist@0.0.8:
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-0.0.8.tgz#857fcabfc3397d2625b8228262e86aa7a011b05d"
   integrity sha1-hX/Kv8M5fSYluCKCYuhqp6ARsF0=
 
-minimist@^1.2.0:
+minimist@1.2.0, minimist@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.0.tgz#a35008b20f41383eec1fb914f4cd5df79a264284"
   integrity sha1-o1AIsg9BOD7sH7kU9M1d95omQoQ=
