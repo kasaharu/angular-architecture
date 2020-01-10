@@ -1,4 +1,4 @@
-import { createAction, createReducer, on, union } from '@ngrx/store';
+import { createAction, createReducer, on, props, union } from '@ngrx/store';
 
 // NOTE: State
 export interface State {
@@ -10,13 +10,13 @@ export const initialState: State = {
 };
 
 // NOTE: Actions
-export const saveUserList = createAction('[UserList] save', (payload: any) => ({ payload }));
+export const saveUserList = createAction('[UserList] save', props<{ userList: any }>());
 
 export const actions = { saveUserList };
 const actionsUnion = union(actions);
 
 // NOTE: Reducer
-const userListReducer = createReducer(initialState, on(saveUserList, (state, action) => ({ ...state, userList: action.payload })));
+const userListReducer = createReducer(initialState, on(saveUserList, (state, { userList }) => ({ ...state, userList })));
 
 export default function reducer(state: State, action: typeof actionsUnion): State {
   return userListReducer(state, action);
