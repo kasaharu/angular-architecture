@@ -3,10 +3,14 @@ import { TestBed } from '@angular/core/testing';
 import { UserListQuery } from './user-list.query';
 
 describe('UserListQuery', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+  let query: UserListQuery;
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+
+    query = TestBed.get(UserListQuery);
+  });
 
   it('should be created', () => {
-    const query: UserListQuery = TestBed.get(UserListQuery);
     expect(query).toBeTruthy();
   });
 });
