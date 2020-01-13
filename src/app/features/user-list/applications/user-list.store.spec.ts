@@ -1,5 +1,8 @@
-import reducer, { actions, State } from './user-list.store';
+import reducer, { actions, createFeatureStoreSelector, State } from './user-list.store';
 import { User } from '../domain/user-list';
+import { MockStore, provideMockStore } from '@ngrx/store/testing';
+import { TestBed } from '@angular/core/testing';
+import { Store } from '@ngrx/store';
 
 describe('userList reducer', () => {
   it('action type : saveUserList', () => {
@@ -19,5 +22,38 @@ describe('userList reducer', () => {
     const result = reducer(state, actions.saveUserList({ userList: updatedState }));
 
     expect(result).toEqual({ userList: updatedState });
+  });
+});
+
+const featureName = 'testState';
+interface TestType {
+  foo: string;
+  bar: string;
+}
+
+describe('selector-helper', () => {
+  let store$: MockStore<{}>;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [
+        provideMockStore({
+          initialState: {
+            [featureName]: { foo: 'foo', bar: 'bar' },
+          },
+        }),
+      ],
+    });
+
+    store$ = TestBed.get(Store);
+  });
+
+  describe('createFeatureStoreSelector', () => {
+    it('testState featureStore から foo を取り出す', () => {
+      const selectStateFromFeature = createFeatureStoreSelector<TestType>(featureName);
+      const selected = selectStateFromFeature(store$, (state) => state.foo);
+
+      selected.subscribe((val) => expect(val).toBe('foo'));
+    });
   });
 });

@@ -1,5 +1,17 @@
-import { createAction, createReducer, on, props, union } from '@ngrx/store';
+import { createAction, createFeatureSelector, createReducer, createSelector, on, props, Store, union } from '@ngrx/store';
 import { User } from '../domain/user-list';
+
+// helper
+export const createFeatureStoreSelector = <T>(fName: string) => {
+  return <S>(store$: Store<{}>, mappingFunction: (state: T) => S) => {
+    return store$.select(
+      createSelector(
+        createFeatureSelector<T>(fName),
+        mappingFunction,
+      ),
+    );
+  };
+};
 
 // NOTE: State
 export interface State {
@@ -25,3 +37,4 @@ export default function reducer(state: State, action: typeof actionsUnion): Stat
 
 // NOTE: Selectors
 export const featureName = 'userList';
+export const selectStore = createFeatureStoreSelector<State>(featureName);
