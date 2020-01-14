@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserListUsecase } from '../../applications/user-list.usecase';
 
 @Component({
   selector: 'app-user-list',
@@ -6,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-list.component.scss'],
 })
 export class UserListComponent implements OnInit {
-  constructor() {}
+  constructor(private usecase: UserListUsecase) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.usecase.initialize();
+  }
 }
