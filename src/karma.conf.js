@@ -19,6 +19,15 @@ module.exports = function(config) {
       dir: require('path').join(__dirname, '../coverage/angular-architecture'),
       reports: ['html', 'lcovonly', 'text-summary'],
       fixWebpackSourcePaths: true,
+      thresholds: {
+        emitWarning: false, // true にすると閾値に届いていなくてもエラーにならない
+        global: {
+          statements: 100,
+          lines: 100,
+          branches: 100,
+          functions: 100,
+        },
+      },
     },
     reporters: ['progress', 'kjhtml'],
     port: 9876,
