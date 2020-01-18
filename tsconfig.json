@@ -12,6 +12,7 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "strictNullChecks": true,
     "noImplicitAny": true,
     "target": "es2015",
