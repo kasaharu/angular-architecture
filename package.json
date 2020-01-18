@@ -23,6 +23,7 @@
     "@ngrx/effects": "8.6.0",
     "@ngrx/store": "8.6.0",
     "@ngrx/store-devtools": "8.6.0",
+    "angular-cli-ghpages": "^0.6.2",
     "core-js": "2.6.9",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
