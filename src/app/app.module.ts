@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, StoreDevtoolsModule.instrument({ maxAge: 25 }), HttpClientModule, StoreModule.forRoot({})],
+  imports: [BrowserModule, HttpClientModule, StoreModule.forRoot({}), StoreDevtoolsModule.instrument({ maxAge: 25 }), AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
 })
