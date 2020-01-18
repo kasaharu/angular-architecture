@@ -1,8 +1,8 @@
-import reducer, { actions, createFeatureStoreSelector, State } from './user-list.store';
-import { User } from '../domain/user-list';
-import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { TestBed } from '@angular/core/testing';
 import { Store } from '@ngrx/store';
+import { MockStore, provideMockStore } from '@ngrx/store/testing';
+import { User } from '../domain/user-list';
+import reducer, { actions, createFeatureStoreSelector, State } from './user-list.store';
 
 describe('userList reducer', () => {
   it('action type : saveUserList', () => {

@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 import { Action, Store } from '@ngrx/store';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
+import { of } from 'rxjs';
+import { skip } from 'rxjs/operators';
 import { UserRepository } from '../../../infrastructures/repositories/user.repository';
 import { User } from '../domain/user-list';
 import { actions as userListActions } from './user-list.store';
 import { UserListUsecase } from './user-list.usecase';
-import { skip } from 'rxjs/operators';
-import { of } from 'rxjs';
 
 describe('UserListUsecase', () => {
   let usecase: UserListUsecase;
