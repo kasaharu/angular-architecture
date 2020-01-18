@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UserListComponent } from './views/user-list/user-list.component';
+import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 import { default as reducer, featureName } from './applications/user-list.store';
+import { UserListComponent } from './views/user-list/user-list.component';
 
 @NgModule({
   declarations: [UserListComponent],

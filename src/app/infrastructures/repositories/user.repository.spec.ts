@@ -1,6 +1,6 @@
 import { HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { User } from '../../core/models';
+import { User } from '../../features/user-list/domain/user-list';
 import { UserRepository } from './user.repository';
 
 describe('UserRepository', () => {
