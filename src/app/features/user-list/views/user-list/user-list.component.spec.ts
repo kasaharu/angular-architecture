@@ -1,11 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { UserListQuery } from '../../applications/user-list.query';
 import { UserListUsecase } from '../../applications/user-list.usecase';
 import { UserListComponent } from './user-list.component';
-import { UserUsecase } from 'src/app/usecases/user.usecase';
 
-class MockUserListUsecase implements Partial<UserUsecase> {
+class MockUserListUsecase implements Partial<UserListUsecase> {
   async initialize() {}
 }
+
+class MockUserListQuery implements Partial<UserListQuery> {}
 
 describe('UserListComponent', () => {
   let component: UserListComponent;
@@ -15,7 +17,7 @@ describe('UserListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [UserListComponent],
-      providers: [{ provide: UserListUsecase, useClass: MockUserListUsecase }],
+      providers: [{ provide: UserListUsecase, useClass: MockUserListUsecase }, { provide: UserListQuery, useClass: MockUserListQuery }],
     }).compileComponents();
 
     usecase = TestBed.get(UserListUsecase);
