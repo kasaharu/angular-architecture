@@ -9,6 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "prettier": "prettier --write 'src/**/*.{ts,html,scss}'",
+    "prettier:check": "prettier --check 'src/**/*.{ts,html,scss}'",
     "deploy": "ng deploy --base-href=/angular-architecture/"
   },
   "private": true,

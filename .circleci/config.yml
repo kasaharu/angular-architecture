@@ -35,6 +35,14 @@ jobs:
       - *restore_node_modules
       - run: yarn lint
 
+  format:
+    executor: ci-executor
+    steps:
+      - checkout
+      - run: echo "Start Prettier"
+      - *restore_node_modules
+      - run: yarn prettier:check
+
   build:
     executor: ci-executor
     steps:
@@ -69,12 +77,18 @@ workflows:
       - lint:
           requires:
             - install-packages
+      - format:
+          requires:
+            - install-packages
       - build:
           requires:
             - lint
+            - format
       - test:
           requires:
             - lint
+            - format
       - e2e:
           requires:
             - lint
+            - format
