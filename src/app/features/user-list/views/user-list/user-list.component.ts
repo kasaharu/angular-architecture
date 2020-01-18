@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserListUsecase } from '../../applications/user-list.usecase';
+import { User } from '../../domain/user-list';
+import { UserListQuery } from '../../applications/user-list.query';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-user-list',
@@ -7,7 +10,8 @@ import { UserListUsecase } from '../../applications/user-list.usecase';
   styleUrls: ['./user-list.component.scss'],
 })
 export class UserListComponent implements OnInit {
-  constructor(private usecase: UserListUsecase) {}
+  constructor(private query: UserListQuery, private usecase: UserListUsecase) {}
+  readonly userList$: Observable<User[] | null> = this.query.userList$;
 
   ngOnInit() {
     this.usecase.initialize();

@@ -1,1 +1,14 @@
-<p>user-list works!</p>
+<ng-container *ngIf="userList$ | async as userList">
+  <div class="user-table">
+    <div class="table-header">
+      <div class="item-name">名前</div>
+      <div class="item-email">E-mail</div>
+      <div class="item-website">Website</div>
+    </div>
+    <div class="table-content" *ngFor="let user of userList">
+      <a class="item-name">{{ user.name }}</a>
+      <div class="item-email">{{ user.email }}</div>
+      <div class="item-website">{{ user.website }}</div>
+    </div>
+  </div>
+</ng-container>
