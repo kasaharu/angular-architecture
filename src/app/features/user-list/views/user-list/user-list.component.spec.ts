@@ -17,7 +17,10 @@ describe('UserListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [UserListComponent],
-      providers: [{ provide: UserListUsecase, useClass: MockUserListUsecase }, { provide: UserListQuery, useClass: MockUserListQuery }],
+      providers: [
+        { provide: UserListUsecase, useClass: MockUserListUsecase },
+        { provide: UserListQuery, useClass: MockUserListQuery },
+      ],
     }).compileComponents();
 
     usecase = TestBed.get(UserListUsecase);
