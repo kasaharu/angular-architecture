@@ -4,12 +4,7 @@ import { User } from '../domain/user-list';
 // helper
 export const createFeatureStoreSelector = <T>(fName: string) => {
   return <S>(store$: Store<{}>, mappingFunction: (state: T) => S) => {
-    return store$.select(
-      createSelector(
-        createFeatureSelector<T>(fName),
-        mappingFunction,
-      ),
-    );
+    return store$.select(createSelector(createFeatureSelector<T>(fName), mappingFunction));
   };
 };
 
@@ -29,7 +24,10 @@ export const actions = { saveUserList };
 const actionsUnion = union(actions);
 
 // NOTE: Reducer
-const userListReducer = createReducer(initialState, on(saveUserList, (state, { userList }) => ({ ...state, userList })));
+const userListReducer = createReducer(
+  initialState,
+  on(saveUserList, (state, { userList }) => ({ ...state, userList })),
+);
 
 export default function reducer(state: State, action: typeof actionsUnion): State {
   return userListReducer(state, action);
