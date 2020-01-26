@@ -5,5 +5,6 @@ import { UserComponent } from './views/user/user.component';
 @NgModule({
   declarations: [UserComponent],
   imports: [CommonModule],
+  exports: [UserComponent],
 })
 export class UserModule {}
