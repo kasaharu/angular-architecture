@@ -9,8 +9,8 @@ export interface User {
     city: string;
     zipcode: string;
     geo: {
-      lat: number;
-      lng: number;
+      lat: string;
+      lng: string;
     };
   };
   phone: string;
