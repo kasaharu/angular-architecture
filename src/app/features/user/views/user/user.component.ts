@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { UserUsecase } from '../../applications/user.usecase';
 
 @Component({
   selector: 'app-user',
@@ -7,7 +8,9 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserComponent implements OnInit {
-  constructor() {}
+  constructor(private usecase: UserUsecase) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.usecase.initialize();
+  }
 }
