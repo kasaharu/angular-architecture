@@ -1,8 +1,9 @@
 import { createAction, createReducer, on, props, union } from '@ngrx/store';
+import { User } from '../domain/user';
 
 // NOTE: State
 export interface State {
-  user: any | null;
+  user: User | null;
 }
 
 export const initialState: State = {
@@ -10,7 +11,7 @@ export const initialState: State = {
 };
 
 // NOTE: Actions
-export const saveUser = createAction('[User] save', props<{ user: any }>());
+export const saveUser = createAction('[User] save', props<{ user: User }>());
 
 export const actions = { saveUser };
 const actionsUnion = union(actions);
