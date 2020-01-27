@@ -16,7 +16,10 @@ export const actions = { saveUser };
 const actionsUnion = union(actions);
 
 // NOTE: Reducer
-const userReducer = createReducer(initialState, on(saveUser, (state, { user }) => ({ ...state, user })));
+const userReducer = createReducer(
+  initialState,
+  on(saveUser, (state, { user }) => ({ ...state, user })),
+);
 
 export default function reducer(state: State, action: typeof actionsUnion): State {
   return userReducer(state, action);
