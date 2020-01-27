@@ -894,10 +894,10 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@kasaharu/ng-schematics@^0.2.3":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@kasaharu/ng-schematics/-/ng-schematics-0.2.3.tgz#ab90b448159ae4bf571b56ec41f44583c25e78c7"
-  integrity sha512-ComihIauVraL97zUQKwiqqc2MbnzXQ5qzQKnkzQdiszphRaGPc9vMkRs2ZGLnJ7VHE9pKaqY0rS3qeCtE5RjVA==
+"@kasaharu/ng-schematics@^0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@kasaharu/ng-schematics/-/ng-schematics-0.3.1.tgz#14ca877f49137c9f08f74289eb39f6feaf035e22"
+  integrity sha512-P/FXI8XH4lQX493tq5TdjUU8xrp4ZG5qt4DGv/l32ZgzhMGi2Z4VMBecL/xYPWLMvTG9eosW+RZQ0McjuJB+Qg==
   dependencies:
     "@angular-devkit/core" "^8.3.12"
     "@angular-devkit/schematics" "^8.3.12"
