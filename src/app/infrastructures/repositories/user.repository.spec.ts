@@ -1,6 +1,6 @@
 import { HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { User } from '../../features/user-list/domain/user-list';
+import { User } from '../../features/user/domain/user';
 import { UserRepository } from './user.repository';
 
 describe('UserRepository', () => {
@@ -34,7 +34,7 @@ describe('UserRepository', () => {
       name: '',
       username: '',
       email: '',
-      address: { street: '', suite: '', city: '', zipcode: '', geo: { lat: 0, lng: 0 } },
+      address: { street: '', suite: '', city: '', zipcode: '', geo: { lat: '0', lng: '0' } },
       phone: '',
       website: '',
       company: { name: '', catchPhrase: '', bs: '' },
