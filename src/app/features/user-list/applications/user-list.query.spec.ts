@@ -40,7 +40,7 @@ describe('UserListQuery', () => {
           name: 'name',
           username: 'username',
           email: 'email',
-          address: { street: 'street', suite: 'suite', city: 'city', zipcode: 'zipcode', geo: { lat: 0, lng: 0 } },
+          address: { street: 'street', suite: 'suite', city: 'city', zipcode: 'zipcode', geo: { lat: '0', lng: '0' } },
           phone: 'phone',
           website: 'website',
           company: { name: 'company-name', catchPhrase: 'company-catchPhrase', bs: 'company-bs' },
