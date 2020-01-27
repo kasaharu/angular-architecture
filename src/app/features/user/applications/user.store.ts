@@ -11,7 +11,7 @@ export const initialState: State = {
 };
 
 // NOTE: Actions
-export const saveUser = createAction('[User] save', props<{ user: User }>());
+export const saveUser = createAction('[User] save', props<{ user: User | null }>());
 
 export const actions = { saveUser };
 const actionsUnion = union(actions);
