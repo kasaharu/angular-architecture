@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { User } from '../../domain/user';
 
 @Component({
   selector: 'app-user-form',
@@ -8,6 +9,9 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 })
 export class UserFormComponent implements OnInit {
   constructor() {}
+
+  @Input()
+  user: User;
 
   ngOnInit() {}
 }

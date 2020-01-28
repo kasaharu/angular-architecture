@@ -1,20 +1,32 @@
+import { Component } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { By } from '@angular/platform-browser';
+import { User } from '../../domain/user';
 import { UserFormComponent } from './user-form.component';
+
+@Component({
+  template: `
+    <app-user-form [user]="user"></app-user-form>
+  `,
+})
+class TestComponent {
+  constructor() {}
+  user: Partial<User | null> = { name: 'test', username: 'test', email: '' };
+}
 
 describe('UserFormComponent', () => {
   let component: UserFormComponent;
-  let fixture: ComponentFixture<UserFormComponent>;
+  let fixture: ComponentFixture<TestComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [UserFormComponent],
+      declarations: [UserFormComponent, TestComponent],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UserFormComponent);
-    component = fixture.componentInstance;
+    fixture = TestBed.createComponent(TestComponent);
+    component = fixture.debugElement.query(By.directive(UserFormComponent)).componentInstance;
     fixture.detectChanges();
   });
 
