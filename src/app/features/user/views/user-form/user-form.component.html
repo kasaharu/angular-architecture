@@ -1,6 +1,14 @@
-<div>User</div>
-<p>{{ user.name }}</p>
-<div>Username</div>
-<p>{{ user.username }}</p>
-<div>Email</div>
-<p>{{ user.email }}</p>
+<form [formGroup]="editableUserInfo">
+  <label class="label">
+    Name :
+    <input type="text" formControlName="name" />
+  </label>
+  <label class="label">
+    Username :
+    <input type="text" formControlName="username" />
+  </label>
+  <label class="label">
+    Email :
+    <input type="text" formControlName="email" />
+  </label>
+</form>

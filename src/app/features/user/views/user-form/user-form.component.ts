@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnChanges } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { User } from '../../domain/user';
 
 @Component({
@@ -7,11 +8,20 @@ import { User } from '../../domain/user';
   styleUrls: ['./user-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UserFormComponent implements OnInit {
+export class UserFormComponent implements OnChanges {
   constructor() {}
 
   @Input()
   user: User;
 
-  ngOnInit() {}
+  editableUserInfo = new FormGroup({
+    name: new FormControl(''),
+    username: new FormControl(''),
+    email: new FormControl(''),
+  });
+
+  ngOnChanges() {
+    const { name, username, email } = this.user;
+    this.editableUserInfo.setValue({ name, username, email });
+  }
 }
