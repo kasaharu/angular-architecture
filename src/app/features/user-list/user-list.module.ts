@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { default as reducer, featureName } from './applications/user-list.store';
-import { UserListComponent } from './views/user-list/user-list.component';
+import { UserListComponent } from '../user/views/pages/user-list/user-list.component';
 
 @NgModule({
   declarations: [UserListComponent],
