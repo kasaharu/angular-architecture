@@ -16,4 +16,8 @@ export class UserRepository {
   fetchUser(userId: number): Observable<User> {
     return this.http.get<User>(`https://jsonplaceholder.typicode.com/users/${userId}`);
   }
+
+  updateUser(userId: number, body: User): Observable<User> {
+    return this.http.put<User>(`https://jsonplaceholder.typicode.com/users/${userId}`, body);
+  }
 }

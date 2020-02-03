@@ -47,4 +47,24 @@ describe('UserRepository', () => {
     req.flush(payload);
     httpTestingController.verify();
   });
+
+  it('call updateUser() method', () => {
+    const payload: User = {
+      id: 1,
+      name: '',
+      username: '',
+      email: '',
+      address: { street: '', suite: '', city: '', zipcode: '', geo: { lat: '0', lng: '0' } },
+      phone: '',
+      website: '',
+      company: { name: '', catchPhrase: '', bs: '' },
+    };
+    const userId = 1;
+    repository.updateUser(userId, payload).subscribe((result) => expect(result).toEqual(payload));
+
+    const req = httpTestingController.expectOne(`https://jsonplaceholder.typicode.com/users/${userId}`);
+    expect(req.request.method).toEqual('PUT');
+    req.flush(payload);
+    httpTestingController.verify();
+  });
 });
