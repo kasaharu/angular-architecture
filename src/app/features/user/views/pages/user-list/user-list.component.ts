@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserListQuery } from '../../../applications/user-list.query';
 import { UserListUsecase } from '../../../applications/user-list.usecase';
-import { User } from '../../../../user-list/domain/user-list';
+import { User } from '../../../domain/user';
 
 @Component({
   selector: 'app-user-list',
