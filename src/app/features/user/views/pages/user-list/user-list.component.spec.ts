@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { UserListQuery } from '../../../../user-list/applications/user-list.query';
-import { UserListUsecase } from '../../../../user-list/applications/user-list.usecase';
+import { UserListQuery } from '../../../applications/user-list.query';
+import { UserListUsecase } from '../../../applications/user-list.usecase';
 import { UserListComponent } from './user-list.component';
 
 class MockUserListUsecase implements Partial<UserListUsecase> {

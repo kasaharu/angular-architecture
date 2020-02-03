@@ -4,7 +4,7 @@ import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { of } from 'rxjs';
 import { skip } from 'rxjs/operators';
 import { UserRepository } from '../../../infrastructures/repositories/user.repository';
-import { User } from '../domain/user-list';
+import { User } from '../../user-list/domain/user-list';
 import { actions as userListActions } from './user-list.store';
 import { UserListUsecase } from './user-list.usecase';
 

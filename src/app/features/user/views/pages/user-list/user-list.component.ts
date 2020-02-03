@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { UserListQuery } from '../../../../user-list/applications/user-list.query';
-import { UserListUsecase } from '../../../../user-list/applications/user-list.usecase';
+import { UserListQuery } from '../../../applications/user-list.query';
+import { UserListUsecase } from '../../../applications/user-list.usecase';
 import { User } from '../../../../user-list/domain/user-list';
 
 @Component({

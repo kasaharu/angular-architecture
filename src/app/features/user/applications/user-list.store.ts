@@ -1,5 +1,5 @@
 import { createAction, createFeatureSelector, createReducer, createSelector, on, props, Store, union } from '@ngrx/store';
-import { User } from '../domain/user-list';
+import { User } from '../../user-list/domain/user-list';
 
 // helper
 export const createFeatureStoreSelector = <T>(fName: string) => {
