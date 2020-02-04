@@ -59,4 +59,34 @@ describe('UserQuery', () => {
       query.user$.subscribe((val) => expect(val).toEqual(user));
     });
   });
+
+  describe('userList$ の値のチェック', () => {
+    it('initialState は null であること', () => {
+      query.userList$.subscribe((val) => expect(val).toBeNull());
+    });
+
+    it('initialState は null であること', () => {
+      const userList: User[] = [
+        {
+          id: 1,
+          name: 'name',
+          username: 'username',
+          email: 'email',
+          address: { street: 'street', suite: 'suite', city: 'city', zipcode: 'zipcode', geo: { lat: '0', lng: '0' } },
+          phone: 'phone',
+          website: 'website',
+          company: { name: 'company-name', catchPhrase: 'company-catchPhrase', bs: 'company-bs' },
+        },
+      ];
+      const updateState: MockStoreType = {
+        ...initialState,
+        [UserStore.featureName]: {
+          ...initialState[UserStore.featureName],
+          userList,
+        },
+      };
+      store$.setState(updateState);
+      query.userList$.subscribe((val) => expect(val).toEqual(userList));
+    });
+  });
 });

@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { UserListQuery } from '../../../applications/user-list.query';
+import { UserQuery } from '../../../applications/user.query';
 import { UserUsecase } from '../../../applications/user.usecase';
 import { UsersSummaryComponent } from './users-summary.component';
 
@@ -8,7 +8,7 @@ class MockUserUsecase implements Partial<UserUsecase> {
   async initializeSummary() {}
 }
 
-class MockUserListQuery implements Partial<UserListQuery> {}
+class MockUserQuery implements Partial<UserQuery> {}
 
 describe('UserListComponent', () => {
   let component: UsersSummaryComponent;
@@ -21,7 +21,7 @@ describe('UserListComponent', () => {
       declarations: [UsersSummaryComponent],
       providers: [
         { provide: UserUsecase, useClass: MockUserUsecase },
-        { provide: UserListQuery, useClass: MockUserListQuery },
+        { provide: UserQuery, useClass: MockUserQuery },
       ],
     }).compileComponents();
 

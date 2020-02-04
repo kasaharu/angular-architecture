@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { UserListQuery } from '../../../applications/user-list.query';
+import { UserQuery } from '../../../applications/user.query';
 import { UserUsecase } from '../../../applications/user.usecase';
 import { User } from '../../../domain/user';
 
@@ -10,7 +10,7 @@ import { User } from '../../../domain/user';
   styleUrls: ['./users-summary.component.scss'],
 })
 export class UsersSummaryComponent implements OnInit {
-  constructor(private query: UserListQuery, private usecase: UserUsecase) {}
+  constructor(private query: UserQuery, private usecase: UserUsecase) {}
   readonly userList$: Observable<User[] | null> = this.query.userList$;
 
   ngOnInit() {
