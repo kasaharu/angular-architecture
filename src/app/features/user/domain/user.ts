@@ -21,3 +21,10 @@ export interface User {
     bs: string;
   };
 }
+
+export interface UserSummary {
+  id: number;
+  name: string;
+  email: string;
+  website: string;
+}

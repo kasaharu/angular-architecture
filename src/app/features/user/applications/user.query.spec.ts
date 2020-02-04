@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { Store } from '@ngrx/store';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
-import { User } from '../domain/user';
+import { User, UserSummary } from '../domain/user';
 import { UserQuery } from './user.query';
 import * as UserStore from './user.store';
 
@@ -86,7 +86,8 @@ describe('UserQuery', () => {
         },
       };
       store$.setState(updateState);
-      query.usersSummary$.subscribe((val) => expect(val).toEqual(userList));
+      const usersSummary: UserSummary[] = [{ id: 1, name: 'name', email: 'email', website: 'website' }];
+      query.usersSummary$.subscribe((val) => expect(val).toEqual(usersSummary));
     });
   });
 });
