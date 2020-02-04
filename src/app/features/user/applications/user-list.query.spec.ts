@@ -3,15 +3,16 @@ import { Store } from '@ngrx/store';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { User } from '../domain/user';
 import { UserListQuery } from './user-list.query';
-import * as UserListStore from './user-list.store';
+import * as UserStore from './user.store';
 
 interface MockStoreType {
-  [UserListStore.featureName]: UserListStore.State;
+  [UserStore.featureName]: UserStore.State;
 }
 
 const initialState: MockStoreType = {
-  [UserListStore.featureName]: {
+  [UserStore.featureName]: {
     userList: null,
+    user: null,
   },
 };
 
@@ -48,7 +49,8 @@ describe('UserListQuery', () => {
       ];
       const updateState: MockStoreType = {
         ...initialState,
-        [UserListStore.featureName]: {
+        [UserStore.featureName]: {
+          ...initialState[UserStore.featureName],
           userList,
         },
       };

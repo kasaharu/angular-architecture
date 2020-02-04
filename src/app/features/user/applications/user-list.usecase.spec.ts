@@ -5,8 +5,8 @@ import { of } from 'rxjs';
 import { skip } from 'rxjs/operators';
 import { UserRepository } from '../../../infrastructures/repositories/user.repository';
 import { User } from '../domain/user';
-import { actions as userListActions } from './user-list.store';
 import { UserListUsecase } from './user-list.usecase';
+import { actions as userActions } from './user.store';
 
 describe('UserListUsecase', () => {
   let usecase: UserListUsecase;
@@ -42,7 +42,7 @@ describe('UserListUsecase', () => {
     });
 
     it('userActions.saveUserList が dispatch されること', async () => {
-      const saveUserListAction = userListActions.saveUserList({ userList });
+      const saveUserListAction = userActions.saveUserList({ userList });
       const expected = [saveUserListAction];
 
       const actions: Action[] = [];

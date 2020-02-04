@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { UserRepository } from '../../../infrastructures/repositories/user.repository';
-import { actions as userActions } from './user-list.store';
+import { actions as userActions } from './user.store';
 
 @Injectable({
   providedIn: 'root',

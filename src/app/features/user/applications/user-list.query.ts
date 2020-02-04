@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { User } from '../domain/user';
-import { selectStore, State } from './user-list.store';
+import { selectStore, State } from './user.store';
 
 @Injectable({
   providedIn: 'root',
