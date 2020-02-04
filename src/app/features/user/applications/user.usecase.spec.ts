@@ -3,8 +3,8 @@ import { Action, Store } from '@ngrx/store';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { of } from 'rxjs';
 import { skip } from 'rxjs/operators';
-import { UserRepository } from '../infrastructures/repositories/user.repository';
 import { User } from '../domain/user';
+import { UserRepository } from '../infrastructures/repositories/user.repository';
 import { actions as userActions } from './user.store';
 import { UserUsecase } from './user.usecase';
 
