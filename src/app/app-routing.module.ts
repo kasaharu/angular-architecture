@@ -7,7 +7,7 @@ import { UserComponent } from './features/user/views/pages/user/user.component';
 const routes: Routes = [
   { path: '', redirectTo: '/users', pathMatch: 'full' },
   { path: 'users', component: UserListComponent },
-  { path: 'user/:id', component: UserComponent },
+  { path: 'users/:id', component: UserComponent },
 ];
 
 @NgModule({
