@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { UserListQuery } from '../../../applications/user-list.query';
 import { UserListUsecase } from '../../../applications/user-list.usecase';
-import { UserListComponent } from './user-list.component';
+import { UsersSummaryComponent } from './users-summary.component';
 
 class MockUserListUsecase implements Partial<UserListUsecase> {
   async initialize() {}
@@ -11,14 +11,14 @@ class MockUserListUsecase implements Partial<UserListUsecase> {
 class MockUserListQuery implements Partial<UserListQuery> {}
 
 describe('UserListComponent', () => {
-  let component: UserListComponent;
-  let fixture: ComponentFixture<UserListComponent>;
+  let component: UsersSummaryComponent;
+  let fixture: ComponentFixture<UsersSummaryComponent>;
   let usecase: UserListUsecase;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
-      declarations: [UserListComponent],
+      declarations: [UsersSummaryComponent],
       providers: [
         { provide: UserListUsecase, useClass: MockUserListUsecase },
         { provide: UserListQuery, useClass: MockUserListQuery },
@@ -29,7 +29,7 @@ describe('UserListComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UserListComponent);
+    fixture = TestBed.createComponent(UsersSummaryComponent);
     component = fixture.componentInstance;
 
     spyOn(usecase, 'initialize');

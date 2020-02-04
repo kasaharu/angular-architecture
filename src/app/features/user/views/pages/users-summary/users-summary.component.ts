@@ -6,10 +6,10 @@ import { User } from '../../../domain/user';
 
 @Component({
   selector: 'app-user-list',
-  templateUrl: './user-list.component.html',
-  styleUrls: ['./user-list.component.scss'],
+  templateUrl: './users-summary.component.html',
+  styleUrls: ['./users-summary.component.scss'],
 })
-export class UserListComponent implements OnInit {
+export class UsersSummaryComponent implements OnInit {
   constructor(private query: UserListQuery, private usecase: UserListUsecase) {}
   readonly userList$: Observable<User[] | null> = this.query.userList$;
 
