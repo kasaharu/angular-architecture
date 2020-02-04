@@ -5,8 +5,8 @@ import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { default as UserStoreReducer, featureName as UserStoreFeatureName } from './applications/user.store';
 import { UserListComponent } from './views/pages/user-list/user-list.component';
-import { UserFormComponent } from './views/user-form/user-form.component';
 import { UserComponent } from './views/pages/user/user.component';
+import { UserFormComponent } from './views/user-form/user-form.component';
 
 @NgModule({
   declarations: [UserListComponent, UserComponent, UserFormComponent],
