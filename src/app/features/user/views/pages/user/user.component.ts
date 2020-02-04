@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { UserQuery } from '../../applications/user.query';
-import { UserUsecase } from '../../applications/user.usecase';
-import { User } from '../../domain/user';
+import { UserQuery } from '../../../applications/user.query';
+import { UserUsecase } from '../../../applications/user.usecase';
+import { User } from '../../../domain/user';
 
 @Component({
   selector: 'app-user',
