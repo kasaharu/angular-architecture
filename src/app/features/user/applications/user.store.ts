@@ -11,22 +11,26 @@ export const createFeatureStoreSelector = <T>(fName: string) => {
 // NOTE: State
 export interface State {
   user: User | null;
+  userList: User[] | null;
 }
 
 export const initialState: State = {
   user: null,
+  userList: null,
 };
 
 // NOTE: Actions
 export const saveUser = createAction('[User] save', props<{ user: User | null }>());
+export const saveUserList = createAction('[UserList] save', props<{ userList: User[] }>());
 
-export const actions = { saveUser };
+export const actions = { saveUser, saveUserList };
 const actionsUnion = union(actions);
 
 // NOTE: Reducer
 const userReducer = createReducer(
   initialState,
   on(saveUser, (state, { user }) => ({ ...state, user })),
+  on(saveUserList, (state, { userList }) => ({ ...state, userList })),
 );
 
 export default function reducer(state: State, action: typeof actionsUnion): State {

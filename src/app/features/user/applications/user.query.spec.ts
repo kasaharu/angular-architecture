@@ -12,6 +12,7 @@ interface MockStoreType {
 const initialState: MockStoreType = {
   [UserStore.featureName]: {
     user: null,
+    userList: null,
   },
 };
 
@@ -51,6 +52,7 @@ describe('UserQuery', () => {
         ...initialState,
         [UserStore.featureName]: {
           user,
+          userList: null,
         },
       };
       store$.setState(updateState);
