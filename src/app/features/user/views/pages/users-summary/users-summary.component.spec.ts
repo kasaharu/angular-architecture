@@ -1,11 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { UserListQuery } from '../../../applications/user-list.query';
-import { UserListUsecase } from '../../../applications/user-list.usecase';
+import { UserUsecase } from '../../../applications/user.usecase';
 import { UsersSummaryComponent } from './users-summary.component';
 
-class MockUserListUsecase implements Partial<UserListUsecase> {
-  async initialize() {}
+class MockUserUsecase implements Partial<UserUsecase> {
+  async initializeSummary() {}
 }
 
 class MockUserListQuery implements Partial<UserListQuery> {}
@@ -13,26 +13,26 @@ class MockUserListQuery implements Partial<UserListQuery> {}
 describe('UserListComponent', () => {
   let component: UsersSummaryComponent;
   let fixture: ComponentFixture<UsersSummaryComponent>;
-  let usecase: UserListUsecase;
+  let usecase: UserUsecase;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
       declarations: [UsersSummaryComponent],
       providers: [
-        { provide: UserListUsecase, useClass: MockUserListUsecase },
+        { provide: UserUsecase, useClass: MockUserUsecase },
         { provide: UserListQuery, useClass: MockUserListQuery },
       ],
     }).compileComponents();
 
-    usecase = TestBed.get(UserListUsecase);
+    usecase = TestBed.get(UserUsecase);
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(UsersSummaryComponent);
     component = fixture.componentInstance;
 
-    spyOn(usecase, 'initialize');
+    spyOn(usecase, 'initializeSummary');
     fixture.detectChanges();
   });
 
@@ -41,8 +41,8 @@ describe('UserListComponent', () => {
       expect(component).toBeTruthy();
     });
 
-    it('usecase initialize が呼ばれていること', () => {
-      expect(usecase.initialize).toHaveBeenCalled();
+    it('usecase initializeSummary が呼ばれていること', () => {
+      expect(usecase.initializeSummary).toHaveBeenCalled();
     });
   });
 });

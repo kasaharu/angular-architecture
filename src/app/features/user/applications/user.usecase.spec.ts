@@ -10,6 +10,7 @@ import { UserUsecase } from './user.usecase';
 
 class MockUserRepository {
   fetchUser() {}
+  fetchUserList() {}
 }
 
 describe('UserUsecase', () => {
@@ -54,5 +55,35 @@ describe('UserUsecase', () => {
     await usecase.initialize();
 
     expect(actions).toEqual(expected);
+  });
+
+  describe('call initializeSummary()', () => {
+    let userList: User[];
+    beforeEach(() => {
+      userList = [
+        {
+          id: 1,
+          name: 'name',
+          username: 'username',
+          email: 'email',
+          address: { street: 'street', suite: 'suite', city: 'city', zipcode: 'zipcode', geo: { lat: '0', lng: '0' } },
+          phone: 'phone',
+          website: 'website',
+          company: { name: 'company-name', catchPhrase: 'company-catchPhrase', bs: 'company-bs' },
+        },
+      ];
+      spyOn(repository, 'fetchUserList').and.returnValue(of(userList));
+    });
+
+    it('userActions.saveUserList が dispatch されること', async () => {
+      const saveUserListAction = userActions.saveUserList({ userList });
+      const expected = [saveUserListAction];
+
+      const actions: Action[] = [];
+      store$.scannedActions$.pipe(skip(1)).subscribe((action) => actions.push(action));
+      await usecase.initializeSummary();
+
+      expect(actions).toEqual(expected);
+    });
   });
 });
