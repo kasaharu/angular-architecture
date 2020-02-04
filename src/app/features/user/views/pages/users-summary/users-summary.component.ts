@@ -11,7 +11,7 @@ import { User } from '../../../domain/user';
 })
 export class UsersSummaryComponent implements OnInit {
   constructor(private query: UserQuery, private usecase: UserUsecase) {}
-  readonly userList$: Observable<User[] | null> = this.query.userList$;
+  readonly usersSummary$: Observable<User[] | null> = this.query.usersSummary$;
 
   ngOnInit() {
     this.usecase.initializeSummary();

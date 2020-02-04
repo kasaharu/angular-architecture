@@ -60,9 +60,9 @@ describe('UserQuery', () => {
     });
   });
 
-  describe('userList$ の値のチェック', () => {
+  describe('usersSummary$ の値のチェック', () => {
     it('initialState は null であること', () => {
-      query.userList$.subscribe((val) => expect(val).toBeNull());
+      query.usersSummary$.subscribe((val) => expect(val).toBeNull());
     });
 
     it('initialState は null であること', () => {
@@ -86,7 +86,7 @@ describe('UserQuery', () => {
         },
       };
       store$.setState(updateState);
-      query.userList$.subscribe((val) => expect(val).toEqual(userList));
+      query.usersSummary$.subscribe((val) => expect(val).toEqual(userList));
     });
   });
 });

@@ -11,5 +11,5 @@ export class UserQuery {
   constructor(private store$: Store<State>) {}
 
   readonly user$: Observable<User | null> = selectStore(this.store$, (state) => state.user);
-  readonly userList$: Observable<User[] | null> = selectStore(this.store$, (state) => state.userList);
+  readonly usersSummary$: Observable<User[] | null> = selectStore(this.store$, (state) => state.userList);
 }
