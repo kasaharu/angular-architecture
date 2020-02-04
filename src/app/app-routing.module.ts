@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UserModule } from './features/user/user.module';
-import { UsersSummaryComponent } from './features/user/views/pages/users-summary/users-summary.component';
 import { UserComponent } from './features/user/views/pages/user/user.component';
+import { UsersSummaryComponent } from './features/user/views/pages/users-summary/users-summary.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/users', pathMatch: 'full' },
