@@ -5,7 +5,7 @@ import { of } from 'rxjs';
 import { skip } from 'rxjs/operators';
 import { User } from '../domain/user';
 import { UserRepository } from '../infrastructures/repositories/user.repository';
-import { actions as userActions } from './user.store';
+import { actions as userActions, featureName as userStoreFeatureName, State as UserStoreState } from './user.store';
 import { UserUsecase } from './user.usecase';
 
 class MockUserRepository {
@@ -18,9 +18,19 @@ describe('UserUsecase', () => {
   let repository: UserRepository;
   let store$: MockStore<{}>;
 
+  interface State {
+    [userStoreFeatureName]: UserStoreState;
+  }
+  const initialState: State = {
+    [userStoreFeatureName]: {
+      userList: null,
+      user: null,
+    },
+  };
+
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [provideMockStore({}), { provide: UserRepository, useClass: MockUserRepository }],
+      providers: [provideMockStore({ initialState }), { provide: UserRepository, useClass: MockUserRepository }],
     });
 
     usecase = TestBed.get(UserUsecase);
@@ -75,7 +85,7 @@ describe('UserUsecase', () => {
       spyOn(repository, 'fetchUserList').and.returnValue(of(userList));
     });
 
-    it('userActions.saveUserList が dispatch されること', async () => {
+    it('store に userList がない場合は userActions.saveUserList が dispatch されること', async () => {
       const saveUserListAction = userActions.saveUserList({ userList });
       const expected = [saveUserListAction];
 
@@ -84,6 +94,18 @@ describe('UserUsecase', () => {
       await usecase.initializeSummary();
 
       expect(actions).toEqual(expected);
+    });
+
+    it('store に userList がある場合は userActions.saveUserList が dispatch されないこと', async () => {
+      const saveUserListAction = userActions.saveUserList({ userList });
+      const newState: State = { ...initialState, [userStoreFeatureName]: { userList, user: null } };
+      store$.setState(newState);
+
+      const actions: Action[] = [];
+      store$.scannedActions$.pipe(skip(1)).subscribe((action) => actions.push(action));
+      await usecase.initializeSummary();
+
+      expect(actions).not.toContain(saveUserListAction);
     });
   });
 });
