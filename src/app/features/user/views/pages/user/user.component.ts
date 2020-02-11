@@ -19,7 +19,6 @@ export class UserComponent implements OnInit {
     this.route.paramMap.subscribe((params) => {
       const id = params.get('id');
       if (id !== null) {
-        console.log(id);
         this.usecase.initializeDetail(+id);
       }
     });
