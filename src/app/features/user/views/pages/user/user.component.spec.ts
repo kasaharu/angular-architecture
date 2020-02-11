@@ -11,7 +11,7 @@ class StubUserQuery {
 }
 
 class StubUserUsecase {
-  async initialize() {}
+  async initializeDetail() {}
 }
 
 describe('UserComponent', () => {

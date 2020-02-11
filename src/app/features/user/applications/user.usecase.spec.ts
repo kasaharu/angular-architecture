@@ -42,7 +42,7 @@ describe('UserUsecase', () => {
     expect(usecase).toBeTruthy();
   });
 
-  it('call initialize()', async () => {
+  it('call initializeDetail()', async () => {
     const user: User = {
       id: 1,
       name: 'Test Taro',
@@ -62,7 +62,7 @@ describe('UserUsecase', () => {
     const actions: Action[] = [];
     store$.scannedActions$.pipe(skip(1)).subscribe((action) => actions.push(action));
 
-    await usecase.initialize();
+    await usecase.initializeDetail();
 
     expect(actions).toEqual(expected);
   });

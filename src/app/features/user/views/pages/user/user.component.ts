@@ -15,6 +15,6 @@ export class UserComponent implements OnInit {
   user$: Observable<User | null> = this.query.user$;
 
   ngOnInit() {
-    this.usecase.initialize();
+    this.usecase.initializeDetail();
   }
 }
