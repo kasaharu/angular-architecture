@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { UserQuery } from '../../../applications/user.query';
 import { UserUsecase } from '../../../applications/user.usecase';
@@ -11,10 +12,16 @@ import { User } from '../../../domain/user';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserComponent implements OnInit {
-  constructor(private query: UserQuery, private usecase: UserUsecase) {}
+  constructor(private route: ActivatedRoute, private query: UserQuery, private usecase: UserUsecase) {}
   user$: Observable<User | null> = this.query.user$;
 
   ngOnInit() {
-    this.usecase.initializeDetail();
+    this.route.paramMap.subscribe((params) => {
+      const id = params.get('id');
+      if (id !== null) {
+        console.log(id);
+        this.usecase.initializeDetail(+id);
+      }
+    });
   }
 }
