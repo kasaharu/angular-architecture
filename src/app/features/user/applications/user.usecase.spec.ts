@@ -53,6 +53,7 @@ describe('UserUsecase', () => {
       website: '',
       company: { name: '', catchPhrase: '', bs: '' },
     };
+    const id = 1;
 
     spyOn(repository, 'fetchUser').and.returnValue(of(user));
 
@@ -62,7 +63,7 @@ describe('UserUsecase', () => {
     const actions: Action[] = [];
     store$.scannedActions$.pipe(skip(1)).subscribe((action) => actions.push(action));
 
-    await usecase.initializeDetail();
+    await usecase.initializeDetail(id);
 
     expect(actions).toEqual(expected);
   });

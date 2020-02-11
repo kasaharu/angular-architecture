@@ -10,8 +10,8 @@ import { actions as userActions, selectStore } from './user.store';
 export class UserUsecase {
   constructor(private store$: Store<{}>, private userRepository: UserRepository) {}
 
-  async initializeDetail() {
-    const result = await this.userRepository.fetchUser(1).toPromise();
+  async initializeDetail(id: number) {
+    const result = await this.userRepository.fetchUser(id).toPromise();
     this.store$.dispatch(userActions.saveUser({ user: result }));
   }
 
