@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
+import { createMockUser } from '../../../../testing/factories/user';
 import { User } from '../../domain/user';
 import { UserFormComponent } from './user-form.component';
 
@@ -12,7 +13,7 @@ import { UserFormComponent } from './user-form.component';
 })
 class TestComponent {
   constructor() {}
-  user: Partial<User | null> = { name: 'test', username: 'test', email: '' };
+  user: User = createMockUser({});
 }
 
 describe('UserFormComponent', () => {
@@ -34,5 +35,11 @@ describe('UserFormComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('call clickButton', () => {
+    spyOn(component.updateUser, 'emit');
+    component.clickButton();
+    expect(component.updateUser.emit).toHaveBeenCalledWith(component.userInfoForm.value);
   });
 });

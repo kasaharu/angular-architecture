@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { useFirstValue } from '../../../utilities/observable';
+import { User } from '../domain/user';
 import { UserRepository } from '../infrastructures/repositories/user.repository';
 import { actions as userActions, selectStore } from './user.store';
 
@@ -23,5 +24,10 @@ export class UserUsecase {
     }
     const result = await this.userRepository.fetchUserList().toPromise();
     this.store$.dispatch(userActions.saveUserList({ userList: result }));
+  }
+
+  async updateUser(user: User) {
+    const result = await this.userRepository.updateUser(user.id, user).toPromise();
+    console.log(result);
   }
 }

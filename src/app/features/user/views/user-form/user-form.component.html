@@ -1,4 +1,4 @@
-<form [formGroup]="editableUserInfo">
+<form [formGroup]="userInfoForm">
   <label class="label">
     Name :
     <input type="text" formControlName="name" />
@@ -11,4 +11,6 @@
     Email :
     <input type="text" formControlName="email" />
   </label>
+
+  <button (click)="clickButton()">更新</button>
 </form>

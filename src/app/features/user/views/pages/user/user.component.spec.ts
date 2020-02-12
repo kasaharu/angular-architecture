@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { BehaviorSubject } from 'rxjs';
+import { createMockUser } from 'src/app/testing/factories/user';
 import { ActivatedRouteStub } from '../../../../../testing/activated-route-stub';
 import { UserQuery } from '../../../applications/user.query';
 import { UserUsecase } from '../../../applications/user.usecase';
@@ -15,10 +16,12 @@ class StubUserQuery {
 
 class StubUserUsecase {
   async initializeDetail() {}
+  async updateUser() {}
 }
 
 describe('UserComponent', () => {
   let fixture: ComponentFixture<UserComponent>;
+  let component: UserComponent;
   let activatedRoute: ActivatedRouteStub;
   let usecase: UserUsecase;
 
@@ -40,6 +43,7 @@ describe('UserComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(UserComponent);
+    component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
@@ -59,5 +63,12 @@ describe('UserComponent', () => {
 
       expect(usecase.initializeDetail).toHaveBeenCalledWith(1);
     });
+  });
+
+  it('call updateUser', () => {
+    spyOn(usecase, 'updateUser');
+    const user: User = createMockUser({});
+    component.updateUser(user);
+    expect(usecase.updateUser).toHaveBeenCalledWith(user);
   });
 });

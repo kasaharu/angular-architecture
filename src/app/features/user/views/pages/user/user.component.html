@@ -1,4 +1,4 @@
 <h2>Edit user info</h2>
 <div *ngIf="user$ | async as user">
-  <app-user-form [user]="user"></app-user-form>
+  <app-user-form [user]="user" (updateUser)="updateUser($event)"></app-user-form>
 </div>

@@ -23,4 +23,8 @@ export class UserComponent implements OnInit {
       }
     });
   }
+
+  updateUser(user: User) {
+    this.usecase.updateUser(user);
+  }
 }
