@@ -27,7 +27,20 @@ export class UserUsecase {
   }
 
   async updateUser(user: User) {
-    const result = await this.userRepository.updateUser(user.id, user).toPromise();
-    console.log(result);
+    // NOTE: 対象の user の更新処理
+    const updatedUser = await this.userRepository.updateUser(user.id, user).toPromise();
+
+    // NOTE: users の取得
+    let users: User[] | null = null;
+    users = await useFirstValue(selectStore(this.store$, (state) => state.userList));
+    if (users === null) {
+      users = await this.userRepository.fetchUserList().toPromise();
+    }
+
+    // NOTE: users の更新
+    const updatedUsers = users.map((item) => {
+      return item.id === updatedUser.id ? updatedUser : item;
+    });
+    this.store$.dispatch(userActions.saveUserList({ userList: updatedUsers }));
   }
 }

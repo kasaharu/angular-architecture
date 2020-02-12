@@ -3,6 +3,7 @@ import { Action, Store } from '@ngrx/store';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { of } from 'rxjs';
 import { skip } from 'rxjs/operators';
+import { createMockUser } from '../../../testing/factories/user';
 import { User } from '../domain/user';
 import { UserRepository } from '../infrastructures/repositories/user.repository';
 import { actions as userActions, featureName as userStoreFeatureName, State as UserStoreState } from './user.store';
@@ -11,6 +12,7 @@ import { UserUsecase } from './user.usecase';
 class MockUserRepository {
   fetchUser() {}
   fetchUserList() {}
+  updateUser() {}
 }
 
 describe('UserUsecase', () => {
@@ -107,6 +109,46 @@ describe('UserUsecase', () => {
       await usecase.initializeSummary();
 
       expect(actions).not.toContain(saveUserListAction);
+    });
+  });
+
+  describe('call updateUser()', () => {
+    let targetUser: User;
+    let userList: User[];
+    beforeEach(() => {
+      targetUser = createMockUser({ id: 100 });
+      userList = [createMockUser({ id: 1 }), createMockUser({ id: 100 })];
+      spyOn(repository, 'fetchUserList').and.returnValue(of(userList));
+      spyOn(repository, 'updateUser').and.returnValue(of(targetUser));
+    });
+
+    it('store に userList がない場合は userRepository.fetchUserList が call されること', async () => {
+      const saveUserListAction = userActions.saveUserList({ userList });
+      const expected = [saveUserListAction];
+
+      const actions: Action[] = [];
+      store$.scannedActions$.pipe(skip(1)).subscribe((action) => actions.push(action));
+      await usecase.updateUser(targetUser);
+
+      expect(repository.fetchUserList).toHaveBeenCalled();
+      expect(repository.updateUser).toHaveBeenCalledWith(targetUser.id, targetUser);
+      expect(actions).toEqual(expected);
+    });
+
+    it('store に userList がある場合は userRepository.fetchUserList が call されない', async () => {
+      const newState: State = { ...initialState, [userStoreFeatureName]: { userList, user: null } };
+      store$.setState(newState);
+
+      const saveUserListAction = userActions.saveUserList({ userList });
+      const expected = [saveUserListAction];
+
+      const actions: Action[] = [];
+      store$.scannedActions$.pipe(skip(1)).subscribe((action) => actions.push(action));
+      await usecase.updateUser(targetUser);
+
+      expect(repository.fetchUserList).not.toHaveBeenCalled();
+      expect(repository.updateUser).toHaveBeenCalledWith(targetUser.id, targetUser);
+      expect(actions).toEqual(expected);
     });
   });
 });

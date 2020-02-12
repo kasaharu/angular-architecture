@@ -1,6 +1,6 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { BehaviorSubject } from 'rxjs';
 import { createMockUser } from 'src/app/testing/factories/user';
@@ -24,14 +24,18 @@ describe('UserComponent', () => {
   let component: UserComponent;
   let activatedRoute: ActivatedRouteStub;
   let usecase: UserUsecase;
+  let router: Router;
+  let routerSpy;
 
   beforeEach(async(() => {
+    routerSpy = jasmine.createSpyObj('Router', ['navigateByUrl']);
     activatedRoute = new ActivatedRouteStub();
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
       declarations: [UserComponent],
       providers: [
         { provide: ActivatedRoute, useValue: activatedRoute },
+        { provide: Router, useValue: routerSpy },
         { provide: UserQuery, useClass: StubUserQuery },
         { provide: UserUsecase, useClass: StubUserUsecase },
       ],
@@ -39,6 +43,7 @@ describe('UserComponent', () => {
     }).compileComponents();
 
     usecase = TestBed.get(UserUsecase);
+    router = TestBed.get(Router);
   }));
 
   beforeEach(() => {
@@ -65,10 +70,11 @@ describe('UserComponent', () => {
     });
   });
 
-  it('call updateUser', () => {
+  it('call updateUser', async () => {
     spyOn(usecase, 'updateUser');
     const user: User = createMockUser({});
-    component.updateUser(user);
+    await component.updateUser(user);
     expect(usecase.updateUser).toHaveBeenCalledWith(user);
+    expect(router.navigateByUrl).toHaveBeenCalledWith('/users');
   });
 });
