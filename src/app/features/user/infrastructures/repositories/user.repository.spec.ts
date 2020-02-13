@@ -10,8 +10,8 @@ describe('UserRepository', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({});
 
-    repository = TestBed.get(UserRepository);
-    httpTestingController = TestBed.get(HttpTestingController);
+    repository = TestBed.inject(UserRepository);
+    httpTestingController = TestBed.inject(HttpTestingController);
   });
 
   it('should create an instance', () => {

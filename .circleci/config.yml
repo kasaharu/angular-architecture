@@ -88,7 +88,7 @@ workflows:
           requires:
             - lint
             - format
-      - e2e:
-          requires:
-            - lint
-            - format
+      # - e2e:
+      #     requires:
+      #       - lint
+      #       - format
