@@ -37,7 +37,7 @@ describe('UserUsecase', () => {
 
     usecase = TestBed.inject(UserUsecase);
     repository = TestBed.inject(UserRepository);
-    store$ = TestBed.inject(Store);
+    store$ = TestBed.get(Store);
   });
 
   it('should be created', () => {
