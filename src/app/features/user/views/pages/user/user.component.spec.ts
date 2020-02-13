@@ -42,8 +42,8 @@ describe('UserComponent', () => {
       schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
 
-    usecase = TestBed.get(UserUsecase);
-    router = TestBed.get(Router);
+    usecase = TestBed.inject(UserUsecase);
+    router = TestBed.inject(Router);
   }));
 
   beforeEach(() => {

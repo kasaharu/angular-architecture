@@ -35,9 +35,9 @@ describe('UserUsecase', () => {
       providers: [provideMockStore({ initialState }), { provide: UserRepository, useClass: MockUserRepository }],
     });
 
-    usecase = TestBed.get(UserUsecase);
-    repository = TestBed.get(UserRepository);
-    store$ = TestBed.get(Store);
+    usecase = TestBed.inject(UserUsecase);
+    repository = TestBed.inject(UserRepository);
+    store$ = TestBed.inject(Store);
   });
 
   it('should be created', () => {

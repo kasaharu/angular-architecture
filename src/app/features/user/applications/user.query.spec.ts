@@ -24,8 +24,8 @@ describe('UserQuery', () => {
     TestBed.configureTestingModule({
       providers: [provideMockStore({ initialState })],
     });
-    query = TestBed.get(UserQuery);
-    store$ = TestBed.get(Store);
+    query = TestBed.inject(UserQuery);
+    store$ = TestBed.inject(Store);
   });
 
   it('should be created', () => {

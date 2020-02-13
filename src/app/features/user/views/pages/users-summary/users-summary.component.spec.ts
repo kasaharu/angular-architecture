@@ -25,7 +25,7 @@ describe('UserListComponent', () => {
       ],
     }).compileComponents();
 
-    usecase = TestBed.get(UserUsecase);
+    usecase = TestBed.inject(UserUsecase);
   }));
 
   beforeEach(() => {

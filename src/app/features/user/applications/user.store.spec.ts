@@ -55,7 +55,7 @@ describe('selector-helper', () => {
       ],
     });
 
-    store$ = TestBed.get(Store);
+    store$ = TestBed.inject(Store);
   });
 
   describe('createFeatureStoreSelector', () => {
