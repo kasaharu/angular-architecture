@@ -3,7 +3,7 @@ version: 2.1
 executors:
   ci-executor:
     docker:
-      - image: circleci/node:12.15.0-stretch-browsers
+      - image: circleci/node:12.16.2-stretch-browsers
 
 references:
   npm_cache_key: &npm_cache_key dependency-npm-{{ checksum "yarn.lock" }}-v1
