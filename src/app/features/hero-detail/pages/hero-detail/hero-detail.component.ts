@@ -1,4 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Hero } from '../../../../domain/hero';
 
 @Component({
   selector: 'app-hero-detail',
@@ -8,6 +9,8 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 })
 export class HeroDetailComponent implements OnInit {
   constructor() {}
+  @Input()
+  hero: Hero | null = null;
 
   ngOnInit(): void {}
 }
