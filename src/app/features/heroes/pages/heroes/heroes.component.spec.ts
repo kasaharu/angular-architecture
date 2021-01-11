@@ -5,7 +5,7 @@ import { Hero } from 'src/app/domain/hero';
 import { HeroService } from '../../../../infrastructures/gateways/hero.service';
 import { HeroesComponent } from './heroes.component';
 
-class MockHeroService implements HeroService {
+class MockHeroService implements Partial<HeroService> {
   getHeroes(): Observable<Hero[]> {
     return of([{ id: 1, name: 'Dr Nice' }]);
   }

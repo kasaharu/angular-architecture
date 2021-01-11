@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { MessageService } from '../../services/message.service';
 
 @Component({
   selector: 'app-messages',
@@ -7,7 +8,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MessagesComponent implements OnInit {
-  constructor() {}
+  constructor(public messageService: MessageService) {}
 
   ngOnInit(): void {}
 }
