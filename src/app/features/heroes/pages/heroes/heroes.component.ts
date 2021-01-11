@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Hero } from '../../../../domain/hero';
-import { HEROES } from '../../../../mock-heroes';
+import { HeroService } from '../../../../infrastructures/gateways/hero.service';
 
 @Component({
   selector: 'app-heroes',
@@ -9,12 +9,18 @@ import { HEROES } from '../../../../mock-heroes';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeroesComponent implements OnInit {
-  heroes = HEROES;
+  constructor(private readonly _heroService: HeroService) {}
+
+  heroes: Hero[] | null = null;
   selectedHero: Hero | null = null;
 
-  constructor() {}
+  ngOnInit(): void {
+    this.getHeroes();
+  }
 
-  ngOnInit(): void {}
+  getHeroes(): void {
+    this._heroService.getHeroes().subscribe((heroes) => (this.heroes = heroes));
+  }
 
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
