@@ -11,12 +11,16 @@ export class HeroService {
   constructor(private readonly _messageService: MessageService) {}
 
   getHeroes(): Observable<Hero[]> {
-    this._messageService.add('HeroService: fetched heroes');
+    this._log('fetched heroes');
     return of(HEROES);
   }
 
   getHero(id: number): Observable<Hero | null> {
-    this._messageService.add(`HeroService: fetched hero id=${id}`);
+    this._log(`fetched hero id=${id}`);
     return of(HEROES.find((hero) => hero.id === id) || null);
+  }
+
+  private _log(message: string): void {
+    this._messageService.add(`HeroService: ${message}`);
   }
 }
