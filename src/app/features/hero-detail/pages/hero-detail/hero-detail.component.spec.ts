@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
 import { ActivatedRouteStub } from 'src/app/testing/activated-route-stub';
@@ -12,6 +13,7 @@ describe('HeroDetailComponent', () => {
     activatedRoute = new ActivatedRouteStub({});
     await TestBed.configureTestingModule({
       declarations: [HeroDetailComponent],
+      imports: [HttpClientTestingModule],
       providers: [{ provide: ActivatedRoute, useValue: activatedRoute }],
     }).compileComponents();
   });
