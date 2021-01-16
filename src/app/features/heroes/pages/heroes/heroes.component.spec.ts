@@ -32,12 +32,4 @@ describe('HeroesComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  describe('onSelect()', () => {
-    it('heroes の 1 番目の hero を選択すると selectedHero の名前が Dr Nice になる', () => {
-      const targetHero: Hero = { id: 1, name: 'Dr Nice' };
-      component.onSelect(targetHero);
-      expect(component.selectedHero?.name).toBe('Dr Nice');
-    });
-  });
 });
