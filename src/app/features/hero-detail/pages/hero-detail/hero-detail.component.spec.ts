@@ -1,14 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ActivatedRoute } from '@angular/router';
+import { ActivatedRouteStub } from 'src/app/testing/activated-route-stub';
 import { HeroDetailComponent } from './hero-detail.component';
 
 describe('HeroDetailComponent', () => {
   let component: HeroDetailComponent;
   let fixture: ComponentFixture<HeroDetailComponent>;
+  let activatedRoute: ActivatedRouteStub;
 
   beforeEach(async () => {
+    activatedRoute = new ActivatedRouteStub({});
     await TestBed.configureTestingModule({
       declarations: [HeroDetailComponent],
+      providers: [{ provide: ActivatedRoute, useValue: activatedRoute }],
     }).compileComponents();
   });
 
