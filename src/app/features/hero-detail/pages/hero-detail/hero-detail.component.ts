@@ -20,12 +20,14 @@ export class HeroDetailComponent implements OnInit {
   }
 
   getHero(): void {
-    const id = this._route.snapshot.paramMap.get('id');
-    if (id === null) {
-      // TOOD: null の場合のエラーハンドリングが必要
-      return;
-    }
-    this._heroService.getHero(+id).subscribe((hero) => (this.hero = hero));
+    this._route.paramMap.subscribe((pmap) => {
+      const id = pmap.get('id');
+      if (id === null) {
+        // TOOD: null の場合のエラーハンドリングが必要
+        return;
+      }
+      this._heroService.getHero(+id).subscribe((hero) => (this.hero = hero));
+    });
   }
 
   goBack(): void {
