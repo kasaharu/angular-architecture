@@ -1,4 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Location } from '@angular/common';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HeroService } from 'src/app/infrastructures/gateways/hero.service';
 import { Hero } from '../../../../domain/hero';
@@ -10,7 +11,7 @@ import { Hero } from '../../../../domain/hero';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeroDetailComponent implements OnInit {
-  constructor(private readonly _route: ActivatedRoute, private readonly _heroService: HeroService) {}
+  constructor(private readonly _route: ActivatedRoute, private readonly _location: Location, private readonly _heroService: HeroService) {}
 
   hero: Hero | null = null;
 
@@ -25,5 +26,9 @@ export class HeroDetailComponent implements OnInit {
       return;
     }
     this._heroService.getHero(+id).subscribe((hero) => (this.hero = hero));
+  }
+
+  goBack(): void {
+    this._location.back();
   }
 }
