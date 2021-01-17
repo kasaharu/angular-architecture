@@ -9,7 +9,7 @@ import { Hero } from '../../../../domain/hero';
   styleUrls: ['./hero-detail.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HeroDetailComponent implements OnInit {
+export class HeroDetailPageComponent implements OnInit {
   constructor(private readonly _route: ActivatedRoute, private readonly _location: Location, private readonly _heroService: HeroGateway) {}
 
   hero: Hero | null = null;
