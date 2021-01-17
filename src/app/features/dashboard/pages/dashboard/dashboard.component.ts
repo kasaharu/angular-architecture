@@ -8,7 +8,7 @@ import { HeroGateway } from '../../../../infrastructures/gateways/hero.gateway';
   styleUrls: ['./dashboard.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DashboardComponent implements OnInit {
+export class DashboardPageComponent implements OnInit {
   constructor(private readonly _heroService: HeroGateway) {}
 
   heroes: Hero[] | null = null;
