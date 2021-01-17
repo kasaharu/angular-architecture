@@ -3,7 +3,6 @@ import { Hero } from '../../../../domain/hero';
 import { HeroGateway } from '../../../../infrastructures/gateways/hero.gateway';
 
 @Component({
-  selector: 'app-heroes',
   templateUrl: './heroes.component.html',
   styleUrls: ['./heroes.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

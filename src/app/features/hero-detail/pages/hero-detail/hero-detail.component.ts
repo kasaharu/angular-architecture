@@ -5,7 +5,6 @@ import { HeroGateway } from 'src/app/infrastructures/gateways/hero.gateway';
 import { Hero } from '../../../../domain/hero';
 
 @Component({
-  selector: 'app-hero-detail',
   templateUrl: './hero-detail.component.html',
   styleUrls: ['./hero-detail.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
