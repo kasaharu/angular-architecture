@@ -1,1 +1,9 @@
-<p>hero-detail works!</p>
+<ng-container *ngIf="hero">
+  <h2>{{ hero.name | uppercase }} Details</h2>
+  <div><span>id: </span>{{ hero.id }}</div>
+  <div>
+    <label>name: <input [(ngModel)]="hero.name" /></label>
+  </div>
+</ng-container>
+
+<button (click)="goBack()">go back</button>
