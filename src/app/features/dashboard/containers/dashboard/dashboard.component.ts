@@ -1,26 +1,20 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { Hero } from '../../../../domain/hero';
-import { HeroGateway } from '../../../../infrastructures/gateways/hero.gateway';
+import { DashboardStore } from './dashboard.store';
+import { DashboardUsecase } from './dashboard.usecase';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [DashboardStore, DashboardUsecase],
 })
 export class DashboardComponent implements OnInit {
-  constructor(private readonly _heroService: HeroGateway) {}
+  constructor(private readonly _componentStore: DashboardStore, private readonly _usecase: DashboardUsecase) {}
 
-  heroes$ = new BehaviorSubject<Hero[] | null>(null);
+  heroes$ = this._componentStore.heroes$;
 
   ngOnInit(): void {
-    this.getHeroes();
-  }
-
-  getHeroes(): void {
-    this._heroService.getHeroes().subscribe((heroes) => {
-      this.heroes$.next(heroes.slice(1, 5));
-    });
+    this._usecase.fetchHeroes();
   }
 }
