@@ -1,6 +1,7 @@
 import { Location } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 import { Hero } from '../../../../domain/hero';
 import { HeroGateway } from '../../../../infrastructures/gateways/hero.gateway';
 
@@ -13,7 +14,7 @@ import { HeroGateway } from '../../../../infrastructures/gateways/hero.gateway';
 export class HeroDetailComponent implements OnInit {
   constructor(private readonly _route: ActivatedRoute, private readonly _location: Location, private readonly _heroService: HeroGateway) {}
 
-  hero: Hero | null = null;
+  hero$ = new BehaviorSubject<Hero | null>(null);
 
   ngOnInit(): void {
     this.getHero();
@@ -26,7 +27,7 @@ export class HeroDetailComponent implements OnInit {
         // TOOD: null の場合のエラーハンドリングが必要
         return;
       }
-      this._heroService.getHero(+id).subscribe((hero) => (this.hero = hero));
+      this._heroService.getHero(+id).subscribe((hero) => this.hero$.next(hero));
     });
   }
 
