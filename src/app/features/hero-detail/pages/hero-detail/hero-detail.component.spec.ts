@@ -1,3 +1,4 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HeroDetailPageComponent } from './hero-detail.component';
 
@@ -8,6 +9,7 @@ describe('HeroDetailPageComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [HeroDetailPageComponent],
+      schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
   });
 
