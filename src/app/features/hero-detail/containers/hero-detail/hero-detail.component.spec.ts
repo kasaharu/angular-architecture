@@ -1,31 +1,49 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ActivatedRoute } from '@angular/router';
-import { ActivatedRouteStub } from '../../../../testing/activated-route-stub';
+import { HeroDetailStore } from '../../applications/hero-detail.store';
+import { HeroDetailUsecase } from '../../applications/hero-detail.usecase';
 import { HeroDetailComponent } from './hero-detail.component';
+
+class MockHeroDetailUsecase implements Partial<HeroDetailUsecase> {
+  fetchHero(): any {}
+}
 
 describe('HeroDetailComponent', () => {
   let component: HeroDetailComponent;
   let fixture: ComponentFixture<HeroDetailComponent>;
-  let activatedRoute: ActivatedRouteStub;
+  let componentStore: HeroDetailStore;
+  let usecase: HeroDetailUsecase;
 
   beforeEach(async () => {
-    activatedRoute = new ActivatedRouteStub({});
-
     await TestBed.configureTestingModule({
       declarations: [HeroDetailComponent],
       imports: [HttpClientTestingModule],
-      providers: [{ provide: ActivatedRoute, useValue: activatedRoute }],
-    }).compileComponents();
+    })
+      .overrideComponent(HeroDetailComponent, {
+        add: { providers: [HeroDetailStore, { provide: HeroDetailUsecase, useClass: MockHeroDetailUsecase }] },
+      })
+      .compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(HeroDetailComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    componentStore = fixture.debugElement.injector.get(HeroDetailStore);
+    usecase = fixture.debugElement.injector.get(HeroDetailUsecase);
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  describe('ngOnInit', () => {
+    it('component が作成されたこと', () => {
+      expect(component).toBeTruthy();
+    });
+
+    it('component が作成されたときに store に id が保存されている場合 usecase の fetchHero が呼ばれること', () => {
+      const heroId = 1;
+      componentStore.setState({ id: heroId, hero: null });
+      spyOn(usecase, 'fetchHero');
+      fixture.detectChanges();
+
+      expect(usecase.fetchHero).toHaveBeenCalledWith(heroId);
+    });
   });
 });

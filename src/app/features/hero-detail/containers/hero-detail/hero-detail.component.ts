@@ -1,9 +1,8 @@
 import { Location } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
-import { Hero } from '../../../../domain/hero';
-import { HeroGateway } from '../../../../infrastructures/gateways/hero.gateway';
+import { filter, map } from 'rxjs/operators';
+import { HeroDetailStore } from '../../applications/hero-detail.store';
+import { HeroDetailUsecase } from '../../applications/hero-detail.usecase';
 
 @Component({
   selector: 'app-hero-detail',
@@ -12,23 +11,24 @@ import { HeroGateway } from '../../../../infrastructures/gateways/hero.gateway';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeroDetailComponent implements OnInit {
-  constructor(private readonly _route: ActivatedRoute, private readonly _location: Location, private readonly _heroService: HeroGateway) {}
+  constructor(
+    private readonly _location: Location,
+    private readonly _componentStore: HeroDetailStore,
+    private readonly _usecase: HeroDetailUsecase,
+  ) {}
 
-  hero$ = new BehaviorSubject<Hero | null>(null);
+  id$ = this._componentStore.id$;
+  hero$ = this._componentStore.hero$;
 
   ngOnInit(): void {
-    this.getHero();
-  }
-
-  getHero(): void {
-    this._route.paramMap.subscribe((pmap) => {
-      const id = pmap.get('id');
-      if (id === null) {
-        // TOOD: null の場合のエラーハンドリングが必要
-        return;
-      }
-      this._heroService.getHero(+id).subscribe((hero) => this.hero$.next(hero));
-    });
+    this.id$
+      .pipe(
+        filter((stream) => stream !== null),
+        map((id) => id as number),
+      )
+      .subscribe((id) => {
+        this._usecase.fetchHero(id);
+      });
   }
 
   goBack(): void {
