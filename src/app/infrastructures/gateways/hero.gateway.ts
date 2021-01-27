@@ -16,7 +16,7 @@ export class HeroGateway {
     return this._http.get<Hero[]>(this._heroesUrl).pipe(tap((_) => this._log('fetched heroes')));
   }
 
-  getHero(id: number): Observable<Hero | null> {
+  getHero(id: number): Observable<Hero> {
     return this._http.get<Hero>(`${this._heroesUrl}/${id}`).pipe(tap((_) => this._log(`fetched hero id=${id}`)));
   }
 
