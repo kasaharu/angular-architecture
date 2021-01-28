@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HeroGateway } from '../../../../infrastructures/gateways/hero.gateway';
+import { HeroGateway } from '../../../infrastructures/gateways/hero.gateway';
 import { DashboardStore } from './dashboard.store';
 
 @Injectable()

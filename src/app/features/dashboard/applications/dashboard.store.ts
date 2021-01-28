@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { Observable } from 'rxjs';
-import { Hero } from '../../../../domain/hero';
+import { Hero } from '../../../domain/hero';
 
 export interface DashboardState {
   heroes: Hero[] | null;

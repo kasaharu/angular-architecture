@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
-import { Hero } from '../../../../domain/hero';
-import { HeroGateway } from '../../../../infrastructures/gateways/hero.gateway';
+import { Hero } from '../../../domain/hero';
+import { HeroGateway } from '../../../infrastructures/gateways/hero.gateway';
 import { DashboardStore } from './dashboard.store';
 import { DashboardUsecase } from './dashboard.usecase';
 

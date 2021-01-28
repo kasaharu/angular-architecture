@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Hero } from '../../../../domain/hero';
 import { DashboardComponent } from './dashboard.component';
-import { DashboardStore } from './dashboard.store';
-import { DashboardUsecase } from './dashboard.usecase';
+import { DashboardStore } from '../../applications/dashboard.store';
+import { DashboardUsecase } from '../../applications/dashboard.usecase';
 
 class MockDashboardUsecase implements Partial<DashboardUsecase> {
   fetchHeroes(): any {}
