@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HeroDetailStore } from '../../applications/hero-detail.store';
@@ -13,6 +14,7 @@ describe('HeroDetailComponent', () => {
   let fixture: ComponentFixture<HeroDetailComponent>;
   let componentStore: HeroDetailStore;
   let usecase: HeroDetailUsecase;
+  let location: Location;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -30,6 +32,7 @@ describe('HeroDetailComponent', () => {
     component = fixture.componentInstance;
     componentStore = fixture.debugElement.injector.get(HeroDetailStore);
     usecase = fixture.debugElement.injector.get(HeroDetailUsecase);
+    location = TestBed.inject(Location);
   });
 
   describe('ngOnInit', () => {
@@ -44,6 +47,14 @@ describe('HeroDetailComponent', () => {
       fixture.detectChanges();
 
       expect(usecase.fetchHero).toHaveBeenCalledWith(heroId);
+    });
+  });
+
+  describe('goBack', () => {
+    it('location back が呼ばれること', () => {
+      spyOn(location, 'back');
+      component.goBack();
+      expect(location.back).toHaveBeenCalled();
     });
   });
 });
