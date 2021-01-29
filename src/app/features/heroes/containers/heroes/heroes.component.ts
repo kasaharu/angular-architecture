@@ -1,24 +1,20 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { Hero } from '../../../../domain/hero';
-import { HeroGateway } from '../../../../infrastructures/gateways/hero.gateway';
+import { HeroesStore } from '../../applications/heroes.store';
+import { HeroesUsecase } from '../../applications/heroes.usecase';
 
 @Component({
   selector: 'app-heroes',
   templateUrl: './heroes.component.html',
   styleUrls: ['./heroes.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [HeroesStore, HeroesUsecase],
 })
 export class HeroesComponent implements OnInit {
-  constructor(private readonly _heroService: HeroGateway) {}
+  constructor(private readonly _componentStore: HeroesStore, private readonly _usecase: HeroesUsecase) {}
 
-  heroes$ = new BehaviorSubject<Hero[] | null>(null);
+  heroes$ = this._componentStore.heroes$;
 
   ngOnInit(): void {
-    this.getHeroes();
-  }
-
-  getHeroes(): void {
-    this._heroService.getHeroes().subscribe((heroes) => this.heroes$.next(heroes));
+    this._usecase.fetchHeroes();
   }
 }
