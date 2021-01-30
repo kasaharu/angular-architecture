@@ -5,6 +5,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardModule } from './features/dashboard/dashboard.module';
+import { HeroDetailModule } from './features/hero-detail/hero-detail.module';
 import { HeroesModule } from './features/heroes/heroes.module';
 import { InMemoryDataService } from './infrastructures/in-memory/in-memory-data.service';
 import { SharedModule } from './shared/shared.module';
@@ -15,8 +16,9 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    HeroesModule,
     DashboardModule,
+    HeroesModule,
+    HeroDetailModule,
     SharedModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false }),
   ],
