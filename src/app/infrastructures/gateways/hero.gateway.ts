@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { Hero } from '../../domain/hero';
 import { MessageService } from '../../shared/services/message.service';
 
@@ -13,11 +13,17 @@ export class HeroGateway {
   private _heroesUrl = 'api/heroes';
 
   getHeroes(): Observable<Hero[]> {
-    return this._http.get<Hero[]>(this._heroesUrl).pipe(tap((_) => this._log('fetched heroes')));
+    return this._http.get<Hero[]>(this._heroesUrl).pipe(
+      tap((_) => this._log('fetched heroes')),
+      catchError(this._handleError<Hero[]>('getHeroes', [])),
+    );
   }
 
   getHero(id: number): Observable<Hero> {
-    return this._http.get<Hero>(`${this._heroesUrl}/${id}`).pipe(tap((_) => this._log(`fetched hero id=${id}`)));
+    return this._http.get<Hero>(`${this._heroesUrl}/${id}`).pipe(
+      tap((_) => this._log(`fetched hero id=${id}`)),
+      catchError(this._handleError<Hero>(`getHero id=${id}`)),
+    );
   }
 
   private _log(message: string): void {
