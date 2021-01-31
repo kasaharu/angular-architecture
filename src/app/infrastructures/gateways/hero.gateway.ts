@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Hero } from '../../domain/hero';
 import { MessageService } from '../../shared/services/message.service';
@@ -22,5 +22,14 @@ export class HeroGateway {
 
   private _log(message: string): void {
     this._messageService.add(`HeroService: ${message}`);
+  }
+
+  private _handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error);
+      this._log(`${operation} failed: ${error.message}`);
+
+      return of(result as T);
+    };
   }
 }
