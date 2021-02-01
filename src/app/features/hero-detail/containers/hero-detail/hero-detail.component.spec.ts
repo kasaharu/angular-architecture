@@ -48,6 +48,24 @@ describe('HeroDetailComponent', () => {
     });
   });
 
+  describe('ngOnDestroy', () => {
+    it('component が破棄されるときに component.id$ の購読もやめるので 3 回目の state 変更では usecase.fetchHero は呼ばれない', () => {
+      spyOn(usecase, 'fetchHero');
+
+      componentStore.setState({ id: 1, hero: null });
+      fixture.detectChanges();
+      componentStore.setState({ id: 2, hero: null });
+      fixture.detectChanges();
+
+      component.ngOnDestroy();
+
+      componentStore.setState({ id: 3, hero: null });
+      fixture.detectChanges();
+
+      expect(usecase.fetchHero).toHaveBeenCalledTimes(2);
+    });
+  });
+
   describe('goBack', () => {
     it('location back が呼ばれること', () => {
       spyOn(location, 'back');
