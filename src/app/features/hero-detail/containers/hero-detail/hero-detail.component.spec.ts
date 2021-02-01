@@ -1,5 +1,4 @@
 import { Location } from '@angular/common';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HeroDetailStore } from '../../applications/hero-detail.store';
 import { HeroDetailUsecase } from '../../applications/hero-detail.usecase';
@@ -19,7 +18,6 @@ describe('HeroDetailComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [HeroDetailComponent],
-      imports: [HttpClientTestingModule],
     })
       .overrideComponent(HeroDetailComponent, {
         add: { providers: [HeroDetailStore, { provide: HeroDetailUsecase, useClass: MockHeroDetailUsecase }] },
