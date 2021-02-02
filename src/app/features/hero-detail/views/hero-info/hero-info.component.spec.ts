@@ -27,7 +27,7 @@ describe('HeroInfoComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(TestHostComponent);
     testHostComponent = fixture.componentInstance;
-    component = fixture.debugElement.query(By.directive(HeroInfoComponent)).nativeElement;
+    component = fixture.debugElement.query(By.directive(HeroInfoComponent)).componentInstance;
 
     fixture.detectChanges();
   });
