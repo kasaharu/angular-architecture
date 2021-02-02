@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
@@ -11,6 +11,7 @@ import { MessageService } from '../../shared/services/message.service';
 export class HeroGateway {
   constructor(private readonly _http: HttpClient, private readonly _messageService: MessageService) {}
   private _heroesUrl = 'api/heroes';
+  httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
 
   getHeroes(): Observable<Hero[]> {
     return this._http.get<Hero[]>(this._heroesUrl).pipe(
@@ -23,6 +24,13 @@ export class HeroGateway {
     return this._http.get<Hero>(`${this._heroesUrl}/${id}`).pipe(
       tap((_) => this._log(`fetched hero id=${id}`)),
       catchError(this._handleError<Hero>(`getHero id=${id}`)),
+    );
+  }
+
+  putHero(hero: Hero): Observable<any> {
+    return this._http.put(this._heroesUrl, hero, this.httpOptions).pipe(
+      tap((_) => this._log(`updated hero id=${hero.id}`)),
+      catchError(this._handleError<any>('putHero')),
     );
   }
 

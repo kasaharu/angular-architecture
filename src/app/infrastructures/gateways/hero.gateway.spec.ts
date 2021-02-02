@@ -48,4 +48,16 @@ describe('HeroGateway', () => {
     expect(req.request.method).toEqual('GET');
     req.flush(expected);
   });
+
+  it('putHero()', () => {
+    const hero: Hero = { id: 13, name: 'Bombasto' };
+
+    gateway.putHero(hero).subscribe((resp) => {
+      expect(resp).toEqual({});
+    });
+
+    const req = httpTestingController.expectOne('api/heroes');
+    expect(req.request.method).toEqual('PUT');
+    req.flush({});
+  });
 });
