@@ -1,7 +1,7 @@
 import { Location } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
-import { filter, map, takeUntil } from 'rxjs/operators';
+import { filter, takeUntil } from 'rxjs/operators';
 import { HeroDetailStore } from '../../applications/hero-detail.store';
 import { HeroDetailUsecase } from '../../applications/hero-detail.usecase';
 
@@ -25,10 +25,7 @@ export class HeroDetailComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.id$
-      .pipe(
-        filter((stream) => stream !== null),
-        map((id) => id as number),
-      )
+      .pipe(filter((stream): stream is number => stream !== null))
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((id) => {
         this._usecase.fetchHero(id);
