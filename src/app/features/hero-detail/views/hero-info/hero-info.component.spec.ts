@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { Hero } from '../../../../domain/hero';
 import { HeroInfoComponent } from './hero-info.component';
 
 @Component({
-  template: `<app-hero-info [hero]="hero"></app-hero-info>`,
+  template: `<app-hero-info [hero]="hero" (requestUpdateHero)="click()"></app-hero-info>`,
 })
 class TestHostComponent {
   hero: Hero = { id: 1, name: 'Test Hero' };
+  click(): void {}
 }
 
 describe('HeroInfoComponent', () => {
@@ -20,7 +21,7 @@ describe('HeroInfoComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [HeroInfoComponent, TestHostComponent],
-      imports: [FormsModule],
+      imports: [ReactiveFormsModule],
     }).compileComponents();
   });
 
@@ -41,6 +42,16 @@ describe('HeroInfoComponent', () => {
       const h2Element: HTMLElement = fixture.debugElement.query(By.css('h2')).nativeElement;
 
       expect(h2Element.textContent).toBe('TEST HERO Details');
+    });
+  });
+
+  describe('onSubmit', () => {
+    it('submit するためのボタンを click した場合に host component の click() が呼ばれること', () => {
+      const submitButtonElement: HTMLElement = fixture.debugElement.query(By.css('button')).nativeElement;
+      spyOn(testHostComponent, 'click');
+      submitButtonElement.click();
+
+      expect(testHostComponent.click).toHaveBeenCalled();
     });
   });
 });

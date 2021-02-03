@@ -1,5 +1,7 @@
 <h2>{{ hero.name | uppercase }} Details</h2>
 <div><span>id: </span>{{ hero.id }}</div>
-<div>
-  <label>name: <input [(ngModel)]="hero.name" /></label>
-</div>
+
+<form [formGroup]="editableHero" (submit)="onSubmit()">
+  <label>name: <input type="text" formControlName="name" /></label>
+  <button type="submit">save</button>
+</form>
