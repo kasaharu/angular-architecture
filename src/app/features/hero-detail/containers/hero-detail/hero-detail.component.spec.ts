@@ -1,11 +1,13 @@
 import { Location } from '@angular/common';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Hero } from '../../../../domain/hero';
 import { HeroDetailStore } from '../../applications/hero-detail.store';
 import { HeroDetailUsecase } from '../../applications/hero-detail.usecase';
 import { HeroDetailComponent } from './hero-detail.component';
 
 class MockHeroDetailUsecase implements Partial<HeroDetailUsecase> {
   fetchHero(): any {}
+  updateHero(): any {}
 }
 
 describe('HeroDetailComponent', () => {
@@ -70,6 +72,22 @@ describe('HeroDetailComponent', () => {
     it('location back が呼ばれること', () => {
       spyOn(location, 'back');
       component.goBack();
+      expect(location.back).toHaveBeenCalled();
+    });
+  });
+
+  describe('save', () => {
+    it('usecase.updateHero が呼ばれること', async () => {
+      const hero: Hero = { id: 100, name: 'hero' };
+      spyOn(usecase, 'updateHero');
+      await component.save(hero);
+      expect(usecase.updateHero).toHaveBeenCalledWith(hero);
+    });
+
+    it('location back が呼ばれること', async () => {
+      const hero: Hero = { id: 100, name: 'hero' };
+      spyOn(location, 'back');
+      await component.save(hero);
       expect(location.back).toHaveBeenCalled();
     });
   });

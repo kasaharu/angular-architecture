@@ -2,6 +2,7 @@ import { Location } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
+import { Hero } from '../../../../domain/hero';
 import { HeroDetailStore } from '../../applications/hero-detail.store';
 import { HeroDetailUsecase } from '../../applications/hero-detail.usecase';
 
@@ -37,6 +38,11 @@ export class HeroDetailComponent implements OnInit, OnDestroy {
   }
 
   goBack(): void {
+    this._location.back();
+  }
+
+  async save(hero: Hero): Promise<void> {
+    await this._usecase.updateHero(hero);
     this._location.back();
   }
 }

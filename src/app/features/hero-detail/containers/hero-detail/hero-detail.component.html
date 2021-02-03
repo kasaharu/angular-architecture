@@ -1,5 +1,5 @@
 <ng-container *ngIf="hero$ | async as hero">
-  <app-hero-info [hero]="hero"></app-hero-info>
+  <app-hero-info [hero]="hero" (requestUpdateHero)="save($event)"></app-hero-info>
 </ng-container>
 
 <button (click)="goBack()">go back</button>

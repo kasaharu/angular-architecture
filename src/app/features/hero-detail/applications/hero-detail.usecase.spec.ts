@@ -7,6 +7,7 @@ import { HeroDetailUsecase } from './hero-detail.usecase';
 
 class MockHeroGateway implements Partial<HeroGateway> {
   getHero(): any {}
+  putHero(): any {}
 }
 
 describe('HeroDetailUsecase', () => {
@@ -47,27 +48,57 @@ describe('HeroDetailUsecase', () => {
   });
 
   describe('fetchHero()', () => {
-    it('componentStore.saveHero が呼ばれる', async () => {
-      const id = 100;
-      const expected: Hero = { id, name: 'hero' };
+    let id: number;
+    let hero: Hero;
+    beforeEach(() => {
+      id = 100;
+      hero = { id, name: 'hero' };
+      spyOn(gateway, 'getHero').and.returnValue(of(hero));
+    });
 
+    it('componentStore.saveHero が呼ばれる', async () => {
       spyOn(componentStore, 'saveHero');
-      spyOn(gateway, 'getHero').and.returnValue(of(expected));
 
       await usecase.fetchHero(id);
 
-      expect(componentStore.saveHero).toHaveBeenCalledWith(expected);
+      expect(componentStore.saveHero).toHaveBeenCalledWith(hero);
     });
 
     it('componentStore の hero が更新される', async () => {
       const id = 100;
       const hero: Hero = { id, name: 'hero' };
-      spyOn(gateway, 'getHero').and.returnValue(of(hero));
 
       const initialState = { id: null, hero: null };
       componentStore.setState(initialState);
 
       await usecase.fetchHero(id);
+
+      componentStore.state$.subscribe((state) => {
+        expect(state).toEqual({ ...initialState, hero });
+      });
+    });
+  });
+
+  describe('updateHero()', () => {
+    let hero: Hero;
+    beforeEach(() => {
+      hero = { id: 100, name: 'hero' };
+      spyOn(gateway, 'putHero').and.returnValue(of());
+    });
+
+    it('componentStore.saveHero が呼ばれる', async () => {
+      spyOn(componentStore, 'saveHero');
+
+      await usecase.updateHero(hero);
+
+      expect(componentStore.saveHero).toHaveBeenCalledWith(hero);
+    });
+
+    it('componentStore の hero が更新される', async () => {
+      const initialState = { id: null, hero: null };
+      componentStore.setState(initialState);
+
+      await usecase.updateHero(hero);
 
       componentStore.state$.subscribe((state) => {
         expect(state).toEqual({ ...initialState, hero });
