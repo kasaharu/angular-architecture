@@ -34,6 +34,13 @@ export class HeroGateway {
     );
   }
 
+  postHero(hero: Hero): Observable<Hero> {
+    return this._http.post<Hero>(this._heroesUrl, hero, this.httpOptions).pipe(
+      tap((newHero: Hero) => this._log(`added hero w/ id=${newHero.id}`)),
+      catchError(this._handleError<Hero>('postHero')),
+    );
+  }
+
   private _log(message: string): void {
     this._messageService.add(`HeroService: ${message}`);
   }

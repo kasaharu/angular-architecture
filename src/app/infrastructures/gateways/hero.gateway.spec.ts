@@ -60,4 +60,16 @@ describe('HeroGateway', () => {
     expect(req.request.method).toEqual('PUT');
     req.flush({});
   });
+
+  it('postHero()', () => {
+    const hero: Hero = { id: 100, name: 'new Hero' };
+
+    gateway.postHero(hero).subscribe((resp) => {
+      expect(resp).toEqual(hero);
+    });
+
+    const req = httpTestingController.expectOne('api/heroes');
+    expect(req.request.method).toEqual('POST');
+    req.flush(hero);
+  });
 });
