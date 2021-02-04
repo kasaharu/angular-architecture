@@ -1,16 +1,19 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-hero-creator',
   templateUrl: './hero-creator.component.html',
   styleUrls: ['./hero-creator.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HeroCreatorComponent implements OnInit {
+export class HeroCreatorComponent {
+  @Output()
+  requestInputHeroName = new EventEmitter<string>();
 
-  constructor() { }
+  name = new FormControl();
 
-  ngOnInit(): void {
+  onSubmit(): void {
+    this.requestInputHeroName.emit(this.name.value);
   }
-
 }
