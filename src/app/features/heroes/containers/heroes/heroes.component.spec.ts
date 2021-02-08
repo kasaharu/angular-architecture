@@ -5,6 +5,7 @@ import { HeroesComponent } from './heroes.component';
 
 class MockHeroesUsecase implements Partial<HeroesUsecase> {
   fetchHeroes(): any {}
+  createHero(): any {}
 }
 
 describe('HeroesComponent', () => {
@@ -38,6 +39,17 @@ describe('HeroesComponent', () => {
       fixture.detectChanges();
 
       expect(usecase.fetchHeroes).toHaveBeenCalled();
+    });
+  });
+
+  describe('add', () => {
+    it('usecase の createHero が呼ばれること', () => {
+      const heroName = 'New hero';
+      spyOn(usecase, 'createHero');
+
+      component.add(heroName);
+
+      expect(usecase.createHero).toHaveBeenCalledWith(heroName);
     });
   });
 });

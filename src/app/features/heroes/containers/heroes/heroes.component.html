@@ -1,5 +1,7 @@
 <h2>My Heroes</h2>
 
+<app-hero-creator (requestInputHeroName)="add($event)"></app-hero-creator>
+
 <ul class="heroes">
   <ng-container *ngIf="heroes$ | async as heroes">
     <li *ngFor="let hero of heroes">

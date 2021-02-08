@@ -7,6 +7,7 @@ import { HeroesUsecase } from './heroes.usecase';
 
 class MockHeroGateway implements Partial<HeroGateway> {
   getHeroes(): any {}
+  postHero(): any {}
 }
 
 describe('HeroesUsecase', () => {
@@ -46,6 +47,54 @@ describe('HeroesUsecase', () => {
         .subscribe((h) => {
           expect(h).toEqual(heroes);
         });
+    });
+  });
+
+  describe('createHero', () => {
+    it('メソッドを呼んだときに gateway.postHero() が実行されること', async () => {
+      const heroName = 'new hero name';
+      const returnValueHero: Hero = { id: 10, name: heroName };
+      spyOn(gateway, 'postHero').and.returnValue(of(returnValueHero));
+
+      await usecase.createHero(heroName);
+
+      expect(gateway.postHero).toHaveBeenCalledWith({ name: heroName } as Hero);
+    });
+
+    describe('メソッドを呼んだときに componentStore の state が更新されること', () => {
+      it('state.heroes が空の場合 hero がセットされること', async () => {
+        const heroName = 'new hero name';
+        const returnValueHero: Hero = { id: 10, name: heroName };
+        spyOn(gateway, 'postHero').and.returnValue(of(returnValueHero));
+
+        await usecase.createHero(heroName);
+
+        componentStore
+          .select((state) => state.heroes)
+          .subscribe((h) => {
+            expect(h).toEqual([returnValueHero]);
+          });
+      });
+
+      it('state.heroes が空でない場合 hero が追加されること', async () => {
+        const heroName = 'new hero name';
+        const returnValueHero: Hero = { id: 10, name: heroName };
+        const heroes: Hero[] = [{ id: 2, name: 'hero 2 name' }];
+        const expected: Hero[] = [
+          { id: 2, name: 'hero 2 name' },
+          { id: 10, name: 'new hero name' },
+        ];
+        spyOn(gateway, 'postHero').and.returnValue(of(returnValueHero));
+        componentStore.setState({ heroes });
+
+        await usecase.createHero(heroName);
+
+        componentStore
+          .select((state) => state.heroes)
+          .subscribe((h) => {
+            expect(h).toEqual(expected);
+          });
+      });
     });
   });
 });

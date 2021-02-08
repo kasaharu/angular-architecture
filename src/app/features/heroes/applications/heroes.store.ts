@@ -15,4 +15,7 @@ export class HeroesStore extends ComponentStore<HeroesState> {
 
   readonly heroes$: Observable<Hero[] | null> = this.select((state) => state.heroes);
   readonly saveHeroes = this.updater((_, heroes: Hero[]) => ({ heroes }));
+  readonly addHero = this.updater((state, hero: Hero) => {
+    return state.heroes === null ? { heroes: [hero] } : { heroes: [...state.heroes, hero] };
+  });
 }

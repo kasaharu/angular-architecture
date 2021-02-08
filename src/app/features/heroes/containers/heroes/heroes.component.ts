@@ -17,4 +17,8 @@ export class HeroesComponent implements OnInit {
   ngOnInit(): void {
     this._usecase.fetchHeroes();
   }
+
+  add(heroName: string): void {
+    this._usecase.createHero(heroName);
+  }
 }
