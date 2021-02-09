@@ -72,4 +72,31 @@ describe('HeroGateway', () => {
     expect(req.request.method).toEqual('POST');
     req.flush(hero);
   });
+
+  describe('deleteHero()', () => {
+    it('id のみ渡した場合に指定した URL にリクエストされること', () => {
+      const heroId = 100;
+      const expected: Hero = { id: heroId, name: 'new Hero' };
+
+      gateway.deleteHero(heroId).subscribe((resp) => {
+        expect(resp).toEqual(expected);
+      });
+
+      const req = httpTestingController.expectOne(`api/heroes/${heroId}`);
+      expect(req.request.method).toEqual('DELETE');
+      req.flush(expected);
+    });
+
+    it('Hero 型で渡した場合に指定した URL にリクエストされること', () => {
+      const hero: Hero = { id: 100, name: 'new Hero' };
+
+      gateway.deleteHero(hero).subscribe((resp) => {
+        expect(resp).toEqual(hero);
+      });
+
+      const req = httpTestingController.expectOne(`api/heroes/${hero.id}`);
+      expect(req.request.method).toEqual('DELETE');
+      req.flush(hero);
+    });
+  });
 });

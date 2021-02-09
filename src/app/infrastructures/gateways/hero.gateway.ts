@@ -41,6 +41,16 @@ export class HeroGateway {
     );
   }
 
+  deleteHero(hero: Hero | number): Observable<Hero> {
+    const id = typeof hero === 'number' ? hero : hero.id;
+    const requestUrl = `${this._heroesUrl}/${id}`;
+
+    return this._http.delete<Hero>(requestUrl, this.httpOptions).pipe(
+      tap((_) => this._log(`deleted hero id=${id}`)),
+      catchError(this._handleError<Hero>('deleteHero')),
+    );
+  }
+
   private _log(message: string): void {
     this._messageService.add(`HeroService: ${message}`);
   }
