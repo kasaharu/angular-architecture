@@ -8,6 +8,7 @@ import { HeroesUsecase } from './heroes.usecase';
 class MockHeroGateway implements Partial<HeroGateway> {
   getHeroes(): any {}
   postHero(): any {}
+  deleteHero(): any {}
 }
 
 describe('HeroesUsecase', () => {
@@ -95,6 +96,39 @@ describe('HeroesUsecase', () => {
             expect(h).toEqual(expected);
           });
       });
+    });
+  });
+
+  describe('deleteHero', () => {
+    it('メソッドを呼んだときに gateway.deleteHero() が実行されること', async () => {
+      const hero: Hero = { id: 1, name: 'one' };
+      spyOn(gateway, 'deleteHero').and.returnValue(of());
+
+      await usecase.deleteHero(hero);
+
+      expect(gateway.deleteHero).toHaveBeenCalledWith(hero);
+    });
+
+    it('メソッドを呼んだときに componentStore の state から対象の hero が削除されること', async () => {
+      const hero: Hero = { id: 2, name: 'two' };
+      const heroes: Hero[] = [
+        { id: 1, name: 'one' },
+        { id: 2, name: 'two' },
+        { id: 3, name: 'three' },
+      ];
+      spyOn(gateway, 'deleteHero').and.returnValue(of());
+      componentStore.setState({ heroes });
+
+      await usecase.deleteHero(hero);
+
+      componentStore
+        .select((state) => state.heroes)
+        .subscribe((h) => {
+          expect(h).toEqual([
+            { id: 1, name: 'one' },
+            { id: 3, name: 'three' },
+          ]);
+        });
     });
   });
 });

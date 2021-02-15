@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Hero } from '../../../../domain/hero';
 import { HeroesStore } from '../../applications/heroes.store';
 import { HeroesUsecase } from '../../applications/heroes.usecase';
 
@@ -20,5 +21,9 @@ export class HeroesComponent implements OnInit {
 
   add(heroName: string): void {
     this._usecase.createHero(heroName);
+  }
+
+  delete(hero: Hero): void {
+    this._usecase.deleteHero(hero);
   }
 }

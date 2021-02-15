@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Hero } from '../../../../domain/hero';
 import { HeroesStore } from '../../applications/heroes.store';
 import { HeroesUsecase } from '../../applications/heroes.usecase';
 import { HeroesComponent } from './heroes.component';
@@ -6,6 +7,7 @@ import { HeroesComponent } from './heroes.component';
 class MockHeroesUsecase implements Partial<HeroesUsecase> {
   fetchHeroes(): any {}
   createHero(): any {}
+  deleteHero(): any {}
 }
 
 describe('HeroesComponent', () => {
@@ -50,6 +52,17 @@ describe('HeroesComponent', () => {
       component.add(heroName);
 
       expect(usecase.createHero).toHaveBeenCalledWith(heroName);
+    });
+  });
+
+  describe('delete', () => {
+    it('usecase の deleteHero が呼ばれること', () => {
+      const hero: Hero = { id: 1, name: 'hero' };
+      spyOn(usecase, 'deleteHero');
+
+      component.delete(hero);
+
+      expect(usecase.deleteHero).toHaveBeenCalledWith(hero);
     });
   });
 });

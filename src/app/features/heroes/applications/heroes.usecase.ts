@@ -16,4 +16,9 @@ export class HeroesUsecase {
     const hero = await this._heroGateway.postHero({ name: heroName.trim() } as Hero).toPromise();
     this._componentStore.addHero(hero);
   }
+
+  async deleteHero(hero: Hero): Promise<void> {
+    await this._heroGateway.deleteHero(hero).toPromise();
+    this._componentStore.deleteHero(hero);
+  }
 }
