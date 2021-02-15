@@ -18,4 +18,7 @@ export class HeroesStore extends ComponentStore<HeroesState> {
   readonly addHero = this.updater((state, hero: Hero) => {
     return state.heroes === null ? { heroes: [hero] } : { heroes: [...state.heroes, hero] };
   });
+  readonly deleteHero = this.updater((state, hero: Hero) => {
+    return { heroes: state.heroes === null ? null : state.heroes.filter((h) => h.id !== hero.id) };
+  });
 }
