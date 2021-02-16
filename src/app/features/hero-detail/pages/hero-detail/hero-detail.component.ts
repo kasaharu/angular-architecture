@@ -5,7 +5,6 @@ import { HeroDetailUsecase } from '../../applications/hero-detail.usecase';
 
 @Component({
   template: `<app-hero-detail></app-hero-detail>`,
-  styleUrls: ['./hero-detail.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [HeroDetailStore, HeroDetailUsecase],
 })
