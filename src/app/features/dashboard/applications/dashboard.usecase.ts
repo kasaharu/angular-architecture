@@ -4,10 +4,10 @@ import { DashboardStore } from './dashboard.store';
 
 @Injectable()
 export class DashboardUsecase {
-  constructor(private readonly _componentStore: DashboardStore, private readonly _heroService: HeroGateway) {}
+  constructor(private readonly _componentStore: DashboardStore, private readonly _heroGateway: HeroGateway) {}
 
   async fetchHeroes(): Promise<void> {
-    const heroes = await this._heroService.getHeroes().toPromise();
+    const heroes = await this._heroGateway.getHeroes().toPromise();
     this._componentStore.saveHeroes(heroes);
   }
 }
