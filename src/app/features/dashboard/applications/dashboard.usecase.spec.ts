@@ -2,7 +2,6 @@ import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { Hero } from '../../../domain/hero';
 import { HeroGateway } from '../../../infrastructures/gateways/hero.gateway';
-import { DashboardStore } from './dashboard.store';
 import { DashboardUsecase } from './dashboard.usecase';
 
 class MockHeroGateway implements Partial<HeroGateway> {
@@ -11,16 +10,14 @@ class MockHeroGateway implements Partial<HeroGateway> {
 
 describe('DashboardUsecase', () => {
   let usecase: DashboardUsecase;
-  let componentStore: DashboardStore;
   let gateway: HeroGateway;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [DashboardUsecase, DashboardStore, { provide: HeroGateway, useClass: MockHeroGateway }],
+      providers: [DashboardUsecase, { provide: HeroGateway, useClass: MockHeroGateway }],
     });
 
     usecase = TestBed.inject(DashboardUsecase);
-    componentStore = TestBed.inject(DashboardStore);
     gateway = TestBed.inject(HeroGateway);
   });
 
@@ -28,11 +25,11 @@ describe('DashboardUsecase', () => {
     it('メソッドを呼んだときに componentStore.saveHeroes() が実行されること', async () => {
       const heroes: Hero[] = [{ id: 1, name: 'hero name' }];
       spyOn(gateway, 'getHeroes').and.returnValue(of(heroes));
-      spyOn(componentStore, 'saveHeroes');
+      spyOn(usecase, 'saveHeroes');
 
       await usecase.fetchHeroes();
 
-      expect(componentStore.saveHeroes).toHaveBeenCalledWith(heroes);
+      expect(usecase.saveHeroes).toHaveBeenCalledWith(heroes);
     });
 
     it('メソッドを呼んだときに componentStore の state に heroes がセットされること', async () => {
@@ -41,7 +38,7 @@ describe('DashboardUsecase', () => {
 
       await usecase.fetchHeroes();
 
-      componentStore
+      usecase
         .select((state) => state.heroes)
         .subscribe((h) => {
           expect(h).toEqual(heroes);

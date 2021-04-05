@@ -1,25 +1,25 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Hero } from '../../../../domain/hero';
-import { DashboardComponent } from './dashboard.component';
-import { DashboardStore } from '../../applications/dashboard.store';
+import { HeroGateway } from '../../../../infrastructures/gateways/hero.gateway';
 import { DashboardUsecase } from '../../applications/dashboard.usecase';
+import { DashboardComponent } from './dashboard.component';
 
-class MockDashboardUsecase implements Partial<DashboardUsecase> {
-  fetchHeroes(): any {}
+class MockHeroGateway implements Partial<HeroGateway> {
+  getHeroes(): any {}
 }
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
   let fixture: ComponentFixture<DashboardComponent>;
   let usecase: DashboardUsecase;
-  let componentStore: DashboardStore;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [DashboardComponent],
+      providers: [{ provide: HeroGateway, useClass: MockHeroGateway }],
     })
       .overrideComponent(DashboardComponent, {
-        add: { providers: [DashboardStore, { provide: DashboardUsecase, useClass: MockDashboardUsecase }] },
+        add: { providers: [DashboardUsecase] },
       })
       .compileComponents();
   });
@@ -29,7 +29,7 @@ describe('DashboardComponent', () => {
     component = fixture.componentInstance;
 
     usecase = fixture.debugElement.injector.get(DashboardUsecase);
-    componentStore = fixture.debugElement.injector.get(DashboardStore);
+    usecase.setState({ heroes: null });
   });
 
   describe('ngOnInit', () => {
@@ -45,7 +45,7 @@ describe('DashboardComponent', () => {
     });
   });
 
-  describe('componentStore に heroes がセットされている場合', () => {
+  describe('usecase の componentStore に heroes がセットされている場合', () => {
     it('6 人の hero がセットされる場合 4 人の hero が component.heroes にセットされる', () => {
       const heroes: Hero[] = [
         { id: 11, name: 'Dr Nice' },
@@ -61,7 +61,7 @@ describe('DashboardComponent', () => {
         { id: 14, name: 'Celeritas' },
         { id: 15, name: 'Magneta' },
       ];
-      componentStore.setState({ heroes });
+      usecase.setState({ heroes });
 
       component.heroes$.subscribe((state) => {
         expect(state).toEqual(expected);
