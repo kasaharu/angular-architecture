@@ -1,3 +1,4 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Hero } from '../../../../domain/hero';
 import { HeroesStore } from '../../applications/heroes.store';
@@ -18,6 +19,7 @@ describe('HeroesComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [HeroesComponent],
+      schemas: [NO_ERRORS_SCHEMA],
     })
       .overrideComponent(HeroesComponent, {
         add: { providers: [HeroesStore, { provide: HeroesUsecase, useClass: MockHeroesUsecase }] },
