@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { DashboardModule } from './features/dashboard/dashboard.module';
 import { HeroDetailModule } from './features/hero-detail/hero-detail.module';
 import { HeroesModule } from './features/heroes/heroes.module';
-import { InMemoryDataService } from './infrastructures/in-memory/in-memory-data.service';
+import { InMemoryDataService } from './data-access/in-memory/in-memory-data.service';
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({

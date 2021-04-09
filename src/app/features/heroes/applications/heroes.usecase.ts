@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Hero } from '../../../domain/hero';
-import { HeroGateway } from '../../../infrastructures/gateways/hero.gateway';
+import { HeroGateway } from '../../../data-access/gateways/hero.gateway';
 import { HeroesStore } from './heroes.store';
 
 @Injectable()

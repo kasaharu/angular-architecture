@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { Observable } from 'rxjs';
 import { Hero } from '../../../domain/hero';
-import { HeroGateway } from '../../../infrastructures/gateways/hero.gateway';
+import { HeroGateway } from '../../../data-access/gateways/hero.gateway';
 
 export interface DashboardState {
   heroes: Hero[] | null;

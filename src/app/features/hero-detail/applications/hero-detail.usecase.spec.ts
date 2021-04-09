@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { Hero } from 'src/app/domain/hero';
-import { HeroGateway } from 'src/app/infrastructures/gateways/hero.gateway';
+import { HeroGateway } from 'src/app/data-access/gateways/hero.gateway';
 import { HeroDetailStore } from './hero-detail.store';
 import { HeroDetailUsecase } from './hero-detail.usecase';
 
