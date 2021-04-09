@@ -1,12 +1,4 @@
 <h3>Top Heroes</h3>
-<div class="grid grid-pad">
-  <ng-container *ngIf="heroes$ | async as heroes">
-    <ng-container *ngFor="let hero of heroes">
-      <a class="col-1-4" routerLink="/detail/{{ hero.id }}">
-        <div class="module hero">
-          <h4>{{ hero.name }}</h4>
-        </div>
-      </a>
-    </ng-container>
-  </ng-container>
-</div>
+<ng-container *ngIf="heroes$ | async as heroes">
+  <app-dashboard-contents [heroes]="heroes"></app-dashboard-contents>
+</ng-container>
