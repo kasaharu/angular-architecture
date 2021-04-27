@@ -1086,10 +1086,10 @@
     merge-source-map "^1.1.0"
     schema-utils "^2.7.0"
 
-"@ngrx/component-store@^11.1.0":
-  version "11.1.0"
-  resolved "https://registry.yarnpkg.com/@ngrx/component-store/-/component-store-11.1.0.tgz#d651102e1f31b0966b9cac3a120f2f41a62d9012"
-  integrity sha512-W/tlPI9Hk2CO7ig9s9opEk3OznRwgE7tvkOzeKE45RgEXW2AkcomR79eowmH+sgwH2r2PWfPUKRKHjEYRyNZ2g==
+"@ngrx/component-store@^11.1.1":
+  version "11.1.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/component-store/-/component-store-11.1.1.tgz#9036ada220ff287a872ad74769a0ead70e82924d"
+  integrity sha512-NUVguqhrkopRyh81873MA1R3ZcGV+MTPdVhyTZmMj7EdBNx4EC+swgssuAIO0Bc7A4WFHLWd6inohahfLLdOeg==
   dependencies:
     tslib "^2.0.0"
 
