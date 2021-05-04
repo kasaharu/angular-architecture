@@ -5,5 +5,6 @@ import { HeadingComponent } from './heading.component';
 @NgModule({
   declarations: [HeadingComponent],
   imports: [CommonModule],
+  exports: [HeadingComponent],
 })
 export class HeadingModule {}
