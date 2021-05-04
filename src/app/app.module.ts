@@ -9,6 +9,7 @@ import { HeroDetailModule } from './features/hero-detail/hero-detail.module';
 import { HeroesModule } from './features/heroes/heroes.module';
 import { InMemoryDataService } from './data-access/in-memory/in-memory-data.service';
 import { SharedModule } from './shared/shared.module';
+import { HeadingModule } from './ui/heading/heading.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +22,7 @@ import { SharedModule } from './shared/shared.module';
     HeroDetailModule,
     SharedModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false }),
+    HeadingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
