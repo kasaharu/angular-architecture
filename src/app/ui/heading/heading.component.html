@@ -1,1 +1,45 @@
-<p>heading works!</p>
+<ng-container [ngSwitch]="elementName">
+  <ng-container *ngSwitchCase="'h1'">
+    <ng-container *ngTemplateOutlet="h1"></ng-container>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="'h2'">
+    <ng-container *ngTemplateOutlet="h2"></ng-container>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="'h3'">
+    <ng-container *ngTemplateOutlet="h3"></ng-container>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="'h4'">
+    <ng-container *ngTemplateOutlet="h4"></ng-container>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="'h5'">
+    <ng-container *ngTemplateOutlet="h5"></ng-container>
+  </ng-container>
+</ng-container>
+
+<ng-template #h1>
+  <h1><ng-container *ngTemplateOutlet="inner"></ng-container></h1>
+</ng-template>
+
+<ng-template #h2>
+  <h2><ng-container *ngTemplateOutlet="inner"></ng-container></h2>
+</ng-template>
+
+<ng-template #h3>
+  <h3><ng-container *ngTemplateOutlet="inner"></ng-container></h3>
+</ng-template>
+
+<ng-template #h4>
+  <h4><ng-container *ngTemplateOutlet="inner"></ng-container></h4>
+</ng-template>
+
+<ng-template #h5>
+  <h5><ng-container *ngTemplateOutlet="inner"></ng-container></h5>
+</ng-template>
+
+<ng-template #inner>
+  <ng-content></ng-content>
+</ng-template>
