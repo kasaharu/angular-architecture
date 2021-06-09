@@ -19,32 +19,16 @@ h4 {
   position: relative;
 }
 
-.contents {
-  margin: 0;
-}
-
-.col-1-4 {
-  width: 25%;
-}
-
 .module {
-  padding: 20px;
-  text-align: center;
   color: #eee;
   max-height: 120px;
   min-width: 120px;
-  background-color: #3f525c;
-  border-radius: 2px;
 }
 
 .module:hover {
   background-color: #eee;
   cursor: pointer;
   color: #607d8b;
-}
-
-.grid-pad {
-  padding: 10px 0;
 }
 
 .grid-pad > [class*='col-']:last-of-type {
@@ -58,9 +42,6 @@ h4 {
   }
 }
 @media (max-width: 1024px) {
-  .contents {
-    margin: 0;
-  }
   .module {
     min-width: 60px;
   }
