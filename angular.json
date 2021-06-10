@@ -36,13 +36,7 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [],
-            "vendorChunk": true,
-            "extractLicenses": false,
-            "buildOptimizer": false,
-            "sourceMap": true,
-            "optimization": false,
-            "namedChunks": true
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -52,13 +46,7 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "optimization": true,
               "outputHashing": "all",
-              "sourceMap": false,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -72,7 +60,14 @@
                 }
               ]
             },
-            "development": {}
+            "development": {
+              "optimization": false,
+              "buildOptimizer": false,
+              "sourceMap": true,
+              "extractLicenses": false,
+              "namedChunks": true,
+              "vendorChunk": true
+            }
           },
           "defaultConfiguration": "production"
         },
