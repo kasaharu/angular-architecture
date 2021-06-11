@@ -29,7 +29,6 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "aot": true,
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -47,13 +46,7 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "optimization": true,
               "outputHashing": "all",
-              "sourceMap": false,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -66,19 +59,31 @@
                   "maximumError": "4kb"
                 }
               ]
+            },
+            "development": {
+              "optimization": false,
+              "buildOptimizer": false,
+              "sourceMap": true,
+              "extractLicenses": false,
+              "namedChunks": true,
+              "vendorChunk": true
             }
-          }
+          },
+          "defaultConfiguration": "production"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-architecture:build"
           },
           "configurations": {
             "production": {
               "browserTarget": "angular-architecture:build:production"
+            },
+            "development": {
+              "browserTarget": "angular-architecture:build:development"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
@@ -119,14 +124,17 @@
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "angular-architecture:serve"
+            "protractorConfig": "e2e/protractor.conf.js"
           },
           "configurations": {
             "production": {
               "devServerTarget": "angular-architecture:serve:production"
+            },
+            "development": {
+              "devServerTarget": "angular-architecture:serve:development"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
