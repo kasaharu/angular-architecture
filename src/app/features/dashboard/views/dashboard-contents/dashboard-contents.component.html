@@ -1,7 +1,7 @@
-<div class="grid-pad m-0 py-2.5">
+<div class="grid grid-pad">
   <ng-container *ngFor="let hero of heroes">
-    <a class="col-1-4 w-1/4" routerLink="/detail/{{ hero.id }}">
-      <div class="module hero rounded-sm bg-gray-700 text-center p-5">
+    <a class="col-1-4" routerLink="/detail/{{ hero.id }}">
+      <div class="module hero">
         <h4>{{ hero.name }}</h4>
       </div>
     </a>
