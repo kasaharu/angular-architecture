@@ -1,0 +1,17 @@
+{
+  "extends": [
+    "config:base",
+    "github>lacolaco/renovate-config:ng-update",
+    "github>lacolaco/renovate-config:automerge-types"
+  ],
+  "timezone": "Asia/Tokyo",
+  "assignees": ["kasaharu"],
+  "reviewers": ["kasaharu"],
+  "schedule": ["every weekend"],
+  "labels": ["renovate"],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["before 3am on the first day of the month"]
+  },
+  "packageRules": []
+}
