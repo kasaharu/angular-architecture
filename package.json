@@ -11,8 +11,7 @@
     "e2e": "ng e2e",
     "stylelint": "stylelint './**/*.scss'",
     "prettier": "prettier --write './**/*.{ts,html,scss}'",
-    "prettier:check": "prettier --check './**/*.{ts,html,scss}'",
-    "postinstall": "ngcc"
+    "prettier:check": "prettier --check './**/*.{ts,html,scss}'"
   },
   "private": true,
   "dependencies": {
