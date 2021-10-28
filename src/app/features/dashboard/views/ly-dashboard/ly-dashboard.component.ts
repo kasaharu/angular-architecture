@@ -1,4 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { Hero } from '../../../../domain/hero';
 
 @Component({
   selector: 'app-ly-dashboard',
@@ -8,6 +9,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 })
 export class LyDashboardComponent implements OnInit {
   constructor() {}
+  @Input() heroes: Hero[] | null = null;
 
   ngOnInit(): void {}
 }
