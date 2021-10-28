@@ -8,9 +8,8 @@ describe('LyDashboardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LyDashboardComponent ]
-    })
-    .compileComponents();
+      declarations: [LyDashboardComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
