@@ -5,7 +5,6 @@ import { DashboardUsecase } from '../../applications/dashboard.usecase';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [DashboardUsecase],
 })
