@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
-import { DashboardUsecase } from '../../applications/dashboard.usecase';
+import { DashboardUsecase } from './dashboard.usecase';
 
 @Component({
   selector: 'app-dashboard',

@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Hero } from '../../../../domain/hero';
 import { HeroGateway } from '../../../../data-access/gateways/hero.gateway';
-import { DashboardUsecase } from '../../applications/dashboard.usecase';
+import { Hero } from '../../../../domain/hero';
 import { DashboardComponent } from './dashboard.component';
+import { DashboardUsecase } from './dashboard.usecase';
 
 class MockHeroGateway implements Partial<HeroGateway> {
   getHeroes(): any {}
