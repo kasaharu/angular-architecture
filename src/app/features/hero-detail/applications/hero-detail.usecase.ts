@@ -7,7 +7,7 @@ import { HeroDetailStore } from './hero-detail.store';
 export class HeroDetailUsecase {
   constructor(private readonly _componentStore: HeroDetailStore, private readonly _heroGateway: HeroGateway) {}
 
-  setHeroId(id: number) {
+  setHeroId(id: number): void {
     this._componentStore.setId(id);
   }
 
@@ -16,7 +16,7 @@ export class HeroDetailUsecase {
     this._componentStore.saveHero(hero);
   }
 
-  async updateHero(hero: Hero) {
+  async updateHero(hero: Hero): Promise<void> {
     await this._heroGateway.putHero(hero).toPromise();
     this._componentStore.saveHero(hero);
   }
