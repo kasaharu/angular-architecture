@@ -3,7 +3,6 @@ import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 import { Hero } from '../../../../domain/hero';
-import { HeroDetailStore } from '../../applications/hero-detail.store';
 import { HeroDetailUsecase } from '../../applications/hero-detail.usecase';
 
 @Component({
@@ -13,16 +12,12 @@ import { HeroDetailUsecase } from '../../applications/hero-detail.usecase';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeroDetailComponent implements OnInit, OnDestroy {
-  constructor(
-    private readonly _location: Location,
-    private readonly _componentStore: HeroDetailStore,
-    private readonly _usecase: HeroDetailUsecase,
-  ) {}
+  constructor(private readonly _location: Location, private readonly _usecase: HeroDetailUsecase) {}
 
   onDestroy$ = new Subject();
 
-  id$ = this._componentStore.id$;
-  hero$ = this._componentStore.hero$;
+  id$ = this._usecase.id$;
+  hero$ = this._usecase.hero$;
 
   ngOnInit(): void {
     this.id$
