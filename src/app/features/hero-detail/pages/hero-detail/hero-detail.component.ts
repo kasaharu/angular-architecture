@@ -1,12 +1,11 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HeroDetailStore } from '../../applications/hero-detail.store';
 import { HeroDetailUsecase } from '../../applications/hero-detail.usecase';
 
 @Component({
   template: `<app-hero-detail></app-hero-detail>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [HeroDetailStore, HeroDetailUsecase],
+  providers: [HeroDetailUsecase],
 })
 export class HeroDetailPageComponent implements OnInit {
   constructor(private readonly _route: ActivatedRoute, private readonly _usecase: HeroDetailUsecase) {}
