@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Hero } from '../../../../domain/hero';
-import { HeroesUsecase } from '../../applications/heroes.usecase';
+import { HeroesUsecase } from './heroes.usecase';
 
 @Component({
   selector: 'app-heroes',

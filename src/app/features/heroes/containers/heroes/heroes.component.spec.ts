@@ -2,8 +2,8 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HeroGateway } from '../../../../data-access/gateways/hero.gateway';
 import { Hero } from '../../../../domain/hero';
-import { HeroesUsecase } from '../../applications/heroes.usecase';
 import { HeroesComponent } from './heroes.component';
+import { HeroesUsecase } from './heroes.usecase';
 
 class MockHeroGateway implements Partial<HeroGateway> {
   getHeroes(): any {}

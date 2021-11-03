@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
-import { HeroGateway } from '../../../data-access/gateways/hero.gateway';
-import { Hero } from '../../../domain/hero';
+import { HeroGateway } from '../../../../data-access/gateways/hero.gateway';
+import { Hero } from '../../../../domain/hero';
 import { HeroesUsecase } from './heroes.usecase';
 
 class MockHeroGateway implements Partial<HeroGateway> {
