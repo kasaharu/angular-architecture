@@ -1,5 +1,6 @@
 import { Location } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 import { Hero } from '../../../../domain/hero';
@@ -12,20 +13,25 @@ import { HeroDetailUsecase } from './hero-detail.usecase';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeroDetailComponent implements OnInit, OnDestroy {
-  constructor(private readonly _location: Location, private readonly _usecase: HeroDetailUsecase) {}
+  constructor(
+    private readonly _route: ActivatedRoute,
+    private readonly _location: Location,
+    private readonly _usecase: HeroDetailUsecase,
+  ) {}
 
   onDestroy$ = new Subject();
-
-  id$ = this._usecase.id$;
   hero$ = this._usecase.hero$;
 
   ngOnInit(): void {
-    this.id$
-      .pipe(filter((stream): stream is number => stream !== null))
-      .pipe(takeUntil(this.onDestroy$))
-      .subscribe((id) => {
-        this._usecase.fetchHero(id);
-      });
+    this._route.paramMap.pipe(takeUntil(this.onDestroy$)).subscribe((pmap) => {
+      const id = pmap.get('id');
+      if (id === null || typeof +id !== 'number') {
+        // TOOD: null の場合のエラーハンドリングが必要
+        return;
+      }
+
+      this._usecase.fetchHero(+id);
+    });
   }
 
   ngOnDestroy(): void {
