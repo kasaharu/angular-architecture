@@ -11,6 +11,7 @@ import { HeroDetailUsecase } from './hero-detail.usecase';
   templateUrl: './hero-detail.component.html',
   styleUrls: ['./hero-detail.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [HeroDetailUsecase],
 })
 export class HeroDetailComponent implements OnInit, OnDestroy {
   constructor(

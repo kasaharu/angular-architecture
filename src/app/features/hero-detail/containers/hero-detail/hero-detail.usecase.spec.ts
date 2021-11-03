@@ -22,28 +22,6 @@ describe('HeroDetailUsecase', () => {
     gateway = TestBed.inject(HeroGateway);
   });
 
-  describe('setHeroId()', () => {
-    it('usecase.setId が呼ばれる', () => {
-      const id = 100;
-      spyOn(usecase, 'setId');
-      usecase.setHeroId(id);
-
-      expect(usecase.setId).toHaveBeenCalledWith(id);
-    });
-
-    it('usecase の id が更新される', () => {
-      const id = 100;
-      const initialState = { id: null, hero: null };
-      usecase.setState(initialState);
-
-      usecase.setHeroId(id);
-
-      usecase.state$.subscribe((state) => {
-        expect(state).toEqual({ ...initialState, id });
-      });
-    });
-  });
-
   describe('fetchHero()', () => {
     let id: number;
     let hero: Hero;
