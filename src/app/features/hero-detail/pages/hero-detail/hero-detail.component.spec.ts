@@ -2,7 +2,7 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
 import { ActivatedRouteStub } from '../../../../testing/activated-route-stub';
-import { HeroDetailUsecase } from '../../applications/hero-detail.usecase';
+import { HeroDetailUsecase } from '../../containers/hero-detail/hero-detail.usecase';
 import { HeroDetailPageComponent } from './hero-detail.component';
 
 class MockHeroDetailUsecase implements Partial<HeroDetailUsecase> {

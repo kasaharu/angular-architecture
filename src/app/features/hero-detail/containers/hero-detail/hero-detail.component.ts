@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 import { Hero } from '../../../../domain/hero';
-import { HeroDetailUsecase } from '../../applications/hero-detail.usecase';
+import { HeroDetailUsecase } from './hero-detail.usecase';
 
 @Component({
   selector: 'app-hero-detail',

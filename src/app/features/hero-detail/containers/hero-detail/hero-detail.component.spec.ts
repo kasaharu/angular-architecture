@@ -2,8 +2,8 @@ import { Location } from '@angular/common';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HeroGateway } from '../../../../data-access/gateways/hero.gateway';
 import { Hero } from '../../../../domain/hero';
-import { HeroDetailUsecase } from '../../applications/hero-detail.usecase';
 import { HeroDetailComponent } from './hero-detail.component';
+import { HeroDetailUsecase } from './hero-detail.usecase';
 
 class MockHeroGateway implements Partial<HeroGateway> {
   getHero(): any {}

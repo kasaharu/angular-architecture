@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HeroDetailUsecase } from '../../applications/hero-detail.usecase';
+import { HeroDetailUsecase } from '../../containers/hero-detail/hero-detail.usecase';
 
 @Component({
   template: `<app-hero-detail></app-hero-detail>`,
