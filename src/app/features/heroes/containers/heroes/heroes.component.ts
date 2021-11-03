@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Hero } from '../../../../domain/hero';
-import { HeroesStore } from '../../applications/heroes.store';
 import { HeroesUsecase } from '../../applications/heroes.usecase';
 
 @Component({
@@ -8,12 +7,12 @@ import { HeroesUsecase } from '../../applications/heroes.usecase';
   templateUrl: './heroes.component.html',
   styleUrls: ['./heroes.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [HeroesStore, HeroesUsecase],
+  providers: [HeroesUsecase],
 })
 export class HeroesComponent implements OnInit {
-  constructor(private readonly _componentStore: HeroesStore, private readonly _usecase: HeroesUsecase) {}
+  constructor(private readonly _usecase: HeroesUsecase) {}
 
-  heroes$ = this._componentStore.heroes$;
+  heroes$ = this._usecase.heroes$;
 
   ngOnInit(): void {
     this._usecase.fetchHeroes();

@@ -1,24 +1,40 @@
 import { Injectable } from '@angular/core';
-import { Hero } from '../../../domain/hero';
+import { ComponentStore } from '@ngrx/component-store';
+import { Observable } from 'rxjs';
 import { HeroGateway } from '../../../data-access/gateways/hero.gateway';
-import { HeroesStore } from './heroes.store';
+import { Hero } from '../../../domain/hero';
+
+export interface HeroesState {
+  heroes: Hero[] | null;
+}
 
 @Injectable()
-export class HeroesUsecase {
-  constructor(private readonly _componentStore: HeroesStore, private readonly _heroGateway: HeroGateway) {}
+export class HeroesUsecase extends ComponentStore<HeroesState> {
+  constructor(private readonly _heroGateway: HeroGateway) {
+    super({ heroes: null });
+  }
+
+  readonly heroes$: Observable<Hero[] | null> = this.select((state) => state.heroes);
+  readonly saveHeroes = this.updater((_, heroes: Hero[]) => ({ heroes }));
+  readonly addHero = this.updater((state, hero: Hero) => {
+    return state.heroes === null ? { heroes: [hero] } : { heroes: [...state.heroes, hero] };
+  });
+  readonly delete = this.updater((state, hero: Hero) => {
+    return { heroes: state.heroes === null ? null : state.heroes.filter((h) => h.id !== hero.id) };
+  });
 
   async fetchHeroes(): Promise<void> {
     const heroes = await this._heroGateway.getHeroes().toPromise();
-    this._componentStore.saveHeroes(heroes);
+    this.saveHeroes(heroes);
   }
 
   async createHero(heroName: string): Promise<void> {
     const hero = await this._heroGateway.postHero({ name: heroName.trim() } as Hero).toPromise();
-    this._componentStore.addHero(hero);
+    this.addHero(hero);
   }
 
   async deleteHero(hero: Hero): Promise<void> {
     await this._heroGateway.deleteHero(hero).toPromise();
-    this._componentStore.deleteHero(hero);
+    this.delete(hero);
   }
 }

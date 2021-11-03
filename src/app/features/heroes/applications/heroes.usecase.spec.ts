@@ -1,8 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
-import { Hero } from '../../../domain/hero';
 import { HeroGateway } from '../../../data-access/gateways/hero.gateway';
-import { HeroesStore } from './heroes.store';
+import { Hero } from '../../../domain/hero';
 import { HeroesUsecase } from './heroes.usecase';
 
 class MockHeroGateway implements Partial<HeroGateway> {
@@ -14,36 +13,34 @@ class MockHeroGateway implements Partial<HeroGateway> {
 describe('HeroesUsecase', () => {
   let usecase: HeroesUsecase;
   let gateway: HeroGateway;
-  let componentStore: HeroesStore;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [HeroesUsecase, HeroesStore, { provide: HeroGateway, useClass: MockHeroGateway }],
+      providers: [HeroesUsecase, { provide: HeroGateway, useClass: MockHeroGateway }],
     });
 
     usecase = TestBed.inject(HeroesUsecase);
     gateway = TestBed.inject(HeroGateway);
-    componentStore = TestBed.inject(HeroesStore);
   });
 
   describe('fetchHeroes', () => {
-    it('メソッドを呼んだときに componentStore.saveHeroes() が実行されること', async () => {
+    it('メソッドを呼んだときに usecase.saveHeroes() が実行されること', async () => {
       const heroes: Hero[] = [{ id: 1, name: 'hero name' }];
       spyOn(gateway, 'getHeroes').and.returnValue(of(heroes));
-      spyOn(componentStore, 'saveHeroes');
+      spyOn(usecase, 'saveHeroes');
 
       await usecase.fetchHeroes();
 
-      expect(componentStore.saveHeroes).toHaveBeenCalledWith(heroes);
+      expect(usecase.saveHeroes).toHaveBeenCalledWith(heroes);
     });
 
-    it('メソッドを呼んだときに componentStore の state に heroes がセットされること', async () => {
+    it('メソッドを呼んだときに usecase の state に heroes がセットされること', async () => {
       const heroes: Hero[] = [{ id: 1, name: 'hero name' }];
       spyOn(gateway, 'getHeroes').and.returnValue(of(heroes));
 
       await usecase.fetchHeroes();
 
-      componentStore
+      usecase
         .select((state) => state.heroes)
         .subscribe((h) => {
           expect(h).toEqual(heroes);
@@ -62,7 +59,7 @@ describe('HeroesUsecase', () => {
       expect(gateway.postHero).toHaveBeenCalledWith({ name: heroName } as Hero);
     });
 
-    describe('メソッドを呼んだときに componentStore の state が更新されること', () => {
+    describe('メソッドを呼んだときに usecase の state が更新されること', () => {
       it('state.heroes が空の場合 hero がセットされること', async () => {
         const heroName = 'new hero name';
         const returnValueHero: Hero = { id: 10, name: heroName };
@@ -70,7 +67,7 @@ describe('HeroesUsecase', () => {
 
         await usecase.createHero(heroName);
 
-        componentStore
+        usecase
           .select((state) => state.heroes)
           .subscribe((h) => {
             expect(h).toEqual([returnValueHero]);
@@ -86,11 +83,11 @@ describe('HeroesUsecase', () => {
           { id: 10, name: 'new hero name' },
         ];
         spyOn(gateway, 'postHero').and.returnValue(of(returnValueHero));
-        componentStore.setState({ heroes });
+        usecase.setState({ heroes });
 
         await usecase.createHero(heroName);
 
-        componentStore
+        usecase
           .select((state) => state.heroes)
           .subscribe((h) => {
             expect(h).toEqual(expected);
@@ -109,7 +106,7 @@ describe('HeroesUsecase', () => {
       expect(gateway.deleteHero).toHaveBeenCalledWith(hero);
     });
 
-    it('メソッドを呼んだときに componentStore の state から対象の hero が削除されること', async () => {
+    it('メソッドを呼んだときに usecase の state から対象の hero が削除されること', async () => {
       const hero: Hero = { id: 2, name: 'two' };
       const heroes: Hero[] = [
         { id: 1, name: 'one' },
@@ -117,11 +114,11 @@ describe('HeroesUsecase', () => {
         { id: 3, name: 'three' },
       ];
       spyOn(gateway, 'deleteHero').and.returnValue(of());
-      componentStore.setState({ heroes });
+      usecase.setState({ heroes });
 
       await usecase.deleteHero(hero);
 
-      componentStore
+      usecase
         .select((state) => state.heroes)
         .subscribe((h) => {
           expect(h).toEqual([

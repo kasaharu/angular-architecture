@@ -1,16 +1,15 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HeroGateway } from '../../../../data-access/gateways/hero.gateway';
 import { Hero } from '../../../../domain/hero';
-import { HeroesStore } from '../../applications/heroes.store';
 import { HeroesUsecase } from '../../applications/heroes.usecase';
 import { HeroesComponent } from './heroes.component';
 
-class MockHeroesUsecase implements Partial<HeroesUsecase> {
-  fetchHeroes(): any {}
-  createHero(): any {}
+class MockHeroGateway implements Partial<HeroGateway> {
+  getHeroes(): any {}
+  postHero(): any {}
   deleteHero(): any {}
 }
-
 describe('HeroesComponent', () => {
   let component: HeroesComponent;
   let fixture: ComponentFixture<HeroesComponent>;
@@ -19,10 +18,11 @@ describe('HeroesComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [HeroesComponent],
+      providers: [{ provide: HeroGateway, useClass: MockHeroGateway }],
       schemas: [NO_ERRORS_SCHEMA],
     })
       .overrideComponent(HeroesComponent, {
-        add: { providers: [HeroesStore, { provide: HeroesUsecase, useClass: MockHeroesUsecase }] },
+        add: { providers: [HeroesUsecase] },
       })
       .compileComponents();
   });
