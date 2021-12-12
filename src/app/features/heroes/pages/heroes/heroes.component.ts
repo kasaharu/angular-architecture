@@ -4,8 +4,7 @@ import { HeroesUsecase } from './heroes.usecase';
 
 @Component({
   selector: 'app-heroes',
-  templateUrl: './heroes.component.html',
-  styleUrls: ['./heroes.component.scss'],
+  template: '<app-ly-heroes [heroes]="heroes$ | async"></app-ly-heroes>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [HeroesUsecase],
 })
