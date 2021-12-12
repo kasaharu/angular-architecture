@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { Hero } from '../../../../domain/hero';
 
 @Component({
@@ -7,14 +7,10 @@ import { Hero } from '../../../../domain/hero';
   styleUrls: ['./ly-heroes.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LyHeroesComponent implements OnInit {
+export class LyHeroesComponent {
   @Input() heroes: Hero[] | null = null;
   @Output() heroAdded = new EventEmitter<string>();
   @Output() heroDeleted = new EventEmitter<Hero>();
-
-  constructor() {}
-
-  ngOnInit(): void {}
 
   add(heroName: string): void {
     this.heroAdded.emit(heroName);
