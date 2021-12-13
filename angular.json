@@ -37,7 +37,11 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "@mswjs/cookies",
+              "@mswjs/interceptors"
+            ]
           },
           "configurations": {
             "production": {
