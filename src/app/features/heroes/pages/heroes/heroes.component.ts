@@ -3,7 +3,6 @@ import { Hero } from '../../../../domain/hero';
 import { HeroesUsecase } from './heroes.usecase';
 
 @Component({
-  selector: 'app-heroes',
   template: '<app-ly-heroes [heroes]="heroes$ | async"></app-ly-heroes>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [HeroesUsecase],

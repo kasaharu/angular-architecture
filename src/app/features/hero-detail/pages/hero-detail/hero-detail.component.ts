@@ -7,7 +7,6 @@ import { Hero } from '../../../../domain/hero';
 import { HeroDetailUsecase } from './hero-detail.usecase';
 
 @Component({
-  selector: 'app-hero-detail',
   templateUrl: './hero-detail.component.html',
   styleUrls: ['./hero-detail.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

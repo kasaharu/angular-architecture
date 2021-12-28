@@ -3,7 +3,6 @@ import { map } from 'rxjs/operators';
 import { DashboardUsecase } from './dashboard.usecase';
 
 @Component({
-  selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [DashboardUsecase],
