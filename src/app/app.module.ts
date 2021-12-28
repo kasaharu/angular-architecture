@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { DashboardModule } from './features/dashboard/dashboard.module';
 import { HeroDetailModule } from './features/hero-detail/hero-detail.module';
 import { HeroesModule } from './features/heroes/heroes.module';
-import { SharedModule } from './shared/shared.module';
+import { MessagesModule } from './shared/messages/messages.module';
 import { HeadingModule } from './ui/heading/heading.module';
 
 @NgModule({
@@ -18,8 +18,8 @@ import { HeadingModule } from './ui/heading/heading.module';
     DashboardModule,
     HeroesModule,
     HeroDetailModule,
-    SharedModule,
     HeadingModule,
+    MessagesModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
