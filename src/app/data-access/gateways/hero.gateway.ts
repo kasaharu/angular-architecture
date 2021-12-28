@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { Hero } from '../../domain/hero';
-import { MessageService } from '../../shared/services/message.service';
+import { MessageService } from '../../shared/messages/services/message.service';
 
 @Injectable({
   providedIn: 'root',
