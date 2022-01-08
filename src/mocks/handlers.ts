@@ -15,6 +15,9 @@ const heroes = [
 
 export const handlers = [
   rest.get('/api/heroes', (req, res, ctx) => {
+    if (getRandomInt(10) < 3) {
+      return res(ctx.status(500), ctx.json({ message: 'unexpected error' }));
+    }
     return res(ctx.status(200), ctx.json(heroes));
   }),
   rest.get('/api/heroes/:heroId', (req, res, ctx) => {
@@ -22,3 +25,7 @@ export const handlers = [
     return res(ctx.status(200), ctx.json(heroes.find((hero) => hero.id === Number(heroId))));
   }),
 ];
+
+const getRandomInt = (max: number): number => {
+  return Math.floor(Math.random() * max);
+};
