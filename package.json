@@ -7,7 +7,9 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test --code-coverage",
-    "test:ci": "ng test --code-coverage --no-watch --no-progress --browsers=ChromeHeadlessCI"
+    "test:ci": "ng test --code-coverage --no-watch --no-progress --browsers=ChromeHeadlessCI",
+    "format": "prettier --write './**/*.{ts,html,scss}'",
+    "format:check": "prettier --check './**/*.{ts,html,scss}'"
   },
   "private": true,
   "dependencies": {
