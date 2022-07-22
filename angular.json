@@ -2,8 +2,7 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "cli": {
-    "packageManager": "yarn",
-    "analytics": "9c4d0eaa-0c55-44af-8f87-e063510abce2"
+    "packageManager": "yarn"
   },
   "newProjectRoot": "projects",
   "projects": {
@@ -12,9 +11,6 @@
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
-        },
-        "@schematics/angular:application": {
-          "strict": true
         }
       },
       "root": "",
@@ -29,29 +25,18 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets",
-              "src/mockServiceWorker.js"
+              "src/assets"
             ],
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [],
-            "allowedCommonJsDependencies": [
-              "@mswjs/cookies",
-              "@mswjs/interceptors"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ],
-              "outputHashing": "all",
               "budgets": [
                 {
                   "type": "initial",
@@ -63,23 +48,28 @@
                   "maximumWarning": "2kb",
                   "maximumError": "4kb"
                 }
-              ]
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
             },
             "development": {
-              "optimization": false,
               "buildOptimizer": false,
-              "sourceMap": true,
+              "optimization": false,
+              "vendorChunk": true,
               "extractLicenses": false,
-              "namedChunks": true,
-              "vendorChunk": true
+              "sourceMap": true,
+              "namedChunks": true
             }
           },
           "defaultConfiguration": "production"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-          },
           "configurations": {
             "production": {
               "browserTarget": "angular-architecture:build:production"
@@ -103,6 +93,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
+            "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -112,44 +103,8 @@
             ],
             "scripts": []
           }
-        },
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "e2e/protractor.conf.js"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "angular-architecture:serve:production"
-            },
-            "development": {
-              "devServerTarget": "angular-architecture:serve:development"
-            }
-          },
-          "defaultConfiguration": "development"
-        },
-        "deploy": {
-          "builder": "angular-cli-ghpages:deploy",
-          "options": {}
         }
       }
     }
-  },
-  "schematics": {
-    "@schematics/angular:class": {
-    },
-    "@schematics/angular:component": {
-      "style": "scss",
-      "changeDetection": "OnPush"
-    },
-    "@schematics/angular:directive": {
-    },
-    "@schematics/angular:module": {
-    },
-    "@schematics/angular:pipe": {
-    },
-    "@schematics/angular:service": {
-    }
-  },
-  "defaultProject": "angular-architecture"
+  }
 }
