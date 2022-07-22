@@ -9,7 +9,8 @@
     "test": "ng test --code-coverage",
     "test:ci": "ng test --code-coverage --no-watch --no-progress --browsers=ChromeHeadlessCI",
     "format": "prettier --write './**/*.{ts,html,scss}'",
-    "format:check": "prettier --check './**/*.{ts,html,scss}'"
+    "format:check": "prettier --check './**/*.{ts,html,scss}'",
+    "stylelint": "stylelint './**/*.scss'"
   },
   "private": true,
   "dependencies": {
