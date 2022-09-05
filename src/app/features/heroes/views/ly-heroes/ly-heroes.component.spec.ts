@@ -8,9 +8,8 @@ describe('LyHeroesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ LyHeroesComponent ]
-    })
-    .compileComponents();
+      imports: [LyHeroesComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(LyHeroesComponent);
     component = fixture.componentInstance;
