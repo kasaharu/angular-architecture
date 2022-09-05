@@ -6,13 +6,10 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './heroes.component.html',
-  styleUrls: ['./heroes.component.scss']
+  styleUrls: ['./heroes.component.scss'],
 })
-export class HeroesComponent implements OnInit {
+export class HeroesPageComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
