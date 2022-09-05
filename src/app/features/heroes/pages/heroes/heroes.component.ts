@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-heroes',
@@ -8,8 +8,4 @@ import { CommonModule } from '@angular/common';
   templateUrl: './heroes.component.html',
   styleUrls: ['./heroes.component.scss'],
 })
-export class HeroesPageComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit(): void {}
-}
+export class HeroesPageComponent {}
