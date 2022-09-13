@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Hero } from '../../../../domain/hero';
+import { HEROES } from '../../../../mock-heroes';
 
 @Component({
   selector: 'app-ly-heroes',
@@ -15,4 +16,5 @@ export class LyHeroesComponent {
     id: 1,
     name: 'Windstorm',
   };
+  heroes = HEROES;
 }
