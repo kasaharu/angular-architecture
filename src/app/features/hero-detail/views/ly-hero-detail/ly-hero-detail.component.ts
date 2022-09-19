@@ -6,13 +6,10 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './ly-hero-detail.component.html',
-  styleUrls: ['./ly-hero-detail.component.scss']
+  styleUrls: ['./ly-hero-detail.component.scss'],
 })
 export class LyHeroDetailComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
