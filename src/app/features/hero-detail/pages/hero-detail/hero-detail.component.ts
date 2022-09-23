@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-hero-detail',
@@ -8,8 +8,4 @@ import { CommonModule } from '@angular/common';
   templateUrl: './hero-detail.component.html',
   styleUrls: ['./hero-detail.component.scss'],
 })
-export class HeroDetailPageComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit(): void {}
-}
+export class HeroDetailPageComponent {}

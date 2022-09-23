@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Hero } from '../../../../domain/hero';
 
@@ -10,9 +10,6 @@ import { Hero } from '../../../../domain/hero';
   templateUrl: './ly-hero-detail.component.html',
   styleUrls: ['./ly-hero-detail.component.scss'],
 })
-export class LyHeroDetailComponent implements OnInit {
-  constructor() {}
+export class LyHeroDetailComponent {
   @Input() hero?: Hero;
-
-  ngOnInit(): void {}
 }
