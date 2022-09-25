@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Hero } from '../../../../domain/hero';
 import { LyHeroDetailComponent } from '../../../../features/hero-detail/views/ly-hero-detail/ly-hero-detail.component';
-import { HEROES } from '../../../../mock-heroes';
+import { HeroService } from '../../../../infrastructures/api/hero.service';
 
 @Component({
   selector: 'app-ly-heroes',
@@ -11,11 +11,21 @@ import { HEROES } from '../../../../mock-heroes';
   templateUrl: './ly-heroes.component.html',
   styleUrls: ['./ly-heroes.component.scss'],
 })
-export class LyHeroesComponent {
-  heroes = HEROES;
+export class LyHeroesComponent implements OnInit {
+  constructor(private readonly _heroService: HeroService) {}
+
+  heroes: Hero[] = [];
   selectedHero?: Hero;
+
+  ngOnInit(): void {
+    this.getHeroes();
+  }
 
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
+  }
+
+  getHeroes(): void {
+    this.heroes = this._heroService.getHeroes();
   }
 }
