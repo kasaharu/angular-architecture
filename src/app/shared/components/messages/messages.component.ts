@@ -6,13 +6,10 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './messages.component.html',
-  styleUrls: ['./messages.component.scss']
+  styleUrls: ['./messages.component.scss'],
 })
 export class MessagesComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
