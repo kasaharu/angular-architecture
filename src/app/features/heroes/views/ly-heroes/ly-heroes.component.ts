@@ -26,6 +26,6 @@ export class LyHeroesComponent implements OnInit {
   }
 
   getHeroes(): void {
-    this.heroes = this._heroService.getHeroes();
+    this._heroService.getHeroes().subscribe((heroes) => (this.heroes = heroes));
   }
 }
