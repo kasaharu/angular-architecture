@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Hero } from '../../../../domain/hero';
 import { LyHeroDetailComponent } from '../../../../features/hero-detail/views/ly-hero-detail/ly-hero-detail.component';
 import { HeroService } from '../../../../infrastructures/api/hero.service';
+import { MessageService } from '../../../../shared/services/message.service';
 
 @Component({
   selector: 'app-ly-heroes',
@@ -12,7 +13,7 @@ import { HeroService } from '../../../../infrastructures/api/hero.service';
   styleUrls: ['./ly-heroes.component.scss'],
 })
 export class LyHeroesComponent implements OnInit {
-  constructor(private readonly _heroService: HeroService) {}
+  constructor(private readonly _heroService: HeroService, private readonly _messageService: MessageService) {}
 
   heroes: Hero[] = [];
   selectedHero?: Hero;
@@ -23,6 +24,7 @@ export class LyHeroesComponent implements OnInit {
 
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
+    this._messageService.add(`HeroesComponent: Selected hero id=${hero.id}`);
   }
 
   getHeroes(): void {
