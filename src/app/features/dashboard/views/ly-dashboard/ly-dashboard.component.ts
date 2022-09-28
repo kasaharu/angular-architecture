@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, Input } from '@angular/core';
+import { Hero } from '../../../../domain/hero';
 
 @Component({
   selector: 'app-ly-dashboard',
@@ -8,8 +9,6 @@ import { CommonModule } from '@angular/common';
   templateUrl: './ly-dashboard.component.html',
   styleUrls: ['./ly-dashboard.component.scss'],
 })
-export class LyDashboardComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit(): void {}
+export class LyDashboardComponent {
+  @Input() heroes: Hero[] = [];
 }
