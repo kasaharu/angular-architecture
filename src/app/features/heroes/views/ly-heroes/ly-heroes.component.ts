@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { Hero } from '../../../../domain/hero';
-import { LyHeroDetailComponent } from '../../../../features/hero-detail/views/ly-hero-detail/ly-hero-detail.component';
 
 @Component({
   selector: 'app-ly-heroes',
   standalone: true,
-  imports: [CommonModule, LyHeroDetailComponent],
+  imports: [CommonModule, RouterModule],
   templateUrl: './ly-heroes.component.html',
   styleUrls: ['./ly-heroes.component.scss'],
 })
