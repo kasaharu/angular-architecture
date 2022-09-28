@@ -1,5 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Hero } from '../../../../domain/hero';
+import { HeroService } from '../../../../infrastructures/api/hero.service';
+import { MessageService } from '../../../../shared/services/message.service';
 import { LyHeroesComponent } from '../../views/ly-heroes/ly-heroes.component';
 
 @Component({
@@ -9,4 +12,22 @@ import { LyHeroesComponent } from '../../views/ly-heroes/ly-heroes.component';
   templateUrl: './heroes.component.html',
   styleUrls: ['./heroes.component.scss'],
 })
-export class HeroesPageComponent {}
+export class HeroesPageComponent implements OnInit {
+  constructor(private readonly _heroService: HeroService, private readonly _messageService: MessageService) {}
+
+  heroes: Hero[] = [];
+  selectedHero?: Hero;
+
+  ngOnInit(): void {
+    this.getHeroes();
+  }
+
+  onSelect(hero: Hero): void {
+    this.selectedHero = hero;
+    this._messageService.add(`HeroesComponent: Selected hero id=${hero.id}`);
+  }
+
+  getHeroes(): void {
+    this._heroService.getHeroes().subscribe((heroes) => (this.heroes = heroes));
+  }
+}

@@ -1,9 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Hero } from '../../../../domain/hero';
 import { LyHeroDetailComponent } from '../../../../features/hero-detail/views/ly-hero-detail/ly-hero-detail.component';
-import { HeroService } from '../../../../infrastructures/api/hero.service';
-import { MessageService } from '../../../../shared/services/message.service';
 
 @Component({
   selector: 'app-ly-heroes',
@@ -12,22 +10,12 @@ import { MessageService } from '../../../../shared/services/message.service';
   templateUrl: './ly-heroes.component.html',
   styleUrls: ['./ly-heroes.component.scss'],
 })
-export class LyHeroesComponent implements OnInit {
-  constructor(private readonly _heroService: HeroService, private readonly _messageService: MessageService) {}
+export class LyHeroesComponent {
+  @Input() heroes: Hero[] = [];
+  @Input() selectedHero?: Hero;
+  @Output() heroSelected = new EventEmitter<Hero>();
 
-  heroes: Hero[] = [];
-  selectedHero?: Hero;
-
-  ngOnInit(): void {
-    this.getHeroes();
-  }
-
-  onSelect(hero: Hero): void {
-    this.selectedHero = hero;
-    this._messageService.add(`HeroesComponent: Selected hero id=${hero.id}`);
-  }
-
-  getHeroes(): void {
-    this._heroService.getHeroes().subscribe((heroes) => (this.heroes = heroes));
+  onClick(hero: Hero): void {
+    this.heroSelected.emit(hero);
   }
 }
