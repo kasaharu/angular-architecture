@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Hero } from '../../../../domain/hero';
@@ -11,5 +11,10 @@ import { Hero } from '../../../../domain/hero';
   styleUrls: ['./ly-hero-detail.component.scss'],
 })
 export class LyHeroDetailComponent {
+  constructor(private readonly _location: Location) {}
   @Input() hero?: Hero;
+
+  goBack() {
+    this._location.back();
+  }
 }
