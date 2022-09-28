@@ -6,13 +6,10 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './ly-dashboard.component.html',
-  styleUrls: ['./ly-dashboard.component.scss']
+  styleUrls: ['./ly-dashboard.component.scss'],
 })
 export class LyDashboardComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

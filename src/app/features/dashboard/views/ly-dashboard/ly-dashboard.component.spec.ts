@@ -8,9 +8,8 @@ describe('LyDashboardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ LyDashboardComponent ]
-    })
-    .compileComponents();
+      imports: [LyDashboardComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(LyDashboardComponent);
     component = fixture.componentInstance;
