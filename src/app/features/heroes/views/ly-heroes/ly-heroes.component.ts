@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Hero } from '../../../../domain/hero';
 
@@ -13,4 +13,9 @@ import { Hero } from '../../../../domain/hero';
 export class LyHeroesComponent {
   @Input() heroes: Hero[] = [];
   @Input() selectedHero?: Hero;
+  @Output() heroAdded = new EventEmitter<string>();
+
+  onClick(name: string): void {
+    this.heroAdded.emit(name);
+  }
 }
