@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Hero } from '../../domain/hero';
@@ -8,11 +9,13 @@ import { MessageService } from '../../shared/services/message.service';
   providedIn: 'root',
 })
 export class HeroService {
-  constructor(private readonly _messageService: MessageService) {}
+  constructor(private readonly _http: HttpClient, private readonly _messageService: MessageService) {}
+
+  private _heroesUrl = 'api/heroes';
 
   getHeroes(): Observable<Hero[]> {
     this._messageService.add('HeroService: fetched heroes');
-    return of(HEROES);
+    return this._http.get<Hero[]>(this._heroesUrl);
   }
 
   getHero(id: number): Observable<Hero> {
