@@ -14,8 +14,13 @@ export class LyHeroesComponent {
   @Input() heroes: Hero[] = [];
   @Input() selectedHero?: Hero;
   @Output() heroAdded = new EventEmitter<string>();
+  @Output() heroDeleted = new EventEmitter<Hero>();
 
-  onClick(name: string): void {
+  onClickAddButton(name: string): void {
     this.heroAdded.emit(name);
+  }
+
+  onClickDeleteButton(hero: Hero): void {
+    this.heroDeleted.emit(hero);
   }
 }
