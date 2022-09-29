@@ -1,5 +1,5 @@
 import { CommonModule, Location } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Hero } from '../../../../domain/hero';
 
@@ -13,8 +13,16 @@ import { Hero } from '../../../../domain/hero';
 export class LyHeroDetailComponent {
   constructor(private readonly _location: Location) {}
   @Input() hero?: Hero;
+  @Output() saveButtonClicked = new EventEmitter<Hero>();
 
   goBack() {
     this._location.back();
+  }
+
+  save() {
+    if (this.hero) {
+      this.saveButtonClicked.emit(this.hero);
+      this.goBack();
+    }
   }
 }

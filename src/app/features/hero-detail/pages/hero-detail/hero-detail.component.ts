@@ -24,4 +24,8 @@ export class HeroDetailPageComponent implements OnInit {
   getHero(id: number): void {
     this._heroService.getHero(id).subscribe((hero) => (this.hero = hero));
   }
+
+  updateHero(hero: Hero): void {
+    this._heroService.updateHero(hero).subscribe();
+  }
 }
