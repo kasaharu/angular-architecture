@@ -43,6 +43,15 @@ export class HeroService {
     );
   }
 
+  deleteHero(id: number): Observable<Hero> {
+    const url = `${this._heroesUrl}/${id}`;
+
+    return this._http.delete<Hero>(url, this.httpOptions).pipe(
+      tap((_) => this.log(`deleted hero id=${id}`)),
+      catchError(this.handleError<Hero>('deleteHero')),
+    );
+  }
+
   private log(message: string): void {
     this._messageService.add(`HeroService: ${message}`);
   }
