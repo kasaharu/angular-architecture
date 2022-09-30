@@ -11,8 +11,7 @@ h2 {
 
   /* flexbox */
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   justify-content: space-around;
   align-content: flex-start;
   align-items: flex-start;
