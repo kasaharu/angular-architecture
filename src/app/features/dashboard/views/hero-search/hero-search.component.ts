@@ -6,13 +6,10 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './hero-search.component.html',
-  styleUrls: ['./hero-search.component.scss']
+  styleUrls: ['./hero-search.component.scss'],
 })
 export class HeroSearchComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
