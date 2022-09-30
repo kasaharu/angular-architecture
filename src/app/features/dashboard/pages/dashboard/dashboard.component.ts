@@ -5,7 +5,6 @@ import { HeroService } from '../../../../infrastructures/api/hero.service';
 import { LyDashboardComponent } from '../../views/ly-dashboard/ly-dashboard.component';
 
 @Component({
-  selector: 'app-dashboard',
   standalone: true,
   imports: [CommonModule, LyDashboardComponent],
   templateUrl: './dashboard.component.html',

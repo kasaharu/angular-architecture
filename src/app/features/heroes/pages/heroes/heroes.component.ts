@@ -6,7 +6,6 @@ import { MessageService } from '../../../../shared/services/message.service';
 import { LyHeroesComponent } from '../../views/ly-heroes/ly-heroes.component';
 
 @Component({
-  selector: 'app-heroes',
   standalone: true,
   imports: [CommonModule, LyHeroesComponent],
   templateUrl: './heroes.component.html',

@@ -6,7 +6,6 @@ import { HeroService } from '../../../../infrastructures/api/hero.service';
 import { LyHeroDetailComponent } from '../../views/ly-hero-detail/ly-hero-detail.component';
 
 @Component({
-  selector: 'app-hero-detail',
   standalone: true,
   imports: [CommonModule, LyHeroDetailComponent],
   templateUrl: './hero-detail.component.html',
