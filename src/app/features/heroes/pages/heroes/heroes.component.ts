@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../../../../domain/hero';
 import { HeroService } from '../../../../infrastructures/api/hero.service';
-import { MessageService } from '../../../../shared/services/message.service';
 import { LyHeroesComponent } from '../../views/ly-heroes/ly-heroes.component';
 
 @Component({
@@ -12,7 +11,7 @@ import { LyHeroesComponent } from '../../views/ly-heroes/ly-heroes.component';
   styleUrls: ['./heroes.component.scss'],
 })
 export class HeroesPageComponent implements OnInit {
-  constructor(private readonly _heroService: HeroService, private readonly _messageService: MessageService) {}
+  constructor(private readonly _heroService: HeroService) {}
 
   heroes: Hero[] = [];
   selectedHero?: Hero;
