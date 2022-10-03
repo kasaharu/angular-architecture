@@ -11,7 +11,7 @@ import { Hero } from '../../../../domain/hero';
   styleUrls: ['./ly-heroes.component.scss'],
 })
 export class LyHeroesComponent {
-  @Input() heroes: Hero[] = [];
+  @Input() heroes: Hero[] | null = null;
   @Output() heroAdded = new EventEmitter<string>();
   @Output() heroDeleted = new EventEmitter<Hero>();
 

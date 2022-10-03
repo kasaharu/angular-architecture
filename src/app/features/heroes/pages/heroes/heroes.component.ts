@@ -1,39 +1,34 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../../../../domain/hero';
-import { HeroService } from '../../../../infrastructures/api/hero.service';
 import { LyHeroesComponent } from '../../views/ly-heroes/ly-heroes.component';
+import { HeroesStore } from './heroes.store';
 
 @Component({
   standalone: true,
   imports: [CommonModule, LyHeroesComponent],
   templateUrl: './heroes.component.html',
   styleUrls: ['./heroes.component.scss'],
+  providers: [HeroesStore],
 })
 export class HeroesPageComponent implements OnInit {
-  constructor(private readonly _heroService: HeroService) {}
+  constructor(private readonly _componentStore: HeroesStore) {}
 
-  heroes: Hero[] = [];
+  heroes$ = this._componentStore.heroes$;
 
   ngOnInit(): void {
     this.getHeroes();
   }
 
   getHeroes(): void {
-    this._heroService.getHeroes().subscribe((heroes) => (this.heroes = heroes));
+    this._componentStore.getHeroes();
   }
 
   addHero(name: string): void {
-    name = name.trim();
-    if (!name) {
-      return;
-    }
-
-    this._heroService.addHero({ name } as Hero).subscribe((hero) => this.heroes.push(hero));
+    this._componentStore.addHero(name);
   }
 
   deleteHero(hero: Hero): void {
-    this.heroes = this.heroes.filter((h) => h !== hero);
-    this._heroService.deleteHero(hero.id).subscribe();
+    this._componentStore.deleteHero(hero);
   }
 }
