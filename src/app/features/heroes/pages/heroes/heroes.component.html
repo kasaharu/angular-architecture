@@ -1,6 +1,1 @@
-<app-ly-heroes
-  [heroes]="heroes"
-  [selectedHero]="selectedHero"
-  (heroAdded)="addHero($event)"
-  (heroDeleted)="deleteHero($event)"
-></app-ly-heroes>
+<app-ly-heroes [heroes]="heroes" (heroAdded)="addHero($event)" (heroDeleted)="deleteHero($event)"></app-ly-heroes>

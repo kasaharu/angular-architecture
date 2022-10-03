@@ -12,7 +12,6 @@ import { Hero } from '../../../../domain/hero';
 })
 export class LyHeroesComponent {
   @Input() heroes: Hero[] = [];
-  @Input() selectedHero?: Hero;
   @Output() heroAdded = new EventEmitter<string>();
   @Output() heroDeleted = new EventEmitter<Hero>();
 

@@ -14,7 +14,6 @@ export class HeroesPageComponent implements OnInit {
   constructor(private readonly _heroService: HeroService) {}
 
   heroes: Hero[] = [];
-  selectedHero?: Hero;
 
   ngOnInit(): void {
     this.getHeroes();
