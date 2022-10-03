@@ -1,24 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Hero } from '../../../../domain/hero';
-import { HeroService } from '../../../../infrastructures/api/hero.service';
 import { LyDashboardComponent } from '../../views/ly-dashboard/ly-dashboard.component';
+import { DashboardStore } from './dashboard.store';
 
 @Component({
   standalone: true,
   imports: [CommonModule, LyDashboardComponent],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
+  providers: [DashboardStore],
 })
 export class DashboardPageComponent implements OnInit {
-  constructor(private readonly _heroService: HeroService) {}
-  heroes: Hero[] = [];
+  constructor(private readonly _componentStore: DashboardStore) {}
+  heroes$ = this._componentStore.heroes$;
 
   ngOnInit(): void {
-    this.getHeroes();
-  }
-
-  getHeroes(): void {
-    this._heroService.getHeroes().subscribe((heroes) => (this.heroes = heroes.slice(1, 5)));
+    this._componentStore.getHeroes();
   }
 }

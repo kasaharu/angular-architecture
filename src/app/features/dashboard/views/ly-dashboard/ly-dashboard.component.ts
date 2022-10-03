@@ -12,5 +12,5 @@ import { HeroSearchComponent } from '../hero-search/hero-search.component';
   styleUrls: ['./ly-dashboard.component.scss'],
 })
 export class LyDashboardComponent {
-  @Input() heroes: Hero[] = [];
+  @Input() heroes: Hero[] | null = null;
 }
