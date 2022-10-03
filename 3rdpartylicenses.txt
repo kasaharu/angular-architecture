@@ -13,6 +13,9 @@ MIT
 @angular/router
 MIT
 
+@ngrx/component-store
+MIT
+
 angular-in-memory-web-api
 MIT
 
