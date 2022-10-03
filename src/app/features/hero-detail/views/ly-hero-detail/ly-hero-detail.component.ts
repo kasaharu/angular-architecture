@@ -12,7 +12,7 @@ import { Hero } from '../../../../domain/hero';
 })
 export class LyHeroDetailComponent {
   constructor(private readonly _location: Location) {}
-  @Input() hero?: Hero;
+  @Input() hero: Hero | null = null;
   @Output() saveButtonClicked = new EventEmitter<Hero>();
 
   goBack() {
