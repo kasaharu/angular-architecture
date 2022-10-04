@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, of, tap } from 'rxjs';
 import { Hero } from '../../domain/hero';
@@ -16,7 +16,7 @@ export class HeroService {
   getHeroes(): Observable<Hero[]> {
     return this._http.get<Hero[]>(this._heroesUrl).pipe(
       tap((_) => this.log('fetched heroes')),
-      catchError(this.handleError<Hero[]>('getHeroes', [])),
+      catchError(this.handleError<Hero[]>('getHeroes')),
     );
   }
 
@@ -59,7 +59,7 @@ export class HeroService {
 
     return this._http.get<Hero[]>(`${this._heroesUrl}/?name=${term}`).pipe(
       tap((_) => this.log(`found heroes matching "${term}"`)),
-      catchError(this.handleError<Hero[]>('searchHeroes', [])),
+      catchError(this.handleError<Hero[]>('searchHeroes')),
     );
   }
 
@@ -67,11 +67,14 @@ export class HeroService {
     this._messageService.add(`HeroService: ${message}`);
   }
 
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(error);
-      this.log(`${operation} failed: ${error.message}`);
-      return of(result as T);
+  private handleError<T>(operation: string) {
+    return (error: HttpErrorResponse): Observable<T> => {
+      // TODO: send the error to remote logging infrastructure
+      console.error(error); // log to console instead
+
+      const message = `server returned code ${error.status} with body "${error.error}"`;
+      // TODO: better job of transforming error for user consumption
+      throw new Error(`${operation} failed: ${message}`);
     };
   }
 }
