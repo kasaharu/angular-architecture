@@ -8,7 +8,6 @@ import { HeroesStore } from './heroes.store';
   standalone: true,
   imports: [CommonModule, LyHeroesComponent],
   templateUrl: './heroes.component.html',
-  styleUrls: ['./heroes.component.scss'],
   providers: [HeroesStore],
 })
 export class HeroesPageComponent implements OnInit {

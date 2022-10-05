@@ -7,7 +7,6 @@ import { DashboardStore } from './dashboard.store';
   standalone: true,
   imports: [CommonModule, LyDashboardComponent],
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss'],
   providers: [DashboardStore],
 })
 export class DashboardPageComponent implements OnInit {

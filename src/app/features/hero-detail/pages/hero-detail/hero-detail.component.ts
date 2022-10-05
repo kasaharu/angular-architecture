@@ -9,7 +9,6 @@ import { HeroDetailStore } from './hero-detail.store';
   standalone: true,
   imports: [CommonModule, LyHeroDetailComponent],
   templateUrl: './hero-detail.component.html',
-  styleUrls: ['./hero-detail.component.scss'],
   providers: [HeroDetailStore],
 })
 export class HeroDetailPageComponent implements OnInit {
