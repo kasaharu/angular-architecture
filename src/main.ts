@@ -1,10 +1,11 @@
 import { HttpClientModule } from '@angular/common/http';
 import { enableProdMode, importProvidersFrom } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
+import { provideRouter } from '@angular/router';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { AppRoutingModule } from './app/app-routing.module';
 import { AppComponent } from './app/app.component';
 import { InMemoryDataService } from './app/infrastructures/in-memory-data.service';
+import { routes } from './app/routes';
 import { environment } from './environments/environment';
 
 if (environment.production) {
@@ -13,10 +14,7 @@ if (environment.production) {
 
 bootstrapApplication(AppComponent, {
   providers: [
-    importProvidersFrom(
-      AppRoutingModule,
-      HttpClientModule,
-      HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false }),
-    ),
+    provideRouter(routes),
+    importProvidersFrom(HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false })),
   ],
 });
