@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterLinkWithHref } from '@angular/router';
 import { debounceTime, distinctUntilChanged, Observable, Subject, switchMap } from 'rxjs';
 import { Hero } from '../../../../domain/hero';
 import { HeroService } from '../../../../infrastructures/api/hero.service';
@@ -8,7 +8,7 @@ import { HeroService } from '../../../../infrastructures/api/hero.service';
 @Component({
   selector: 'app-hero-search',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterLinkWithHref],
   templateUrl: './hero-search.component.html',
   styleUrls: ['./hero-search.component.scss'],
 })
