@@ -1,11 +1,11 @@
-import { CommonModule } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { LyDashboardComponent } from '../../views/ly-dashboard/ly-dashboard.component';
 import { DashboardStore } from './dashboard.store';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, LyDashboardComponent],
+  imports: [AsyncPipe, LyDashboardComponent],
   templateUrl: './dashboard.component.html',
   providers: [DashboardStore],
 })

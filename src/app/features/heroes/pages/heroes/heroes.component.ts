@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../../../../domain/hero';
 import { LyHeroesComponent } from '../../views/ly-heroes/ly-heroes.component';
@@ -6,7 +6,7 @@ import { HeroesStore } from './heroes.store';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, LyHeroesComponent],
+  imports: [AsyncPipe, LyHeroesComponent],
   templateUrl: './heroes.component.html',
   providers: [HeroesStore],
 })

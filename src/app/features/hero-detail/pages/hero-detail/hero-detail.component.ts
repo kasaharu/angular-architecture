@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Hero } from '../../../../domain/hero';
@@ -7,7 +7,7 @@ import { HeroDetailStore } from './hero-detail.store';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, LyHeroDetailComponent],
+  imports: [AsyncPipe, LyHeroDetailComponent],
   templateUrl: './hero-detail.component.html',
   providers: [HeroDetailStore],
 })

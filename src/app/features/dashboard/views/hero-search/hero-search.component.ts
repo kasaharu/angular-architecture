@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { AsyncPipe, NgForOf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterLinkWithHref } from '@angular/router';
 import { debounceTime, distinctUntilChanged, Observable, Subject, switchMap } from 'rxjs';
@@ -8,7 +8,7 @@ import { HeroService } from '../../../../infrastructures/api/hero.service';
 @Component({
   selector: 'app-hero-search',
   standalone: true,
-  imports: [CommonModule, RouterLinkWithHref],
+  imports: [NgForOf, AsyncPipe, RouterLinkWithHref],
   templateUrl: './hero-search.component.html',
   styleUrls: ['./hero-search.component.scss'],
 })
