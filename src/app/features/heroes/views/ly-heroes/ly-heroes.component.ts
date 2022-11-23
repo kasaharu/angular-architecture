@@ -1,12 +1,12 @@
 import { NgForOf } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { RouterLinkWithHref } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { Hero } from '../../../../domain/hero';
 
 @Component({
   selector: 'app-ly-heroes',
   standalone: true,
-  imports: [NgForOf, RouterLinkWithHref],
+  imports: [NgForOf, RouterLink],
   templateUrl: './ly-heroes.component.html',
   styleUrls: ['./ly-heroes.component.scss'],
 })
