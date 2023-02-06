@@ -10,7 +10,7 @@ import { HeroesStore } from './heroes.store';
   templateUrl: './heroes.component.html',
   providers: [HeroesStore],
 })
-export class HeroesPageComponent implements OnInit {
+export default class HeroesPageComponent implements OnInit {
   constructor(private readonly _componentStore: HeroesStore) {}
 
   heroes$ = this._componentStore.heroes$;
