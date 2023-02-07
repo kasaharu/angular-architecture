@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HeroService } from '../../../../infrastructures/api/hero.service';
+import { DashboardComponent } from '../../containerss/dashboard/dashboard.component';
 import { DashboardPageComponent } from './dashboard.component';
 
 class MockHeroService {}
@@ -10,7 +11,7 @@ describe('DashboardPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DashboardPageComponent],
+      imports: [DashboardPageComponent, DashboardComponent],
       providers: [{ provide: HeroService, useClass: MockHeroService }],
     }).compileComponents();
 
