@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { LyDashboardComponent } from '../../views/ly-dashboard/ly-dashboard.component';
 import { DashboardStore } from './dashboard.store';
 
@@ -10,7 +10,7 @@ import { DashboardStore } from './dashboard.store';
   providers: [DashboardStore],
 })
 export class DashboardPageComponent implements OnInit {
-  constructor(private readonly _componentStore: DashboardStore) {}
+  private readonly _componentStore = inject(DashboardStore);
   heroes$ = this._componentStore.heroes$;
 
   ngOnInit(): void {
