@@ -2,7 +2,7 @@ import { NgForOf } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Hero } from '../../../../domain/hero';
-import { HeroSearchComponent } from '../hero-search/hero-search.component';
+import { HeroSearchComponent } from '../../containerss/hero-search/hero-search.component';
 
 @Component({
   selector: 'app-ly-dashboard',
