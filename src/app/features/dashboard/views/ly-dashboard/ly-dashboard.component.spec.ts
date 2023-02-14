@@ -2,7 +2,7 @@ import { By } from '@angular/platform-browser';
 import { render, screen } from '@testing-library/angular';
 import { Hero } from '../../../../domain/hero';
 import { HeroService } from '../../../../infrastructures/api/hero.service';
-import { HeroSearchComponent } from '../../containerss/hero-search/hero-search.component';
+import { HeroSearchComponent } from '../../containers/hero-search/hero-search.component';
 import { LyDashboardComponent } from './ly-dashboard.component';
 
 class MockHeroService {}

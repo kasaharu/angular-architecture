@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HeroService } from '../../../../infrastructures/api/hero.service';
-import { DashboardComponent } from '../../containerss/dashboard/dashboard.component';
+import { DashboardComponent } from '../../containers/dashboard/dashboard.component';
 import { DashboardPageComponent } from './dashboard.component';
 
 class MockHeroService {}
