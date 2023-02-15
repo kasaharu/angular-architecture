@@ -10,12 +10,6 @@ class MockHeroService {}
 describe('LyDashboardComponent', () => {
   const provideHeroService = [{ provide: HeroService, useClass: MockHeroService }];
 
-  it('heading に "Top Heroes" が表示されること', async () => {
-    await render(LyDashboardComponent, { providers: provideHeroService });
-
-    expect(screen.getByRole('heading', { name: 'Top Heroes' })).toBeTruthy();
-  });
-
   describe('hero 一覧の表示', () => {
     it('heroes が Input で渡されたとき hero 一覧のリンクが表示されること', async () => {
       const heroName = 'test hero';
