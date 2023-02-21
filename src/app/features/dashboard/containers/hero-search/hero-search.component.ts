@@ -1,9 +1,7 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { debounceTime, distinctUntilChanged, Observable, Subject, switchMap } from 'rxjs';
-import { Hero } from '../../../../domain/hero';
-import { HeroService } from '../../../../infrastructures/api/hero.service';
+import { Component, inject } from '@angular/core';
 import { LyHeroSearchComponent } from '../../views/ly-hero-search/ly-hero-search.component';
+import { HeroSearchService } from './hero-search.service';
 
 @Component({
   selector: 'app-hero-search',
@@ -11,22 +9,13 @@ import { LyHeroSearchComponent } from '../../views/ly-hero-search/ly-hero-search
   imports: [AsyncPipe, LyHeroSearchComponent],
   templateUrl: './hero-search.component.html',
   styleUrls: ['./hero-search.component.scss'],
+  providers: [HeroSearchService],
 })
-export class HeroSearchComponent implements OnInit {
-  constructor(private readonly _heroService: HeroService) {}
-
-  heroes$!: Observable<Hero[]>;
-  private searchTerms = new Subject<string>();
-
-  ngOnInit(): void {
-    this.heroes$ = this.searchTerms.pipe(
-      debounceTime(300),
-      distinctUntilChanged(),
-      switchMap((term: string) => this._heroService.searchHeroes(term)),
-    );
-  }
+export class HeroSearchComponent {
+  private readonly _service = inject(HeroSearchService);
+  heroes$ = this._service.heroes$;
 
   search(term: string): void {
-    this.searchTerms.next(term);
+    this._service.search(term);
   }
 }
