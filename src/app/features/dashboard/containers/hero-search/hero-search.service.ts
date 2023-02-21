@@ -20,7 +20,7 @@ export class HeroSearchService extends ComponentStore<HeroSearchState> {
   );
   readonly setTerm = this.updater((state, term: string) => ({ ...state, term }));
 
-  async search(term: string): Promise<void> {
+  search(term: string): void {
     this.setTerm(term);
   }
 }
