@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { firstValueFrom } from 'rxjs';
 import { Hero } from '../../../../domain/hero';
-import { HeroService } from '../../../../infrastructures/api/hero.service';
+import { HeroApi } from '../../../../infrastructures/api/hero.api';
 
 interface HeroDetailState {
   hero: Hero | null;
@@ -10,7 +10,7 @@ interface HeroDetailState {
 
 @Injectable()
 export class HeroDetailStore extends ComponentStore<HeroDetailState> {
-  constructor(private readonly _heroService: HeroService) {
+  constructor(private readonly _heroService: HeroApi) {
     super({ hero: null });
   }
 

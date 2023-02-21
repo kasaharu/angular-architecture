@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
-import { HeroService } from '../../../../infrastructures/api/hero.service';
+import { HeroApi } from '../../../../infrastructures/api/hero.api';
 
 interface HeroSearchState {
   term: string;
@@ -9,7 +9,7 @@ interface HeroSearchState {
 
 @Injectable()
 export class HeroSearchService extends ComponentStore<HeroSearchState> {
-  constructor(private readonly _heroService: HeroService) {
+  constructor(private readonly _heroService: HeroApi) {
     super({ term: '' });
   }
 

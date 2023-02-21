@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
-import { HeroService } from '../../../../infrastructures/api/hero.service';
+import { HeroApi } from '../../../../infrastructures/api/hero.api';
 import { ActivatedRouteStub } from '../../../../testing/activated-route-stub';
 import { HeroDetailPageComponent } from './hero-detail.component';
 
@@ -17,7 +17,7 @@ describe('HeroDetailPageComponent', () => {
     await TestBed.configureTestingModule({
       imports: [HeroDetailPageComponent],
       providers: [
-        { provide: HeroService, useClass: MockHeroService },
+        { provide: HeroApi, useClass: MockHeroService },
         { provide: ActivatedRoute, useValue: activatedRoute },
       ],
     }).compileComponents();

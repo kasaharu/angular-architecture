@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { firstValueFrom } from 'rxjs';
 import { Hero } from '../../../../domain/hero';
-import { HeroService } from '../../../../infrastructures/api/hero.service';
+import { HeroApi } from '../../../../infrastructures/api/hero.api';
 
 interface HeroesState {
   heroes: Hero[];
@@ -10,7 +10,7 @@ interface HeroesState {
 
 @Injectable()
 export class HeroesStore extends ComponentStore<HeroesState> {
-  constructor(private readonly _heroService: HeroService) {
+  constructor(private readonly _heroService: HeroApi) {
     super({ heroes: [] });
   }
 

@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { HeroService } from '../../../../infrastructures/api/hero.service';
+import { HeroApi } from '../../../../infrastructures/api/hero.api';
 import HeroesPageComponent from './heroes.component';
 
 class MockHeroService {}
@@ -11,7 +11,7 @@ describe('HeroesPageComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [HeroesPageComponent],
-      providers: [{ provide: HeroService, useClass: MockHeroService }],
+      providers: [{ provide: HeroApi, useClass: MockHeroService }],
     }).compileComponents();
 
     fixture = TestBed.createComponent(HeroesPageComponent);

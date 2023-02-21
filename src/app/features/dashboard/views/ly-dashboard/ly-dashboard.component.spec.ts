@@ -1,14 +1,14 @@
 import { By } from '@angular/platform-browser';
 import { render, screen } from '@testing-library/angular';
 import { Hero } from '../../../../domain/hero';
-import { HeroService } from '../../../../infrastructures/api/hero.service';
+import { HeroApi } from '../../../../infrastructures/api/hero.api';
 import { HeroSearchComponent } from '../../containers/hero-search/hero-search.component';
 import { LyDashboardComponent } from './ly-dashboard.component';
 
 class MockHeroService {}
 
 describe('LyDashboardComponent', () => {
-  const provideHeroService = [{ provide: HeroService, useClass: MockHeroService }];
+  const provideHeroService = [{ provide: HeroApi, useClass: MockHeroService }];
 
   describe('hero 一覧の表示', () => {
     it('heroes が Input で渡されたとき hero 一覧のリンクが表示されること', async () => {

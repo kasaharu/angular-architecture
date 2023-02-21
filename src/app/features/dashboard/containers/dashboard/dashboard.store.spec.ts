@@ -1,24 +1,24 @@
 import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { Hero } from '../../../../domain/hero';
-import { HeroService } from '../../../../infrastructures/api/hero.service';
+import { HeroApi } from '../../../../infrastructures/api/hero.api';
 import { DashboardStore } from './dashboard.store';
 
-class MockHeroService implements Partial<HeroService> {
+class MockHeroService implements Partial<HeroApi> {
   getHeroes(): any {}
 }
 
 describe('DashboardStore', () => {
   let store: DashboardStore;
-  let service: HeroService;
+  let service: HeroApi;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [DashboardStore, { provide: HeroService, useClass: MockHeroService }],
+      providers: [DashboardStore, { provide: HeroApi, useClass: MockHeroService }],
     });
 
     store = TestBed.inject(DashboardStore);
-    service = TestBed.inject(HeroService);
+    service = TestBed.inject(HeroApi);
   });
 
   describe('#getHeroes()', () => {

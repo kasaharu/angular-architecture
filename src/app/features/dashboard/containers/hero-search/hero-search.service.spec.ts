@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { HeroService } from '../../../../infrastructures/api/hero.service';
+import { HeroApi } from '../../../../infrastructures/api/hero.api';
 import { HeroSearchService } from './hero-search.service';
 
 class MockHeroSearchService {}
@@ -9,7 +9,7 @@ describe('HeroSearchService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [HeroSearchService, { provide: HeroService, useClass: MockHeroSearchService }],
+      providers: [HeroSearchService, { provide: HeroApi, useClass: MockHeroSearchService }],
     });
     service = TestBed.inject(HeroSearchService);
   });

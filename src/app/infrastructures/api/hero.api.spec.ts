@@ -2,10 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { Hero } from '../../domain/hero';
-import { HeroService } from './hero.service';
+import { HeroApi } from './hero.api';
 
-describe('HeroService', () => {
-  let service: HeroService;
+describe('HeroApi', () => {
+  let service: HeroApi;
   let httpClient: HttpClient;
   let httpTestingController: HttpTestingController;
 
@@ -13,7 +13,7 @@ describe('HeroService', () => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
     });
-    service = TestBed.inject(HeroService);
+    service = TestBed.inject(HeroApi);
     httpClient = TestBed.inject(HttpClient);
     httpTestingController = TestBed.inject(HttpTestingController);
   });
