@@ -1,30 +1,25 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ActivatedRoute } from '@angular/router';
+import { TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
+import { RouterTestingHarness } from '@angular/router/testing';
 import { HeroApi } from '../../../../infrastructures/api/hero.api';
-import { ActivatedRouteStub } from '../../../../testing/activated-route-stub';
+import { routes } from '../../../../routes';
 import { HeroDetailPageComponent } from './hero-detail.component';
 
 class MockHeroService {}
 
 describe('HeroDetailPageComponent', () => {
+  let harness: RouterTestingHarness;
   let component: HeroDetailPageComponent;
-  let fixture: ComponentFixture<HeroDetailPageComponent>;
-  let activatedRoute: ActivatedRouteStub;
 
   beforeEach(async () => {
-    activatedRoute = new ActivatedRouteStub({ id: 1 });
-
     await TestBed.configureTestingModule({
       imports: [HeroDetailPageComponent],
-      providers: [
-        { provide: HeroApi, useClass: MockHeroService },
-        { provide: ActivatedRoute, useValue: activatedRoute },
-      ],
+      providers: [provideRouter(routes), { provide: HeroApi, useClass: MockHeroService }],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(HeroDetailPageComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    harness = await RouterTestingHarness.create();
+    component = await harness.navigateByUrl('/detail/1', HeroDetailPageComponent);
+    harness.detectChanges();
   });
 
   it('should create', () => {
