@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { RouterTestingHarness } from '@angular/router/testing';
+import { routes } from '../../../../routes';
 import { DashboardComponent } from '../../containers/dashboard/dashboard.component';
-import DASHBOARD_ROUTES from '../../routes';
 import { DashboardPageComponent } from './dashboard.component';
 
 @Component({ selector: 'app-dashboard', standalone: true, template: '' })
@@ -15,8 +15,8 @@ describe('DashboardPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DashboardPageComponent, DashboardComponent],
-      providers: [provideRouter(DASHBOARD_ROUTES)],
+      imports: [DashboardPageComponent],
+      providers: [provideRouter(routes)],
     })
       .overrideComponent(DashboardPageComponent, { remove: { imports: [DashboardComponent] }, add: { imports: [MockDashboardComponent] } })
       .compileComponents();
