@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { provideRouter } from '@angular/router';
+import { Router, provideRouter } from '@angular/router';
 import { RouterTestingHarness } from '@angular/router/testing';
 import { routes } from '../../../../routes';
 import { DashboardComponent } from '../../containers/dashboard/dashboard.component';
@@ -12,6 +12,7 @@ class MockDashboardComponent {}
 describe('DashboardPageComponent', () => {
   let harness: RouterTestingHarness;
   let component: DashboardPageComponent;
+  let router: Router;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -21,6 +22,7 @@ describe('DashboardPageComponent', () => {
       .overrideComponent(DashboardPageComponent, { remove: { imports: [DashboardComponent] }, add: { imports: [MockDashboardComponent] } })
       .compileComponents();
 
+    router = TestBed.inject(Router);
     harness = await RouterTestingHarness.create();
     component = await harness.navigateByUrl('', DashboardPageComponent);
 
@@ -29,5 +31,11 @@ describe('DashboardPageComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('/ にアクセスしたときに /dashboard にリダイレクトされること', async () => {
+    await harness.navigateByUrl('');
+    harness.detectChanges();
+    expect(router.url).toBe('/dashboard');
   });
 });
