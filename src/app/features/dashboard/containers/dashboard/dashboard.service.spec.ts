@@ -6,13 +6,19 @@ import { HeroApi } from '../../../../infrastructures/api/hero.api';
 import { DashboardService } from './dashboard.service';
 import { DashboardStore } from './dashboard.store';
 
+class MockHeroApi {
+  getHeroes() {}
+}
+
 describe('DashboardService', () => {
   let service: DashboardService;
   let store: DashboardStore;
   let api: HeroApi;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [DashboardService, DashboardStore, { provide: HeroApi, useClass: MockHeroApi }],
+    });
     service = TestBed.inject(DashboardService);
     store = TestBed.inject(DashboardStore);
     api = TestBed.inject(HeroApi);
