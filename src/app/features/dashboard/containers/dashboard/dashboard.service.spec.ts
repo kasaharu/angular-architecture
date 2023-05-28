@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { of } from 'rxjs';
+import { firstValueFrom, of } from 'rxjs';
 import { Hero } from '../../../../domain/hero';
 import { HeroApi } from '../../../../infrastructures/api/hero.api';
 import { DashboardService } from './dashboard.service';
@@ -24,10 +24,6 @@ describe('DashboardService', () => {
     api = TestBed.inject(HeroApi);
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
-
   describe('#getHeroes()', () => {
     it('length 6 の hero 配列が返ってきた場合、index 1 ~ 4 までの配列が得られること', async () => {
       const heroes: Hero[] = [
@@ -49,9 +45,8 @@ describe('DashboardService', () => {
 
       await service.getHeroes();
 
-      store.heroes$.subscribe((value) => {
-        expect(value).toEqual(expected);
-      });
+      const newHeroes = await firstValueFrom(store.heroes$);
+      expect(newHeroes).toEqual(expected);
     });
   });
 });
