@@ -6,8 +6,6 @@
     "github>lacolaco/renovate-config:automerge-types"
   ],
   "timezone": "Asia/Tokyo",
-  "assignees": ["kasaharu"],
-  "reviewers": ["kasaharu"],
   "schedule": ["every weekend"],
   "labels": ["renovate"],
   "lockFileMaintenance": {
