@@ -14,5 +14,6 @@
     "enabled": true,
     "schedule": ["before 3am on the first day of the month"]
   },
+  "prConcurrentLimit": 0,
   "packageRules": []
 }
