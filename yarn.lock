@@ -1981,10 +1981,10 @@
   resolved "https://registry.yarnpkg.com/@socket.io/component-emitter/-/component-emitter-3.1.0.tgz#96116f2a912e0c02817345b3c10751069920d553"
   integrity sha512-+9jVqKhRSpsc591z5vX+X5Yyw+he/HCB4iQ/RYxw35CEPaY1gnsNE43nf9n9AaYjAQrTiI/mOwKUKdUs9vf7Xg==
 
-"@testing-library/angular@14.1.0":
-  version "14.1.0"
-  resolved "https://registry.yarnpkg.com/@testing-library/angular/-/angular-14.1.0.tgz#f743bbb87d2e6201172014f3a769a578cf350cb2"
-  integrity sha512-hkB3/pBmQmTHPk7va4djzYrwcRRk2ZlTBUkVpqRxOGloyvri4kJx9CsyMl6Kj6FgIz07A8w5zr3tpCmo9Rn61Q==
+"@testing-library/angular@14.2.0":
+  version "14.2.0"
+  resolved "https://registry.yarnpkg.com/@testing-library/angular/-/angular-14.2.0.tgz#1516d7380b4cf12c9952e6dbf6701d87102925aa"
+  integrity sha512-5w9Xa2qRSZtwIR1z1uO5/JQHiFxi8hhDWT9NJDG2Udj8Slhg1TAdgMl3nKcchA+73OrH7CEY+Iv5NSi9FPyPlA==
   dependencies:
     "@testing-library/dom" "^9.0.0"
     tslib "^2.3.1"
