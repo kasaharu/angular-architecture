@@ -14,5 +14,6 @@
   },
   "prConcurrentLimit": 0,
   "rebaseWhen": "never",
+  "configMigration": true,
   "packageRules": []
 }
