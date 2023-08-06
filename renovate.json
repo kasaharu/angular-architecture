@@ -14,6 +14,7 @@
   },
   "prConcurrentLimit": 0,
   "rebaseWhen": "never",
+  "minimumReleaseAge": "3 days",
   "configMigration": true,
   "packageRules": []
 }
