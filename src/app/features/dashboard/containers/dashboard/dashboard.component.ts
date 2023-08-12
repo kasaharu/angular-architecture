@@ -1,8 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, computed, inject, OnInit } from '@angular/core';
 import { LyDashboardComponent } from '../../views/ly-dashboard/ly-dashboard.component';
 import { DashboardService } from './dashboard.service';
-import { DashboardStore } from './dashboard.store';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,13 +9,12 @@ import { DashboardStore } from './dashboard.store';
   imports: [CommonModule, LyDashboardComponent],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
-  providers: [DashboardStore, DashboardService],
+  providers: [DashboardService],
 })
 export class DashboardComponent implements OnInit {
-  private readonly _componentStore = inject(DashboardStore);
   private readonly _service = inject(DashboardService);
 
-  heroes$ = this._componentStore.heroes$;
+  readonly $heroes = computed(() => this._service.$state().heroes);
 
   ngOnInit(): void {
     this._service.getHeroes();

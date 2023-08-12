@@ -1,15 +1,24 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable, inject, signal } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
+import { Hero } from '../../../../domain/hero';
 import { HeroApi } from '../../../../infrastructures/api/hero.api';
-import { DashboardStore } from './dashboard.store';
+
+interface DashboardState {
+  heroes: Hero[];
+}
+
+const initialState: DashboardState = {
+  heroes: [],
+};
 
 @Injectable()
 export class DashboardService {
-  private readonly _store = inject(DashboardStore);
   private readonly _heroApi = inject(HeroApi);
+
+  readonly $state = signal<DashboardState>(initialState);
 
   async getHeroes(): Promise<void> {
     const heroes = await firstValueFrom(this._heroApi.getHeroes());
-    this._store.setHeroes(heroes);
+    this.$state.set({ heroes: heroes.slice(1, 5) });
   }
 }

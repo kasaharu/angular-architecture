@@ -1,10 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 
-import { firstValueFrom, of } from 'rxjs';
+import { of } from 'rxjs';
 import { Hero } from '../../../../domain/hero';
 import { HeroApi } from '../../../../infrastructures/api/hero.api';
 import { DashboardService } from './dashboard.service';
-import { DashboardStore } from './dashboard.store';
 
 class MockHeroApi {
   getHeroes() {}
@@ -12,15 +11,13 @@ class MockHeroApi {
 
 describe('DashboardService', () => {
   let service: DashboardService;
-  let store: DashboardStore;
   let api: HeroApi;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [DashboardService, DashboardStore, { provide: HeroApi, useClass: MockHeroApi }],
+      providers: [DashboardService, { provide: HeroApi, useClass: MockHeroApi }],
     });
     service = TestBed.inject(DashboardService);
-    store = TestBed.inject(DashboardStore);
     api = TestBed.inject(HeroApi);
   });
 
@@ -45,8 +42,7 @@ describe('DashboardService', () => {
 
       await service.getHeroes();
 
-      const newHeroes = await firstValueFrom(store.heroes$);
-      expect(newHeroes).toEqual(expected);
+      expect(service.$state().heroes).toEqual(expected);
     });
   });
 });
