@@ -15,6 +15,7 @@ export class DashboardComponent implements OnInit {
   private readonly _service = inject(DashboardService);
 
   readonly $heroes = computed(() => this._service.$state().heroes);
+  readonly $isLoading = computed(() => this._service.$state().isLoading);
 
   ngOnInit(): void {
     this._service.getHeroes();

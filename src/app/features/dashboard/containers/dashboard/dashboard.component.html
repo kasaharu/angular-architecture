@@ -1,1 +1,5 @@
-<app-ly-dashboard [heroes]="$heroes()"></app-ly-dashboard>
+<div *ngIf="$isLoading(); else fetchedContent">Loading...</div>
+
+<ng-template #fetchedContent>
+  <app-ly-dashboard [heroes]="$heroes()"></app-ly-dashboard>
+</ng-template>
