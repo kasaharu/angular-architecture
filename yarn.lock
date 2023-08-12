@@ -1972,10 +1972,10 @@
   resolved "https://registry.yarnpkg.com/@leichtgewicht/ip-codec/-/ip-codec-2.0.4.tgz#b2ac626d6cb9c8718ab459166d4bb405b8ffa78b"
   integrity sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==
 
-"@ngrx/component-store@16.1.0":
-  version "16.1.0"
-  resolved "https://registry.yarnpkg.com/@ngrx/component-store/-/component-store-16.1.0.tgz#3b8451063c57e976456f7e62a69f7ee43da0bb8d"
-  integrity sha512-+isrCOfBLA4m2eFMre0RmnWjiKvbORnJhoO/MtS/Guup8QxLvLQry5iLs4d7g1ckiCqyZGFfuk/6zMdMGMtqbQ==
+"@ngrx/component-store@16.2.0":
+  version "16.2.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/component-store/-/component-store-16.2.0.tgz#507667c91ddc1f4d0568bdab3729fd45c6383992"
+  integrity sha512-XpLt2AY6BiITv/pQjr0ATNMRflxY0XWy/DRMaTvoR7DPH5o3E/wojbogpj9lDi07rTWmONlvmbUuUoF5QmKB0Q==
   dependencies:
     tslib "^2.0.0"
 
