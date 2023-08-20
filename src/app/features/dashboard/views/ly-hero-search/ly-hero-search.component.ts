@@ -11,7 +11,7 @@ import { Hero } from '../../../../domain/hero';
   styleUrls: ['./ly-hero-search.component.scss'],
 })
 export class LyHeroSearchComponent {
-  @Input() heroes: Hero[] | null = null;
+  @Input() heroes: Hero[] = [];
   @Output() heroSearched = new EventEmitter<string>();
 
   search(name: string): void {

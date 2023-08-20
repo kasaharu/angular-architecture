@@ -1,1 +1,1 @@
-<app-ly-hero-search [heroes]="heroes$ | async" (heroSearched)="search($event)"></app-ly-hero-search>
+<app-ly-hero-search [heroes]="$heroes()" (heroSearched)="search($event)"></app-ly-hero-search>

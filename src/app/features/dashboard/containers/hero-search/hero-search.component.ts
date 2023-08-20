@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { LyHeroSearchComponent } from '../../views/ly-hero-search/ly-hero-search.component';
 import { HeroSearchService } from './hero-search.service';
 
@@ -13,7 +13,7 @@ import { HeroSearchService } from './hero-search.service';
 })
 export class HeroSearchComponent {
   private readonly _service = inject(HeroSearchService);
-  heroes$ = this._service.heroes$;
+  $heroes = computed(() => this._service.$state().heroes);
 
   search(term: string): void {
     this._service.search(term);

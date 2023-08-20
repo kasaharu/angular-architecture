@@ -1,26 +1,27 @@
-import { Injectable } from '@angular/core';
-import { ComponentStore } from '@ngrx/component-store';
-import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
+import { Injectable, inject, signal } from '@angular/core';
+import { firstValueFrom } from 'rxjs';
+import { Hero } from '../../../../domain/hero';
 import { HeroApi } from '../../../../infrastructures/api/hero.api';
 
 interface HeroSearchState {
   term: string;
+  heroes: Hero[];
 }
 
+const initialState: HeroSearchState = {
+  term: '',
+  heroes: [],
+};
+
 @Injectable()
-export class HeroSearchService extends ComponentStore<HeroSearchState> {
-  constructor(private readonly _heroService: HeroApi) {
-    super({ term: '' });
-  }
+export class HeroSearchService {
+  private readonly _heroService = inject(HeroApi);
 
-  readonly heroes$ = this.select((state) => state.term).pipe(
-    debounceTime(300),
-    distinctUntilChanged(),
-    switchMap((term: string) => this._heroService.searchHeroes(term)),
-  );
-  readonly setTerm = this.updater((state, term: string) => ({ ...state, term }));
+  readonly $state = signal<HeroSearchState>(initialState);
 
-  search(term: string): void {
-    this.setTerm(term);
+  // TODO: debounceTime(), distinctUntilChanged() と同じことができるようにする
+  async search(term: string): Promise<void> {
+    const heroes = await firstValueFrom(this._heroService.searchHeroes(term));
+    this.$state.set({ ...this.$state(), heroes, term });
   }
 }
