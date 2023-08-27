@@ -12,7 +12,7 @@ const initialState: HeroesState = {
 };
 
 @Injectable()
-export class HeroesStore {
+export class HeroesService {
   private readonly _heroService = inject(HeroApi);
 
   readonly $state = signal<HeroesState>(initialState);

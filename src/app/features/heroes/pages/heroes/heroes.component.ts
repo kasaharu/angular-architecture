@@ -2,32 +2,32 @@ import { AsyncPipe } from '@angular/common';
 import { Component, OnInit, computed } from '@angular/core';
 import { Hero } from '../../../../domain/hero';
 import { LyHeroesComponent } from '../../views/ly-heroes/ly-heroes.component';
-import { HeroesStore } from './heroes.store';
+import { HeroesService } from './heroes.service';
 
 @Component({
   standalone: true,
   imports: [AsyncPipe, LyHeroesComponent],
   templateUrl: './heroes.component.html',
-  providers: [HeroesStore],
+  providers: [HeroesService],
 })
 export default class HeroesPageComponent implements OnInit {
-  constructor(private readonly _componentStore: HeroesStore) {}
+  constructor(private readonly _service: HeroesService) {}
 
-  $heroes = computed(() => this._componentStore.$state().heroes);
+  $heroes = computed(() => this._service.$state().heroes);
 
   ngOnInit(): void {
     this.getHeroes();
   }
 
   getHeroes(): void {
-    this._componentStore.getHeroes();
+    this._service.getHeroes();
   }
 
   addHero(name: string): void {
-    this._componentStore.addHero(name);
+    this._service.addHero(name);
   }
 
   deleteHero(hero: Hero): void {
-    this._componentStore.deleteHero(hero);
+    this._service.deleteHero(hero);
   }
 }
