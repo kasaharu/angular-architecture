@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, computed } from '@angular/core';
 import { Hero } from '../../../../domain/hero';
 import { LyHeroesComponent } from '../../views/ly-heroes/ly-heroes.component';
 import { HeroesStore } from './heroes.store';
@@ -13,7 +13,7 @@ import { HeroesStore } from './heroes.store';
 export default class HeroesPageComponent implements OnInit {
   constructor(private readonly _componentStore: HeroesStore) {}
 
-  heroes$ = this._componentStore.heroes$;
+  $heroes = computed(() => this._componentStore.$state().heroes);
 
   ngOnInit(): void {
     this.getHeroes();
