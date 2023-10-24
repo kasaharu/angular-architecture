@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { Hero } from '../../domain/hero';
@@ -6,7 +5,6 @@ import { HeroApi } from './hero.api';
 
 describe('HeroApi', () => {
   let service: HeroApi;
-  let httpClient: HttpClient;
   let httpTestingController: HttpTestingController;
 
   beforeEach(() => {
@@ -14,7 +12,6 @@ describe('HeroApi', () => {
       imports: [HttpClientTestingModule],
     });
     service = TestBed.inject(HeroApi);
-    httpClient = TestBed.inject(HttpClient);
     httpTestingController = TestBed.inject(HttpTestingController);
   });
 
@@ -38,7 +35,7 @@ describe('HeroApi', () => {
       const msg = 'Deliberate 404';
 
       service.getHeroes().subscribe({
-        next: (_) => fail('expected to fail'),
+        next: () => fail('expected to fail'),
         error: (error) => {
           expect(error.message).toContain(msg);
         },

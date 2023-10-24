@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, of, tap } from 'rxjs';
+import { Observable, catchError, of, tap } from 'rxjs';
 import { Hero } from '../../domain/hero';
 import { MessageService } from '../../shared/services/message.service';
 
@@ -15,7 +15,7 @@ export class HeroApi {
 
   getHeroes(): Observable<Hero[]> {
     return this._http.get<Hero[]>(this._heroesUrl).pipe(
-      tap((_) => this.log('fetched heroes')),
+      tap(() => this.log('fetched heroes')),
       catchError(this.handleError<Hero[]>('getHeroes')),
     );
   }
@@ -24,14 +24,16 @@ export class HeroApi {
     const url = `${this._heroesUrl}/${id}`;
 
     return this._http.get<Hero>(url).pipe(
-      tap((_) => this.log(`fetched hero id=${id}`)),
+      tap(() => this.log(`fetched hero id=${id}`)),
       catchError(this.handleError<Hero>(`getHero id=${id}`)),
     );
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   updateHero(hero: Hero): Observable<any> {
     return this._http.put(this._heroesUrl, hero, this.httpOptions).pipe(
-      tap((_) => this.log(`updated hero id=${hero.id}`)),
+      tap(() => this.log(`updated hero id=${hero.id}`)),
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       catchError(this.handleError<any>('updateHero')),
     );
   }
@@ -47,7 +49,7 @@ export class HeroApi {
     const url = `${this._heroesUrl}/${id}`;
 
     return this._http.delete<Hero>(url, this.httpOptions).pipe(
-      tap((_) => this.log(`deleted hero id=${id}`)),
+      tap(() => this.log(`deleted hero id=${id}`)),
       catchError(this.handleError<Hero>('deleteHero')),
     );
   }
@@ -58,7 +60,7 @@ export class HeroApi {
     }
 
     return this._http.get<Hero[]>(`${this._heroesUrl}/?name=${term}`).pipe(
-      tap((_) => this.log(`found heroes matching "${term}"`)),
+      tap(() => this.log(`found heroes matching "${term}"`)),
       catchError(this.handleError<Hero[]>('searchHeroes')),
     );
   }

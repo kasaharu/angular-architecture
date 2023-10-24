@@ -6,6 +6,7 @@ import { HeroApi } from '../../../../infrastructures/api/hero.api';
 import { DashboardService } from './dashboard.service';
 
 class MockHeroApi {
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   getHeroes() {}
 }
 
