@@ -1,4 +1,3 @@
-import { AsyncPipe } from '@angular/common';
 import { Component, computed, inject } from '@angular/core';
 import { LyHeroSearchComponent } from '../../views/ly-hero-search/ly-hero-search.component';
 import { HeroSearchService } from './hero-search.service';
@@ -6,7 +5,7 @@ import { HeroSearchService } from './hero-search.service';
 @Component({
   selector: 'app-hero-search',
   standalone: true,
-  imports: [AsyncPipe, LyHeroSearchComponent],
+  imports: [LyHeroSearchComponent],
   templateUrl: './hero-search.component.html',
   styleUrls: ['./hero-search.component.scss'],
   providers: [HeroSearchService],
