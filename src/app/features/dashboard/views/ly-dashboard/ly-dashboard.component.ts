@@ -1,4 +1,4 @@
-import { NgForOf } from '@angular/common';
+
 import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Hero } from '../../../../domain/hero';
@@ -7,7 +7,7 @@ import { HeroSearchComponent } from '../../containers/hero-search/hero-search.co
 @Component({
   selector: 'app-ly-dashboard',
   standalone: true,
-  imports: [NgForOf, RouterLink, HeroSearchComponent],
+  imports: [RouterLink, HeroSearchComponent],
   templateUrl: './ly-dashboard.component.html',
   styleUrls: ['./ly-dashboard.component.scss'],
 })

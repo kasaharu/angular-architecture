@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, computed, inject, OnInit } from '@angular/core';
 import { LyDashboardComponent } from '../../views/ly-dashboard/ly-dashboard.component';
 import { DashboardService } from './dashboard.service';
@@ -6,7 +6,7 @@ import { DashboardService } from './dashboard.service';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, LyDashboardComponent],
+  imports: [LyDashboardComponent],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
   providers: [DashboardService],

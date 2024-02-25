@@ -1,4 +1,4 @@
-import { Location, NgIf, UpperCasePipe } from '@angular/common';
+import { Location, UpperCasePipe } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Hero } from '../../../../domain/hero';
@@ -6,7 +6,7 @@ import { Hero } from '../../../../domain/hero';
 @Component({
   selector: 'app-ly-hero-detail',
   standalone: true,
-  imports: [NgIf, UpperCasePipe, FormsModule],
+  imports: [UpperCasePipe, FormsModule],
   templateUrl: './ly-hero-detail.component.html',
   styleUrls: ['./ly-hero-detail.component.scss'],
 })
