@@ -2,7 +2,7 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "cli": {
-    "packageManager": "yarn",
+    "packageManager": "npm",
     "analytics": "0d19b22a-7354-4077-8386-286849957a50",
     "schematicCollections": [
       "@angular-eslint/schematics"
