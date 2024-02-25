@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { Router, provideRouter } from '@angular/router';
 import { RouterTestingHarness } from '@angular/router/testing';
-import { routes } from '../../../../routes';
+import { routes } from '../../../../app.routes';
 import { DashboardComponent } from '../../containers/dashboard/dashboard.component';
 import { DashboardPageComponent } from './dashboard.component';
 

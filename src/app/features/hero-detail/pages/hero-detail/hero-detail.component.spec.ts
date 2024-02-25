@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { RouterTestingHarness } from '@angular/router/testing';
+import { routes } from '../../../../app.routes';
 import { HeroApi } from '../../../../infrastructures/api/hero.api';
-import { routes } from '../../../../routes';
 import { HeroDetailPageComponent } from './hero-detail.component';
 
 class MockHeroService {}
