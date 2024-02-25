@@ -23,7 +23,6 @@
     "@angular/platform-browser": "17.2.2",
     "@angular/platform-browser-dynamic": "17.2.2",
     "@angular/router": "17.2.2",
-    "angular-cli-ghpages": "1.0.5",
     "rxjs": "7.8.1",
     "tslib": "2.6.1",
     "zone.js": "0.14.3"
@@ -41,6 +40,7 @@
     "@types/jasmine": "4.3.5",
     "@typescript-eslint/eslint-plugin": "^6.10.0",
     "@typescript-eslint/parser": "^6.10.0",
+    "angular-cli-ghpages": "^2.0.0-beta.1",
     "angular-in-memory-web-api": "0.16.0",
     "eslint": "^8.53.0",
     "jasmine-core": "5.1.0",
