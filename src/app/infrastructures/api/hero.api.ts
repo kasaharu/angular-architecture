@@ -8,7 +8,10 @@ import { MessageService } from '../../shared/services/message.service';
   providedIn: 'root',
 })
 export class HeroApi {
-  constructor(private readonly _http: HttpClient, private readonly _messageService: MessageService) {}
+  constructor(
+    private readonly _http: HttpClient,
+    private readonly _messageService: MessageService,
+  ) {}
 
   private _heroesUrl = 'api/heroes';
   httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
