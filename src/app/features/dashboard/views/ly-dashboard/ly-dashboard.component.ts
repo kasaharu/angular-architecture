@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Hero } from '../../../../domain/hero';
 import { HeroSearchComponent } from '../../containers/hero-search/hero-search.component';
@@ -11,5 +11,5 @@ import { HeroSearchComponent } from '../../containers/hero-search/hero-search.co
   styleUrls: ['./ly-dashboard.component.scss'],
 })
 export class LyDashboardComponent {
-  @Input() heroes: Hero[] | null = null;
+  heroes = input.required<Hero[]>();
 }
