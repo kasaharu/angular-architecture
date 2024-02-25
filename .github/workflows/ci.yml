@@ -19,9 +19,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version-file: '.node-version'
-          cache: yarn
-      - run: yarn
-      - run: yarn format:check
-      - run: yarn lint
-      - run: yarn build
-      - run: yarn test:ci
+          cache: npm
+      - run: npm i
+      - run: npm run format:check
+      - run: npm run lint
+      - run: npm run build
+      - run: npm run test:ci

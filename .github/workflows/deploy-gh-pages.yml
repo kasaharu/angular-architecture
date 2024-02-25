@@ -24,5 +24,5 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          yarn
-          yarn ng deploy --base-href=/angular-architecture/ --name=${{ secrets.GH_USER_NAME }} --email=${{ secrets.GH_EMAIL }}
+          npm i
+          npm run ng deploy --base-href=/angular-architecture/ --name=${{ secrets.GH_USER_NAME }} --email=${{ secrets.GH_EMAIL }}
