@@ -19,7 +19,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version-file: '.node-version'
-          cache: npm
       - run: npm cache clean --force
       - run: npm ci
       - run: npm run format:check
