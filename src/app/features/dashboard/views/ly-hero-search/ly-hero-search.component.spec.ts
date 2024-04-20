@@ -1,22 +1,13 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { render } from '@testing-library/angular';
+import { Hero } from '../../../../domain/hero';
 import { LyHeroSearchComponent } from './ly-hero-search.component';
 
 describe('LyHeroSearchComponent', () => {
-  let component: LyHeroSearchComponent;
-  let fixture: ComponentFixture<LyHeroSearchComponent>;
+  it('should create', async () => {
+    const heroes: Hero[] = [];
+    const { fixture } = await render(LyHeroSearchComponent, { componentInputs: { heroes } });
+    const component = fixture.componentInstance;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [LyHeroSearchComponent],
-    }).compileComponents();
-
-    fixture = TestBed.createComponent(LyHeroSearchComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });
