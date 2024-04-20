@@ -15,21 +15,22 @@ describe('LyDashboardComponent', () => {
     it('heroes が Input で渡されたとき hero 一覧のリンクが表示されること', async () => {
       const heroName = 'test hero';
       const heroes: Hero[] = [{ id: 1, name: heroName }];
-      await render(LyDashboardComponent, { ...appConfig, componentProperties: { heroes } });
+      await render(LyDashboardComponent, { ...appConfig, componentInputs: { heroes: heroes } });
 
       expect(screen.getByRole('link', { name: heroName, suggest: true })).toBeTruthy();
     });
 
     it('空の heroes が Input で渡されたとき hero 一覧のリンクが表示されないこと', async () => {
       const heroes: Hero[] = [];
-      const { queryByRole } = await render(LyDashboardComponent, { ...appConfig, componentProperties: { heroes } });
+      const { queryByRole } = await render(LyDashboardComponent, { ...appConfig, componentInputs: { heroes } });
 
       expect(queryByRole('link')).toBe(null);
     });
   });
 
   it('HeroSearchComponent が表示されること', async () => {
-    const { fixture } = await render(LyDashboardComponent, { ...appConfig });
+    const heroes: Hero[] = [];
+    const { fixture } = await render(LyDashboardComponent, { ...appConfig, componentInputs: { heroes } });
     const heroSearchElem = fixture.debugElement.query(By.directive(HeroSearchComponent));
 
     expect(heroSearchElem).toBeTruthy();
