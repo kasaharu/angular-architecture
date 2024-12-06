@@ -35,7 +35,7 @@
     "@testing-library/angular": "17.3.2",
     "@testing-library/dom": "^10.0.0",
     "@types/jasmine": "5.1.4",
-    "angular-eslint": "18.1.0",
+    "angular-eslint": "19.0.0",
     "angular-in-memory-web-api": "0.17.0",
     "eslint": "^9.8.0",
     "jasmine-core": "5.2.0",
